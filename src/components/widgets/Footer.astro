@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE } from 'astrowind:config';
-import { getHomePermalink } from '~/utils/permalinks';
+import { Image } from 'astro:assets'
+import LinkedIn from '~/assets/images/linkedin.png'
 
 interface Link {
   text?: string;
@@ -35,7 +35,9 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           <img src="http://criticalsa-website.s3-website-us-east-1.amazonaws.com/_astro/CSA_Logo_crop.CK1y-yLm.png" alt="Logo" class="h-16 w-auto mr-2">
           <p style="padding-top: 25px;">marketing@CriticalSA.com</p>
           <p>+1 (941) 900-4047</p>
-          <a class="inline-block font-normal text-xl" href='https://www.linkedin.com/company/critical-systems-analysis/mycompany/'>LinkedIn</a>
+          <a class="inline-block font-normal text-xl" href='https://www.linkedin.com/company/critical-systems-analysis/mycompany/' aria-label="LinkedIn">
+            <Image src={LinkedIn} alt="LinkedIn" class="h-8 mt-2 w-auto"/>
+          </a>
         </div>
         <div class="text-sm text-muted flex gap-1">
           {

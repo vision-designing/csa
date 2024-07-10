@@ -1,11 +1,7 @@
 ---
 import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
-import { getPermalink } from '~/utils/permalinks';
 import Safe from '~/components/widgets/indSafety.astro';
 import Standards from '~/components/widgets/standards.astro';
 
@@ -230,8 +226,8 @@ const metadata = {
         description: 'Statdard for Conveyors',
       },
       {
-        title: 'NFPA 79-2021',
-        description: 'Electrical Standards for Industrial Machinery',
+        title: 'ISO 3691-4',
+        description: 'Driverless industrial trucks and their systems',
       },
       {
         title: 'IEC 62061',
@@ -255,46 +251,27 @@ const metadata = {
     columns={3}
     items={[
       {
-        title: 'Systems Engineering',
+        title: 'Functional Safety Consulting',
         description:
-          '• ISO 13849 | IEC 61508 | IEC 62061 | ISO 26262 <br /> • Risk Assessment | FMEA | FMEDA | FTA <br /> • Tailored trainings available',
-        icon: 'tabler:sitemap',
-      },
-      {
-        title: 'Systems Assurance',
-        description:
-          '• One-time or on demand project planning guidance <br /> • Dedicated safety manager to lead project safety efforts <br /> • Certification guidance and support',
-        icon: 'tabler:world-cog',
-      },
-      {
-        title: 'Safety & Security Assessment',
-        description:
-          '• Temporary safety engineering to support project peak demand <br /> • Safety analysis to support safety case <br /> • Risk Assessment | FMEA | FMEDA | FTA <br /> • Leverage CSA’s experience to create higher quality work products faster',
+          '<ul style="list-style: disc;margin-inline-start: 16px;"><li>Assist in the development and execution of safety programs.</li>\n<li>Assure adherence to relevant safety standards</li></ul>',
         icon: 'tabler:lock-code',
       },
       {
-        title: 'RAM Analysis',
+        title: 'RAM Consulting',
         description:
-          '• ISO 13849 | IEC 61508 | IEC 62061 | ISO 26262 <br /> • Risk Assessment | FMEA | FMEDA | FTA <br /> • Tailored trainings available',
+          '<ul style="list-style: disc;margin-inline-start: 16px;"><li>Perform reliability, availability, and maintainability analyses.</li>\n<li>Support new product/system development or larger systems engineering project.</li></ul>',
         icon: 'tabler:hexagon-3d',
       },
       {
-        title: 'Threat & Vulnerability Assessments',
+        title: 'RAMS Training',
         description:
-          '• One-time or on demand project planning guidance <br /> • Dedicated safety manager to lead project safety efforts <br /> • Certification guidance and support',
-        icon: 'tabler:user-shield',
-      },
-      {
-        title: 'Safety Analyses',
-        description:
-          '• Temporary safety engineering to support project peak demand <br /> • Safety analysis to support safety case <br /> • Risk Assessment | FMEA | FMEDA | FTA <br /> • Leverage CSA’s experience to create higher quality work products faster',
+          '<ul style="list-style: disc;margin-inline-start: 16px;"><li>Virtual and in-person training.</li>\n<li>Applicable safety and reliability standards and specific analyses methodologies.</li></ul>',
         icon: 'tabler:devices-check',
       },
     ]}
   />
 
   <Standards
-    
     title=""
     tagline="Rail Standards"
     columns={3}
@@ -323,45 +300,6 @@ const metadata = {
       {
         title: 'AREMA',
         description: 'American Railway Engineering and Maintenance-of-Way Association',
-      },
-      
-    ]}
-  />
-  
-  <Features2
-    title="Deliverables"
-    tagline=""
-    columns={3}
-    items={[
-      {
-        title: 'Systems Engineering',
-        description:
-          '• ISO 13849 | IEC 61508 | IEC 62061 | ISO 26262 <br /> • Risk Assessment | FMEA | FMEDA | FTA <br /> • Tailored trainings available',
-        icon: '',
-      },
-      {
-        title: 'Assurance Plans',
-        description:
-          '• One-time or on demand project planning guidance <br /> • Dedicated safety manager to lead project safety efforts <br /> • Certification guidance and support',
-        icon: '',
-      },
-      {
-        title: 'Analysis',
-        description:
-          '• Temporary safety engineering to support project peak demand <br /> • Safety analysis to support safety case <br /> • Risk Assessment | FMEA | FMEDA | FTA <br /> • Leverage CSA’s experience to create higher quality work products faster',
-        icon: '',
-      },
-      {
-        title: 'Reports',
-        description:
-          '• ISO 13849 | IEC 61508 | IEC 62061 | ISO 26262 <br /> • Risk Assessment | FMEA | FMEDA | FTA <br /> • Tailored trainings available',
-        icon: '',
-      },
-      {
-        title: 'Certifications',
-        description:
-          '• One-time or on demand project planning guidance <br /> • Dedicated safety manager to lead project safety efforts <br /> • Certification guidance and support',
-        icon: '',
       },
       
     ]}
