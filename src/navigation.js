@@ -1,4 +1,4 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -11,15 +11,15 @@ export const headerData = {
       links: [
         {
           text: 'Experience',
-          href: getPermalink('/services'),
+          href: getPermalink('/experience/'),
         },
         {
           text: 'Industries',
-          href: getPermalink('/about'),
+          href: getPermalink('/industries/'),
         },
         {
           text: 'Services',
-          href: getPermalink('/pricing'),
+          href: getPermalink('/services/'),
         },
       ],
     },
@@ -28,16 +28,16 @@ export const headerData = {
       links: [
         {
           text: 'Careers',
-          href: getPermalink('/careers'),
+          href: getPermalink('/careers/'),
         },
         {
           text: 'Contact Us',
-          href: getPermalink('/contact'),
+          href: getPermalink('/contact/'),
         },
       ],
     },
   ],
-  actions: [{ text: 'Contact Us', href: getPermalink('/contact'), target: '_blank' }],
+  actions: [{ text: 'Contact Us', href: getPermalink('/contact/'), target: '_blank' }],
 };
 
 export const footerData = {
@@ -52,31 +52,17 @@ export const footerData = {
     {
       title: 'Services',
       links: [
-        { text: 'Industries', href: '/about' },
-        { text: 'Services', href: '/pricing' },
-        { text: 'Experience', href: '/services' },
+        { text: 'Industries', href: '/industries/' },
+        { text: 'Services', href: '/services/' },
+        { text: 'Experience', href: '/experience/' },
       ],
     },
     {
       title: 'Resources',
       links: [
-        { text: 'Careers', href: '/careers' },
-        { text: 'Contact Us', href: '/contact' },
+        { text: 'Careers', href: '/careers/' },
+        { text: 'Contact Us', href: '/contact/' },
       ],
     },
-  ],
-  secondaryLinks: [
-  //   { text: 'Terms', href: getPermalink('/terms') },
-  //   { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
-  socialLinks: [
-    // { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    // { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    // { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    // { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
-  ],
-  // footNote: `
-  //   Here
-  // `,
+  ]
 };
