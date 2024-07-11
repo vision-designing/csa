@@ -3,6 +3,55 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import { Resend } from 'resend'
+
+export const prerender = false
+
+let data: FormData = new FormData()
+let missing: string[] = []
+if (Astro.request.method === 'POST') data = await Astro.request.formData()
+
+if (data.has('info')) {
+  if (!data.get('name')) missing.push('name')
+  if (!data.get('email')) missing.push('email')
+  if (missing.length === 0) {
+    // submit to spreadsheet
+    const name = data.get('name')
+    const email = data.get('email')
+    const info = data.get('info')
+    const resend = new Resend(import.meta.env.RESEND_API_KEY)
+    const res = await resend.emails.send({
+      from: 'no-reply@skyramedia.com',
+      to: 'marketing@criticalsa.com',
+      subject: `Add subscriber ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\Info: ${info}`,
+    })
+  }
+}
+
+else if (data.has('phone')) {
+  if (!data.get('name')) missing.push('name')
+  if (!data.get('email')) missing.push('email')
+  // if (!data.get('phone')) missing.push('Phone')
+  if (!data.get('company')) missing.push('company')
+  if (missing.length === 0) {
+    const name = data.get('name')
+    const email = data.get('email')
+    const phone = data.get('phone')
+    const company = data.get('company')
+    const message = data.get('message')
+    const resend = new Resend(import.meta.env.RESEND_API_KEY)
+    const res = await resend.emails.send({
+      from: 'no-reply@skyramedia.com',
+      to: 'marketing@criticalsa.com',
+      subject: `${name} from ${company}`,
+      text: `From: ${name} (${email})\nCompany: ${company}\nPhone: ${phone}\n\nMessage:\n${message}`,
+    })
+    // submit to spreadsheet
+  }
+}
+
+const form = data.has('phone') ? 'contact' : 'subscribe'
 
 const metadata = {
   title: 'Contact',
@@ -14,6 +63,20 @@ const metadata = {
 
   <HeroText tagline="Contact" title="Let's Connect!" />
 
+  {
+    missing.length !== 0 && <p class="text-center text-red-500">*Fill in the required fields</p>
+  }
+
+  {
+    Astro.request.method === 'POST' && missing.length === 0 && (
+      <p class="text-center">
+        <span class="px-8 py-4 rounded-full text-xl bg-green-500 text-white">
+          Thank you!
+        </span>
+      </p>
+    )
+  }
+
   <ContactUs
     id="form1"
     title="Contact CSA"
@@ -22,17 +85,20 @@ const metadata = {
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
+        label: 'Name *',
+        value: form === 'contact' && data.get('name')
       },
       {
         type: 'text',
         name: 'company',
-        label: 'Company',
+        label: 'Company *',
+        value: form === 'contact' && data.get('company')
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
+        label: 'Email *',
+        value: form === 'contact' && data.get('email')
       },
       {
         type: 'tel',
@@ -46,6 +112,7 @@ const metadata = {
     
     description=""
     button='Contact Us'
+    ignore-action='/contact/submit'
   />
 
   <ContactUs
@@ -56,12 +123,14 @@ const metadata = {
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
+        label: 'Name *',
+        value: form === 'subscribe' && data.get('name')
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
+        label: 'Email *',
+        value: form === 'subscribe' && data.get('email')
       },
       {
         type: 'text',

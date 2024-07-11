@@ -2,14 +2,14 @@
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
+const { inputs, textarea, disclaimer, button = 'Contact us', description = '', action } = Astro.props;
 ---
 
-<form>
+<form {action} method="post">
   {
     inputs &&
       inputs.map(
-        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '' }) =>
+        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '', value }) =>
           name && (
             <div class="mb-6">
               {label && (
@@ -23,7 +23,8 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
                 id={name}
                 autocomplete={autocomplete}
                 placeholder={placeholder}
-                class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+                value={value || ''}
+                class={`py-3 px-4 block w-full text-md rounded-lg border ${value === '' ? 'border-red-500' : 'border-gray-200 dark:border-gray-700'} bg-white dark:bg-slate-900`}
               />
             </div>
           )
