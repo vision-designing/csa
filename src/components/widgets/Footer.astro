@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets'
 import LinkedIn from '~/assets/images/linkedin.png'
+import CSA_Logo from '~/assets/images/CSA_Logo.png'
 
 interface Link {
   text?: string;
@@ -32,7 +33,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4 flex items-center"> 
         <div class="mb-2">
-          <img src="http://criticalsa-website.s3-website-us-east-1.amazonaws.com/_astro/CSA_Logo_crop.CK1y-yLm.png" alt="Logo" class="h-16 w-auto mr-2">
+          <Image src={CSA_Logo} alt="Logo" class="h-16 w-auto mr-2">
           <p style="padding-top: 25px;">marketing@CriticalSA.com</p>
           <p>+1 (941) 900-4047</p>
           <a class="inline-block font-normal text-xl" href='https://www.linkedin.com/company/critical-systems-analysis/mycompany/' aria-label="LinkedIn">

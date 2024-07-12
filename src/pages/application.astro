@@ -29,7 +29,8 @@ if (Astro.request.method === 'POST' && missing.length === 0) {
 	const resend = new Resend(import.meta.env.RESEND_API_KEY)
 	const res = await resend.emails.send({
 		from: 'no-reply@skyramedia.com',
-		to: 'marketing@criticalsa.com',
+		to: 'rtier@skyramedia.com',
+		// to: 'marketing@criticalsa.com',
 		subject: `Job application: ${first} ${last}`,
 		text: `From: ${first} ${last} (${email})\nPhone: ${phone}\nLocation: ${location}\nWhere did you here about us?: ${info}\nPosition: ${position}\nLinkedin: ${linkedin}\nExperience: ${experience}\n\nMessage:\n${message}`,
     attachments: [
