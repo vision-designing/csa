@@ -16,6 +16,7 @@
     "lint:eslint": "eslint ."
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "@fontsource-variable/inter": "^5.0.17",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
