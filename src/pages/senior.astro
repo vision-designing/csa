@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Steps from '~/components/widgets/Steps.astro';
+import Steps from '~/components/widgets/Steps3.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features from '~/components/widgets/Features.astro';
 
@@ -10,11 +10,18 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <div class="max-w-5xl mx-auto px-4">
   
   <Features
   id="features"
   title="Senior Safety Engineer"
   subtitle="Position Details"
+  classes={{
+    items: {
+      container: 'w-fit !text-center',
+      panel: 'w-full'
+    }
+  }}
   items={[
     {
       title: 'Job Category',
@@ -22,8 +29,8 @@ const metadata = {
       icon: '',
     },
     {
-      title: 'Entry Level',
-      description: 'No',
+      title: 'Level Of Experience',
+      description: 'Senior Level',
       icon: '',
     },
     {
@@ -63,14 +70,8 @@ const metadata = {
   <div style="height: 150px;"></div>
   
   <style>
-    .astro-component-container {
-      /* Center the container horizontally */
-      margin: 0 auto;
-      padding: 0 calc(20vw);
-    }
-    
-    .astro-component {
-      /* You can add any additional styling for the component container here */
+    :global(section div) {
+      padding-left: 0 !important;
     }
   </style>
 
@@ -117,32 +118,31 @@ const metadata = {
     isReversed={true}
     items={[
       {
-        title: '• 10+ years of experience as a Safety Engineer',
+        title: '10+ years of experience as a Safety Engineer',
         icon: '',
       },
       {
-        title: '• Expertise and understanding of technical analysis including hazard analyses, risk assessments, FTAs, and RBDs.',
+        title: 'Expertise and understanding of technical analysis including hazard analyses, risk assessments, FTAs, and RBDs.',
         icon: '',
       },
       {
-        title: '• Thorough understanding of the safety lifecycle.',
+        title: 'Thorough understanding of the safety lifecycle.',
         icon: '',
       },
       {
-        title: '• Knowledge of industry standards.',
+        title: 'Knowledge of industry standards.',
         icon: ''
       },
       {
-        title: '• Superior communication abilities, capable of articulating intricate scientific and technical data in a straightforward, brief, and comprehensible way, both orally and in technical documentation.',
+        title: 'Superior communication abilities, capable of articulating intricate scientific and technical data in a straightforward, brief, and comprehensible way, both orally and in technical documentation.',
         icon: ''
       }
     ]}
-    
   />
 
   <div style="height: 150px;"></div>
 
-  <div class="astro-component-container flex justify-center">
+  <div class="astro-component-container flex">
     <div class="astro-component">
       <h2 class="text-4xl font-bold mb-4 text-page">Certifications</h2>
       <p class="text-xl text-muted">Functional Safety Expert certificate or equivalent.</p>
@@ -151,7 +151,7 @@ const metadata = {
   
   <div style="height: 150px;"></div>
 
-  <div class="astro-component-container flex justify-center">
+  <div class="astro-component-container flex">
     <div class="astro-component">
       <h2 class="text-4xl font-bold mb-4 text-page">Work Environment</h2>
       <p class="text-xl text-muted">The Senior Safety Engineer position is fully remote, except for required travel to client facilities. As such, you will work from a home office.</p>
@@ -166,30 +166,38 @@ const metadata = {
     isReversed={true}
     items={[
       {
-        title: '• Schedule flexibility.',
+        title: 'Schedule flexibility.',
         icon: '',
       },
       {
-        title: '• Company matched SIMPLE IRA.',
+        title: 'Company matched SIMPLE IRA.',
         icon: '',
       },
       {
-        title: '• Company Matched HSA available.',
+        title: 'Company Matched HSA available.',
         icon: '',
       },
       {
-        title: '• Medical, dental, and vision insurance covered.',
+        title: 'Medical, dental, and vision insurance covered.',
         icon: ''
       },
       {
-        title: '• Generous PTO.',
+        title: 'Generous PTO.',
         icon: ''
       },
-      {
-        title: '',
-        icon: ''
-      }
     ]}
     
   />
+  <CallToAction
+    title="Want to join the CSA team?"
+    subtitle=""
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Apply Now',
+        href: '/application/',
+      },
+    ]}
+  />
+</div>
 </Layout>

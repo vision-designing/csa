@@ -2,6 +2,7 @@
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
 import type { CallToAction } from '~/types';
+import Carousel from '../Carousel.astro';
 
 export interface Props {
   id?: string;
@@ -68,14 +69,14 @@ const {
       </div>
       <div>
         {
-          image && (
-            <div class="relative m-auto max-w-5xl">
+          image && ((typeof image === 'string' || image.src) ? (
+            <div class="relative mx-auto max-w-5xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
                 <div class="mx-auto w-full flex justify-center">
                   <Image
-                    class="!w-fit rounded-md !aspect-square"
+                    class="rounded-md !aspect-square"
                     widths={[400, 768, 1024, 2040]}
                     sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
                     loading="eager"
@@ -86,7 +87,9 @@ const {
                 </div>
               )}
             </div>
-          )
+          ) : (
+            <Carousel/>
+          ))
         }
       </div>
     </div>

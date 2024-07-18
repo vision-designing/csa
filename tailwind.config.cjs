@@ -19,6 +19,7 @@ module.exports = {
       },
     },
   },
+  safelist: ['!bg-gray-200/60'],
   plugins: [typographyPlugin],
   darkMode: 'class',
 };

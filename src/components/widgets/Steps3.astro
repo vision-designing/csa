@@ -1,0 +1,53 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro'
+import Timeline from '~/components/ui/Timeline.astro'
+import Headline from '~/components/ui/Headline.astro'
+import type { Steps as Props } from '~/types'
+
+const {
+	title = await Astro.slots.render('title'),
+	subtitle = await Astro.slots.render('subtitle'),
+	tagline = await Astro.slots.render('tagline'),
+	items = [],
+	isReversed = false,
+
+	id,
+	isDark = false,
+	classes = {},
+	bg = await Astro.slots.render('bg'),
+} = Astro.props
+---
+
+<WidgetWrapper
+	id={id}
+	isDark={isDark}
+	containerClass={`max-w-5xl ${classes?.container ?? ''}`}
+	bg={bg}
+>
+	<div
+		class:list={[
+			'flex flex-col gap-8 md:gap-12',
+			{ 'md:flex-row-reverse': isReversed },
+		]}
+	>
+		<div
+			class:list={[
+				'md:py-4 md:self-center w-full',
+			]}
+		>
+			<Headline
+				title={title}
+				subtitle={subtitle}
+				tagline={tagline}
+				classes={{
+					container: 'text-left rtl:text-right',
+					title: 'text-3xl lg:text-4xl',
+					...((classes?.headline as {}) ?? {}),
+				}}
+			/>
+			<ul class:list={['md:py-4 md:self-center w-full list-disc']}>
+				{items.map(item => <li class="p-2 text-xl ml-6">{item.title}</li>)}
+			</ul>
+		</div>
+	</div>
+</WidgetWrapper>
