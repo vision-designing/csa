@@ -33,12 +33,17 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4 flex items-center"> 
         <div class="mb-2">
-          <Image src={CSA_Logo} alt="Logo" class="h-16 w-auto mr-2">
-          <p style="padding-top: 25px;">marketing@CriticalSA.com</p>
+          <Image src={CSA_Logo} alt="Logo" class="h-16 w-auto mr-2"/>
+          <p style="padding-top: 25px;">info@criticalsa.com</p>
           <p>+1 (941) 900-4047</p>
-          <a class="inline-block font-normal text-xl" href='https://www.linkedin.com/company/critical-systems-analysis/mycompany/' aria-label="LinkedIn">
-            <Image src={LinkedIn} alt="LinkedIn" class="h-8 mt-2 w-auto"/>
-          </a>
+          <a
+          class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+          href="https://linkedin.com/company/critical-systems-analysis"
+        >
+          <Icon name="tabler:brand-linkedin" class="w-5 h-5 mr-1" />
+          LinkedIn
+        </a>
+ 
         </div>
         <div class="text-sm text-muted flex gap-1">
           {
@@ -99,29 +104,6 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           ''
         )
       }
-
-    <ul class="flex flex-1 justify-end mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
-        <li>
-          <a
-            class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-            href="mailto:info@criticalsa.com"
-          >
-            info@criticalsa.com
-          </a>
-        </li>
-        <li>
-          <a
-            class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-            href="https://linkedin.com/company/critical-systems-analysis"
-          >
-            <Icon name="tabler:brand-linkedin" class="w-5 h-5 mr-1" />
-            LinkedIn
-          </a>
-        </li>
-        <li class="text-muted dark:text-gray-400 text-sm p-2.5 inline-flex items-center">
-          (941) 900-4047
-        </li>
-    </ul>
 
       <div class="text-sm mr-4 dark:text-muted">
         <Fragment set:html={footNote} />

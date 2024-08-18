@@ -1,15 +1,30 @@
 ---
-import type { Form as Props } from '~/types';
-import Button from '~/components/ui/Button.astro';
+import type { Form as Props } from "~/types";
+import Button from "~/components/ui/Button.astro";
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '', action } = Astro.props;
+const {
+  inputs,
+  textarea,
+  disclaimer,
+  button = "Contact us",
+  description = "",
+  action,
+} = Astro.props;
 ---
 
+<astro-form>
 <form {action} method="post">
   {
     inputs &&
       inputs.map(
-        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '', value }) =>
+        ({
+          type = "text",
+          name,
+          label = "",
+          autocomplete = "on",
+          placeholder = "",
+          value,
+        }) =>
           name && (
             <div class="mb-6">
               {label && (
@@ -23,11 +38,11 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '', a
                 id={name}
                 autocomplete={autocomplete}
                 placeholder={placeholder}
-                value={value || ''}
-                class={`py-3 px-4 block w-full text-md rounded-lg border ${value === '' ? 'border-red-500' : 'border-gray-200 dark:border-gray-700'} bg-white dark:bg-slate-900`}
+                value={value || ""}
+                class={`py-3 px-4 block w-full text-md rounded-lg border ${value === "" ? "border-red-500" : "border-gray-200 dark:border-gray-700"} bg-white dark:bg-slate-900`}
               />
             </div>
-          )
+          ),
       )
   }
 
@@ -39,7 +54,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '', a
         </label>
         <textarea
           id="textarea"
-          name={textarea.name ? textarea.name : 'message'}
+          name={textarea.name ? textarea.name : "message"}
           rows={textarea.rows ? textarea.rows : 4}
           placeholder={textarea.placeholder}
           class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
@@ -60,7 +75,10 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '', a
           />
         </div>
         <div class="ml-3">
-          <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
+          <label
+            for="disclaimer"
+            class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400"
+          >
             {disclaimer.label}
           </label>
         </div>
@@ -71,7 +89,10 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '', a
   {
     button && (
       <div class="mt-10 grid">
-        <Button variant="primary" type="submit">
+        <Button
+          type="submit"
+          variant="primary"
+        >
           {button}
         </Button>
       </div>
@@ -86,3 +107,49 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '', a
     )
   }
 </form>
+</astro-form>
+
+<script>
+  class AstroForm extends HTMLElement {
+    constructor() {
+      super()
+
+      var submitted = false;
+      var tokenCreated = false;
+      var formEl = this.querySelector('form') as HTMLFormElement;
+
+  formEl.addEventListener("submit", function (event) {
+    // Check if the recaptcha exists
+    if (!tokenCreated) {
+
+      // Prevent submission
+      event.preventDefault();
+
+      // Prevent more than one submission
+      if (!submitted) {
+        submitted = true;
+        // needs for recaptacha ready
+        grecaptcha.ready(function() {
+          // do request for recaptcha token
+          // response is promise with passed token
+          grecaptcha.execute('6Lfv2yYqAAAAAP_oWk5P90ce9t9wUTcjiVF-tDLr', {action: 'submit'}).then(function (token) {
+            // add token to form
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "g-recaptcha-response";
+            input.value = token;
+            formEl.appendChild(input);
+
+            // resubmit the form
+            tokenCreated = true;
+            formEl.submit();
+          });
+        });
+      }
+    }
+  });
+    }
+  }
+
+  customElements.define('astro-form', AstroForm)
+</script>
