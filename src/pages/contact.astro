@@ -44,8 +44,7 @@ if (data.has("info")) {
     const resend = new Resend(import.meta.env.RESEND_API_KEY);
     const res = await resend.emails.send({
       from: "no-reply@skyramedia.com",
-      to: "otterlord.dev@gmail.com",
-      // to: "marketing@criticalsa.com",
+      to: "marketing@criticalsa.com",
       subject: `Add subscriber ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nInfo: ${info}`,
     });
@@ -64,8 +63,7 @@ if (data.has("info")) {
     const resend = new Resend(import.meta.env.RESEND_API_KEY);
     const res = await resend.emails.send({
       from: "no-reply@skyramedia.com",
-      to: "otterlord.dev@gmail.com",
-      // to: "marketing@criticalsa.com",
+      to: "marketing@criticalsa.com",
       subject: `${name} from ${company}`,
       text: `From: ${name} (${email})\nCompany: ${company}\nPhone: ${phone}\n\nMessage:\n${message}`,
     });
