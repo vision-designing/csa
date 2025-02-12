@@ -10,9 +10,6 @@ frontend:
       commands:
         - env >> .env
         - pnpm run build
-        # - rm -r node_modules/
-        # - pnpm install --production
-        # - cp -Lr node_modules/ ./.amplify-hosting/compute/default
         - mv .env ./.amplify-hosting/compute/default/.env
 
   artifacts:
