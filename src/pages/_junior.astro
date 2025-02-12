@@ -1,0 +1,192 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Steps from "~/components/widgets/Steps3.astro";
+import CallToAction from "~/components/widgets/CallToAction.astro";
+import Features from "~/components/widgets/Features.astro";
+
+const metadata = {
+  title: "Junior Safety Engineer",
+};
+---
+
+<Layout metadata={metadata}>
+  <div class="mx-auto max-w-5xl px-4">
+    <Features
+      id="features"
+      title="Junior Safety Engineer"
+      subtitle="Position Details"
+      classes={{
+        items: {
+          container: "w-fit !text-center",
+          panel: "w-full",
+        },
+      }}
+      items={[
+        {
+          title: "Job Category",
+          description: "Engineering",
+          icon: "",
+        },
+        {
+          title: "Level Of Experience",
+          description: "Entry Level",
+          icon: "",
+        },
+        {
+          title: "Location",
+          description: "U.S. (Remote)",
+          icon: "",
+        },
+        {
+          title: "Job Type",
+          description: "Full-Time",
+          icon: "",
+        },
+      ]}
+    />
+
+    <div style="height: 150px;"></div>
+
+    <div class="astro-component-container flex justify-center">
+      <div class="astro-component">
+        <h2 class="text-page mb-4 text-4xl font-bold">Position Overview</h2>
+        <p class="text-muted text-xl">
+          As a Junior Safety Engineer, you will support the safety subject
+          matter expert by participating in technical aspects of safety
+          engineering projects. Responsibilities encompass conducting safety
+          analysis, offering technical consulting, generating reports, and
+          providing support for safety programs.
+        </p>
+      </div>
+    </div>
+
+    <div style="height: 150px;"></div>
+
+    <style>
+      :global(section div) {
+        padding-left: 0 !important;
+      }
+    </style>
+
+    <Steps
+      title="Responsibilities"
+      tagline="Junior Safety Engineer"
+      isReversed={true}
+      items={[
+        {
+          title:
+            "Support safety programs. Develop project definition. Monitor budget compliance, schedule adherence, and provide project reporting.",
+        },
+        {
+          title:
+            "Support safety engineering activities. Maintain direction for complex projects, monitor schedules, and coordinate phases of projects.",
+        },
+        {
+          title:
+            "Develop safety requirements and safety plans, perform safety and hazard analysis, and report on findings.",
+        },
+        {
+          title:
+            "Review and interpret safety regulations and standards. Monitor client safety performance, conduct safety inspections, and assist in regulatory compliance.",
+        },
+        {
+          title:
+            "Train clients on safety program development, performance, documentation, and regulatory acceptance.",
+        },
+        {
+          title: "Solve complex safety issues.",
+        },
+      ]}
+    />
+    <Steps
+      title="Qualifications"
+      tagline="Junior Safety Engineer"
+      isReversed={true}
+      items={[
+        {
+          title:
+            "Bachelor’s Degree in a technical discipline or equivalent education and/or experience. Master’s degree helpful.",
+          icon: "",
+        },
+        {
+          title:
+            "Desire to learn, work hard, and improve yourself and coworkers.",
+          icon: "",
+        },
+        {
+          title:
+            "Superior communication abilities, capable of articulating intricate scientific and technical data in a straightforward, brief, and comprehensible way, both orally and in technical documentation.",
+          icon: "",
+        },
+      ]}
+    />
+
+    <div style="height: 150px;"></div>
+
+    <div class="astro-component-container flex">
+      <div class="astro-component">
+        <h2 class="text-page mb-4 text-4xl font-bold">Certifications</h2>
+        <p class="text-muted text-xl">
+          No certifications required. Functional Safety Expert or equivalent,
+          Professional Engineer license preferred.
+        </p>
+      </div>
+    </div>
+
+    <div style="height: 150px;"></div>
+
+    <div class="astro-component-container flex">
+      <div class="astro-component">
+        <h2 class="text-page mb-4 text-4xl font-bold">Work Environment</h2>
+        <p class="text-muted text-xl">
+          The Junior Safety Engineer position is fully remote, except for
+          required travel to client facilities. As such, you will work from a
+          home office. CSA understands that the ability to adapt to a new
+          workplace and industry can be difficult, and we strive to encourage
+          professional relationships and foster learning.
+        </p>
+      </div>
+    </div>
+
+    <div style="height: 150px;"></div>
+
+    <Steps
+      title="Benefits"
+      tagline=""
+      isReversed={true}
+      items={[
+        {
+          title: "Schedule flexibility.",
+          icon: "",
+        },
+        {
+          title: "Company matched SIMPLE IRA.",
+          icon: "",
+        },
+        {
+          title: "Company Matched HSA available.",
+          icon: "",
+        },
+        {
+          title: "Medical, dental, and vision insurance covered.",
+          icon: "",
+        },
+        {
+          title: "Generous PTO.",
+          icon: "",
+        },
+      ]}
+    />
+    <CallToAction
+      title="Want to join the CSA team?"
+      subtitle=""
+      actions={[
+        {
+          variant: "primary",
+          text: "Apply Now",
+          href: "/application/",
+        },
+      ]}
+    />
+  </div>
+</Layout>

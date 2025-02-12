@@ -1,0 +1,232 @@
+---
+import { Image } from "astro:assets";
+import logo from "~/assets/csa-logo.webp";
+---
+
+<menu-header>
+  <div class="bg-primary-900 sticky top-0 z-50">
+    <nav
+      class="text-primary-200 mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+    >
+      <div class="flex lg:flex-1">
+        <a href="/" class="-m-1.5 p-1.5">
+          <span class="sr-only">Critical Systems Analysis</span>
+          <Image
+            class="h-8 w-auto"
+            src={logo}
+            loading="eager"
+            width={140}
+            alt="Critical Systems Analysis company logo"
+          />
+        </a>
+      </div>
+      <div class="flex sm:hidden">
+        <button
+          id="menu-button"
+          class="-m-2.5 inline-flex cursor-pointer items-center justify-center rounded-md p-2.5"
+        >
+          <svg
+            class="size-6 fill-none stroke-current"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <path
+              data-menu-icon
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+            <path
+              data-close-icon
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="hidden sm:flex sm:gap-x-12">
+        <a href="/" class="hover:text-primary-100 text-sm/6 font-semibold"
+          >Home</a
+        >
+        <div class="group relative">
+          <a
+            class="group-hover:text-primary-100 flex items-center gap-x-1 text-sm/6 font-semibold"
+          >
+            Services
+            <svg
+              class="size-5 flex-none"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+              data-slot="icon"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <div class="absolute -left-8 pt-3 text-sm">
+            <div
+              class="bg-primary-800 top-full z-10 hidden w-screen max-w-xs overflow-hidden rounded-md ring-1 shadow-lg ring-gray-900/5 group-hover:block"
+            >
+              <div class="flex flex-col gap-0.5 p-2 font-medium">
+                <a
+                  href="/experience/"
+                  class="hover:bg-primary-700 rounded-md p-2"
+                >
+                  Experience
+                </a>
+                <a
+                  href="/industries/"
+                  class="hover:bg-primary-700 rounded-md p-2"
+                >
+                  Industries
+                </a>
+                <a
+                  href="/services/"
+                  class="hover:bg-primary-700 rounded-md p-2"
+                >
+                  Services
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="group relative">
+          <a
+            class="group-hover:text-primary-100 flex items-center gap-x-1 text-sm/6 font-semibold"
+          >
+            News & Training
+            <svg
+              class="size-5 flex-none fill-current"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <div class="absolute -left-8 pt-3 text-sm">
+            <div
+              class="bg-primary-800 top-full z-10 hidden w-screen max-w-xs overflow-hidden rounded-md font-medium ring-1 ring-gray-900/5 group-hover:block"
+            >
+              <div class="flex flex-col gap-0.5 p-2">
+                <a
+                  href="/articles/"
+                  class="hover:bg-primary-700 rounded-md p-2"
+                >
+                  Articles
+                </a>
+                <a
+                  href="/events-webinars/"
+                  class="hover:bg-primary-700 rounded-md p-2"
+                >
+                  Events and Webinars
+                </a>
+                <a
+                  href="/trainings/"
+                  class="hover:bg-primary-700 rounded-md p-2"
+                >
+                  Trainings
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          href="/careers/"
+          class="hover:text-primary-100 text-sm/6 font-semibold">Careers</a
+        >
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a
+          class="ring-primary-600 hover:bg-primary-600 inline-flex rounded-full px-4 py-2 text-sm font-medium ring transition"
+          href="/contact/">Contact us</a
+        >
+      </div>
+    </nav>
+    <div
+      id="mobile-dropdown"
+      class="text-primary-300 grid grid-cols-1 px-3 pb-6 sm:hidden"
+    >
+      <a
+        href="/"
+        class="hover:bg-primary-700 rounded-md px-3 py-2 text-base/7 font-semibold"
+        >Home</a
+      >
+      <div>
+        <div class="w-full px-3 py-2 text-base/7 font-semibold">Services</div>
+        <div class="grid grid-cols-1 pl-3">
+          <a
+            href="/experience/"
+            class="hover:bg-primary-700 rounded-md px-3 py-1 text-sm/7 font-semibold"
+            >Experience</a
+          >
+          <a
+            href="/industries/"
+            class="hover:bg-primary-700 rounded-md px-3 py-1 text-sm/7 font-semibold"
+            >Industries</a
+          >
+          <a
+            href="/services/"
+            class="hover:bg-primary-700 rounded-md px-3 py-1 text-sm/7 font-semibold"
+            >Services</a
+          >
+        </div>
+      </div>
+      <div>
+        <div class="w-full px-3 py-2 text-base/7 font-semibold">
+          News & Training
+        </div>
+        <div class="grid grid-cols-1 pl-3">
+          <a
+            href="/articles/"
+            class="hover:bg-primary-700 rounded-md px-3 py-1 text-sm/7 font-semibold"
+            >Articles</a
+          >
+          <a
+            href="/events-webinars/"
+            class="hover:bg-primary-700 rounded-md px-3 py-1 text-sm/7 font-semibold"
+            >Events & Webinars</a
+          >
+          <a
+            href="/trainings/"
+            class="hover:bg-primary-700 rounded-md px-3 py-1 text-sm/7 font-semibold"
+            >Trainings</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</menu-header>
+<script>
+  class MenuHeader extends HTMLElement {
+    menuButton = this.querySelector("#menu-button");
+
+    constructor() {
+      super();
+      this.menuButton?.addEventListener("click", () => this.toggleMenu());
+      this.setAttribute("data-state", "closed");
+    }
+
+    toggleMenu() {
+      const isOpen = this.getAttribute("data-state") === "open";
+      this.setAttribute("data-state", isOpen ? "closed" : "open");
+    }
+  }
+  customElements.define("menu-header", MenuHeader);
+</script>
+<style>
+  menu-header[data-state="closed"] #mobile-dropdown,
+  menu-header[data-state="closed"] [data-close-icon],
+  menu-header[data-state="open"] [data-menu-icon] {
+    display: none;
+  }
+
+  menu-header[data-state="open"] [data-close-icon] {
+    display: block;
+  }
+</style>
