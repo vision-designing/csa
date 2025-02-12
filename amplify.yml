@@ -8,11 +8,17 @@ frontend:
         - pnpm i
     build:
       commands:
+        - env >> .env
         - pnpm run build
+        - rm -r node_modules/
+        - pnpm install --production
+        - cp -Lr node_modules/ ./.amplify-hosting/compute/default
+        - mv .env ./.amplify-hosting/compute/default/.env
+
   artifacts:
-    baseDirectory: /dist
+    baseDirectory: /.amplify-hosting
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
-      - .pnpm-store/**/*
+      - ".pnpm-store/**/*"
