@@ -1,0 +1,205 @@
+---
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout title="Apply — Critical Systems Analysis">
+  <div class="text-primary-400 mx-auto max-w-7xl px-8 pb-12">
+    <p
+      class="mt-16 text-center font-bold tracking-wide text-blue-500 uppercase sm:mt-32"
+    >
+      Critical Systems Analysis
+    </p>
+    <h1
+      class="text-primary-100 mt-2 text-center text-4xl font-bold tracking-tight md:text-5xl"
+    >
+      Application
+    </h1>
+    <application-form>
+      <form class="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-4">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label
+              class="text-primary-200 block text-sm/6 font-medium"
+              for="firstName"
+            >
+              First name
+            </label>
+            <input
+              class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+              name="firstName"
+              id="firstName"
+              required
+            />
+          </div>
+          <div>
+            <label
+              class="text-primary-200 block text-sm/6 font-medium"
+              for="lastName"
+            >
+              Last name
+            </label>
+            <input
+              class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+              name="lastName"
+              id="lastName"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="email"
+          >
+            Email
+          </label>
+          <input
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="email"
+            type="email"
+            id="email"
+            required
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="phone"
+          >
+            Phone
+          </label>
+          <input
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="phone"
+            id="phone"
+            required
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="country"
+          >
+            Country of residence
+          </label>
+          <input
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="country"
+            id="country"
+            required
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="howDidYouHear"
+          >
+            How did you hear about us?
+          </label>
+          <input
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="howDidYouHear"
+            id="howDidYouHear"
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="position"
+          >
+            Position
+          </label>
+          <input
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="position"
+            id="position"
+            required
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="linkedin"
+          >
+            LinkedIn profile
+          </label>
+          <input
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="linkedin"
+            id="linkedin"
+            required
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="resume"
+          >
+            Resume
+          </label>
+          <input
+            class="outline-primary-700 file:text-primary-200 file:bg-primary-700 bg-primary-800 text-primary-300 mt-0.5 block w-full cursor-pointer rounded-md outline-1 -outline-offset-1 file:me-4 file:px-4 file:py-2 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 focus:outline-none sm:text-sm/6"
+            id="resume"
+            name="resume"
+            type="file"
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="experience"
+          >
+            Years of experience
+          </label>
+          <input
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="experience"
+            type="number"
+            id="experience"
+            required
+          />
+        </div>
+        <div>
+          <label
+            class="text-primary-200 block text-sm/6 font-medium"
+            for="comments"
+          >
+            Additional comments
+          </label>
+          <textarea
+            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+            name="comments"
+            id="comments"
+            rows="3"></textarea>
+        </div>
+        <button
+          class="text-primary-100 mt-3 block w-full rounded-md bg-blue-600 px-3 py-1.5 text-center text-sm/6 font-medium hover:bg-blue-700"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </application-form>
+  </div>
+</Layout>
+<script>
+  import { actions } from "astro:actions";
+  import { navigate } from "astro:transitions/client";
+
+  class ApplicationForm extends HTMLElement {
+    form = this.querySelector<HTMLFormElement>("form");
+    constructor() {
+      super();
+      this.form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!this.form?.checkValidity()) {
+          return;
+        }
+        const formData = new FormData(this.form);
+        const { error } = await actions.application(formData);
+        if (!error) navigate("/success");
+      });
+    }
+  }
+  customElements.define("application-form", ApplicationForm);
+</script>
