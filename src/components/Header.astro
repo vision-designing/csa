@@ -49,7 +49,7 @@ import logo from "~/assets/csa-logo.webp";
           >Home</a
         >
         <div class="group relative">
-          <a
+          <button
             class="group-hover:text-primary-100 flex items-center gap-x-1 text-sm/6 font-semibold"
           >
             Services
@@ -65,10 +65,10 @@ import logo from "~/assets/csa-logo.webp";
                 d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
                 clip-rule="evenodd"></path>
             </svg>
-          </a>
+          </button>
           <div class="absolute -left-8 pt-3 text-sm">
             <div
-              class="bg-primary-800 top-full z-10 hidden w-screen max-w-xs overflow-hidden rounded-md ring-1 shadow-lg ring-gray-900/5 group-hover:block"
+              class="bg-primary-800 top-full z-10 hidden w-screen max-w-xs overflow-hidden rounded-md ring-1 shadow-lg ring-gray-900/5 group-focus-within:block group-hover:block"
             >
               <div class="flex flex-col gap-0.5 p-2 font-medium">
                 <a
@@ -94,7 +94,7 @@ import logo from "~/assets/csa-logo.webp";
           </div>
         </div>
         <div class="group relative">
-          <a
+          <button
             class="group-hover:text-primary-100 flex items-center gap-x-1 text-sm/6 font-semibold"
           >
             News & Training
@@ -108,10 +108,10 @@ import logo from "~/assets/csa-logo.webp";
                 d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
                 clip-rule="evenodd"></path>
             </svg>
-          </a>
+          </button>
           <div class="absolute -left-8 pt-3 text-sm">
             <div
-              class="bg-primary-800 top-full z-10 hidden w-screen max-w-xs overflow-hidden rounded-md font-medium ring-1 ring-gray-900/5 group-hover:block"
+              class="bg-primary-800 top-full z-10 hidden w-screen max-w-xs overflow-hidden rounded-md font-medium ring-1 ring-gray-900/5 group-focus-within:block group-hover:block"
             >
               <div class="flex flex-col gap-0.5 p-2">
                 <a
@@ -154,7 +154,7 @@ import logo from "~/assets/csa-logo.webp";
     >
       <a
         href="/"
-        class="hover:bg-primary-700 rounded-md px-3 py-2 text-base/7 font-semibold"
+        class="hover:bg-primary-700 rounded-md px-3 py-1 text-base/7 font-semibold"
         >Home</a
       >
       <div>
@@ -199,6 +199,11 @@ import logo from "~/assets/csa-logo.webp";
           >
         </div>
       </div>
+      <a
+        href="/careers/"
+        class="hover:bg-primary-700 rounded-md px-3 py-1 text-base/7 font-semibold"
+        >Careers</a
+      >
     </div>
   </div>
 </menu-header>
