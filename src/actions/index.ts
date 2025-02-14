@@ -13,7 +13,7 @@ export const server = {
       country: z.string(),
       howDidYouHear: z.string(),
       position: z.string(),
-      linkedin: z.string().url(),
+      linkedin: z.string().url().optional(),
       resume: z.instanceof(File),
       experience: z.number().int().positive().optional(),
       comments: z.string().optional(),
@@ -45,6 +45,32 @@ export const server = {
               content: Buffer.from(await resume.arrayBuffer()),
             },
           ],
+        });
+      } catch (error) {
+        throw new ActionError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Sorry, something went wrong. Please try again later.",
+        });
+      }
+    },
+  }),
+  contact: defineAction({
+    accept: "form",
+    input: z.object({
+      name: z.string(),
+      company: z.string(),
+      email: z.string().email(),
+      phone: z.string().min(10).max(10).optional(),
+      message: z.string().optional(),
+    }),
+    handler: async ({ name, company, email, phone, message }) => {
+      const resend = new Resend(import.meta.env.RESEND_API_KEY);
+      try {
+        await resend.emails.send({
+          from: "no-reply@skyramedia.com",
+          to: "marketing@criticalsa.com",
+          subject: `${name} from ${company}`,
+          text: `From: ${name} (${email})\nCompany: ${company}\nPhone: ${phone}\n\nMessage:\n${message}`,
         });
       } catch (error) {
         throw new ActionError({
