@@ -1,38 +1,8 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-const positions = [
-  {
-    title: "Junior Safety Engineer",
-    benefits: [
-      "Job Type: Engineering",
-      "Location: United States (Remote)",
-      "Full Time",
-      "Benefits",
-    ],
-    href: "/careers/junior-safety-engineer/",
-  },
-  {
-    title: "Senior Safety Engineer",
-    benefits: [
-      "Job Type: Engineering",
-      "Location: United States (Remote)",
-      "Full Time",
-      "Benefits",
-    ],
-    href: "/careers/senior-safety-engineer/",
-  },
-  {
-    title: "Principal Safety Engineer",
-    benefits: [
-      "Job Type: Engineering",
-      "Location: United States (Remote)",
-      "Full Time",
-      "Benefits",
-    ],
-    href: "/careers/principal-safety-engineer/",
-  },
-];
+const positions = await getCollection("jobs");
 ---
 
 <Layout title="Careers — Critical Systems Analysis">
@@ -55,30 +25,76 @@ const positions = [
         positions.map((position) => (
           <div class="border-primary-700 bg-primary-800 flex flex-col gap-2 rounded-lg border p-8">
             <h2 class="text-primary-100 text-xl font-semibold">
-              {position.title}
+              {position.data.title}
             </h2>
             <ul class="text-primary-400 mt-6 flex flex-col gap-4 leading-relaxed sm:gap-5">
-              {position.benefits.map((benefit) => (
-                <li class="flex gap-3">
-                  <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      class="h-full w-full fill-current"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span>{benefit}</span>
-                </li>
-              ))}
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>{`Department: ${position.data.department}`}</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>{`Location: ${position.data.location}`}</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>{position.data.type}</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>Benefits</span>
+              </li>
             </ul>
             <a
-              href={position.href}
+              href={`/careers/${position.id}/`}
               class="text-primary-100 mt-6 block w-full cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
             >
               Learn More

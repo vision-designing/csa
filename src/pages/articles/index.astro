@@ -1,0 +1,27 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const articles = await getCollection("articles");
+import ArticleCard from "~/components/ArticleCard.astro";
+---
+
+<Layout title="Articles">
+  <div class="mx-auto max-w-7xl px-6 pb-16 sm:px-8">
+    <h1
+      class="text-primary-100 mt-16 text-center text-4xl font-bold tracking-tight sm:mt-32 md:text-5xl"
+    >
+      Articles
+    </h1>
+    <ul
+      class="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3"
+    >
+      {
+        articles.map(({ data, id }) => (
+          <li class="relative">
+            <ArticleCard title={data.title} image={data.image} id={id} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>

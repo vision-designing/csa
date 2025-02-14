@@ -11,13 +11,13 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     <div
       class="relative aspect-square overflow-hidden rounded-lg sm:aspect-video"
     >
-      <!-- Item 1 -->
       {
-        Object.values(images).map(async (img, i) => {
+        Object.values(images).map((img, index) => {
           return (
             <div
-              class="fade-in hidden h-full w-full ease-in-out"
+              class="fade-in absolute h-full w-full ease-in-out"
               data-carousel-item
+              data-active={index === 0 ? "true" : "false"}
             >
               <Image
                 src={img.default}
@@ -96,13 +96,14 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     itemButtons = this.querySelectorAll("[data-carousel-slide-to]");
     active = 0;
     total = this.items.length;
-    timer = setInterval(() => {
-      this.next();
-    }, 3000);
+    timer = setInterval(() => this.next(), 4000);
 
     constructor() {
       super();
-      this.items[0].classList.remove("hidden");
+      this.setupEventListeners();
+    }
+
+    setupEventListeners() {
       this.querySelector("[data-carousel-next]")?.addEventListener(
         "click",
         () => {
@@ -110,6 +111,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
           this.next();
         },
       );
+
       this.querySelector("[data-carousel-prev]")?.addEventListener(
         "click",
         () => {
@@ -117,6 +119,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
           this.prev();
         },
       );
+
       this.itemButtons.forEach((b, i) =>
         b.addEventListener("click", () => {
           this.resetTimer();
@@ -126,31 +129,27 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     }
 
     next() {
-      this.items[this.active].classList.add("hidden");
-      this.active = (this.active + 1) % this.total;
-      this.items[this.active].classList.remove("hidden");
-      this.jumpTo();
+      this.jumpTo((this.active + 1) % this.total);
     }
 
     prev() {
-      this.active = (this.active - 1 + this.total) % this.total;
-      this.jumpTo();
+      this.jumpTo((this.active - 1 + this.total) % this.total);
     }
 
-    jumpTo(n: number = this.active) {
+    jumpTo(n: number) {
       this.active = n;
       this.items.forEach((item, index) => {
-        item.classList.toggle("hidden", index !== n);
-        const button = this.itemButtons[index];
-        button.setAttribute("aria-current", String(index === n));
+        item.setAttribute("data-active", String(index === n));
+        this.itemButtons[index]?.setAttribute(
+          "aria-current",
+          String(index === n),
+        );
       });
     }
 
     resetTimer() {
       clearInterval(this.timer);
-      this.timer = setInterval(() => {
-        this.next();
-      }, 3000);
+      this.timer = setInterval(() => this.next(), 3000);
     }
   }
 
@@ -159,11 +158,12 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 <style>
   .fade-in {
     opacity: 0;
-    animation: fadeInAnimation 2s forwards;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
   }
-  @keyframes fadeInAnimation {
-    to {
-      opacity: 1;
-    }
+
+  .fade-in[data-active="true"] {
+    opacity: 1;
+    pointer-events: auto;
   }
 </style>

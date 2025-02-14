@@ -16,7 +16,7 @@ importers:
         version: 4.0.6(vite@5.4.14(@types/node@20.14.10)(lightningcss@1.29.1)(terser@5.30.3))
       astro:
         specifier: ^5.2.6
-        version: 5.2.6(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.6)(terser@5.30.3)(typescript@5.7.3)
+        version: 5.2.6(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.6)(terser@5.30.3)(typescript@5.7.3)(yaml@2.7.0)
       astro-aws-amplify:
         specifier: ^0.1.0
         version: 0.1.0(@types/node@20.14.10)(lightningcss@1.29.1)(rollup@4.34.6)(terser@5.30.3)(typescript@5.7.3)
@@ -2515,6 +2515,11 @@ packages:
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
+  yaml@2.7.0:
+    resolution: {integrity: sha512-+hSoy/QHluxmC9kCIJyL/uyFmLmc+e5CFR5Wa+bpIhIj85LVb9ZH2nVnqrHoSvKogwODv0ClqZkmiSSaIH5LTA==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -3422,7 +3427,7 @@ snapshots:
       - terser
       - typescript
 
-  astro@5.2.6(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.6)(terser@5.30.3)(typescript@5.7.3):
+  astro@5.2.6(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.6)(terser@5.30.3)(typescript@5.7.3)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.10.4
       '@astrojs/internal-helpers': 0.5.1
@@ -3474,8 +3479,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.14.4
       vfile: 6.0.3
-      vite: 6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)
-      vitefu: 1.0.5(vite@6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3))
+      vite: 6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)(yaml@2.7.0)
+      vitefu: 1.0.5(vite@6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)(yaml@2.7.0))
       which-pm: 3.0.1
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
@@ -5182,7 +5187,7 @@ snapshots:
       lightningcss: 1.29.1
       terser: 5.30.3
 
-  vite@6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3):
+  vite@6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)(yaml@2.7.0):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.5.2
@@ -5193,14 +5198,15 @@ snapshots:
       jiti: 2.4.2
       lightningcss: 1.29.1
       terser: 5.30.3
+      yaml: 2.7.0
 
   vitefu@1.0.5(vite@5.4.14(@types/node@20.14.10)(lightningcss@1.29.1)(terser@5.30.3)):
     optionalDependencies:
       vite: 5.4.14(@types/node@20.14.10)(lightningcss@1.29.1)(terser@5.30.3)
 
-  vitefu@1.0.5(vite@6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)):
+  vitefu@1.0.5(vite@6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)(yaml@2.7.0)):
     optionalDependencies:
-      vite: 6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)
+      vite: 6.1.0(@types/node@20.14.10)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.30.3)(yaml@2.7.0)
 
   web-namespaces@2.0.1: {}
 
@@ -5239,6 +5245,9 @@ snapshots:
   xxhash-wasm@1.1.0: {}
 
   yallist@3.1.1: {}
+
+  yaml@2.7.0:
+    optional: true
 
   yargs-parser@21.1.1: {}
 
