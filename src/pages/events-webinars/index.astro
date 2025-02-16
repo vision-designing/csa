@@ -7,7 +7,7 @@ const events = await getCollection("events");
 ---
 
 <Layout title="Events and Webinars — Critical Systems Analysis">
-  <div class="mx-auto max-w-7xl px-6 pb-16 sm:px-8">
+  <div class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
     <h1
       class="text-primary-100 mt-16 text-center text-4xl font-bold tracking-tight sm:mt-32 md:text-5xl"
     >
@@ -17,7 +17,12 @@ const events = await getCollection("events");
       {
         events.map(({ data, id }) => (
           <li class="relative">
-            <EventCard title={data.title} id={id} date={data.date} isFree={data.isFree} />
+            <EventCard
+              title={data.title}
+              id={id}
+              date={data.date}
+              isFree={data.isFree}
+            />
           </li>
         ))
       }

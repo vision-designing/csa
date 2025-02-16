@@ -19,7 +19,7 @@ const { Content } = await render(position);
   title={`${position.data.title} — Critical Systems Analysis`}
   description={position.data.description}
 >
-  <div class="mx-auto max-w-5xl px-8 pb-12 text-red-300">
+  <div class="mx-auto max-w-5xl px-6 pb-12 lg:px-8">
     <time
       class="mt-16 block text-center text-lg font-semibold tracking-wide text-blue-500 uppercase sm:mt-32"
       datetime={position.data.date.toISOString()}
@@ -39,7 +39,7 @@ const { Content } = await render(position);
     </h1>
     <Picture
       src={position.data.image.src}
-      class="mt-12 mb-8 aspect-video w-full rounded-md object-cover"
+      class="mt-12 mb-8 aspect-square w-full rounded-md object-cover sm:aspect-video"
       alt={position.data.image.alt}
       formats={["webp", "avif"]}
     />
