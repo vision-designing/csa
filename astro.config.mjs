@@ -1,11 +1,11 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
-import awsAmplify from "astro-aws-amplify";
+import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: "https://www.criticalsystemsanalysis.com",
-  adapter: awsAmplify(),
+  adapter: vercel(),
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "~/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const events = await getCollection("events");
+  return events.map((event) => ({
+    params: { id: event.id },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+---
+
+<Layout title={`${event.data.title} — Critical Systems Analysis`}>
+  <div class="mx-auto max-w-5xl px-8 pb-12 text-red-300">
+    <time
+      class="mt-16 block text-center text-lg font-semibold tracking-wide text-blue-500 uppercase sm:mt-32"
+      datetime={event.data.date.toISOString()}
+    >
+      {
+        event.data.date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }
+    </time>
+    <h1
+      class="text-primary-100 mt-4 mb-12 text-center text-4xl font-bold tracking-tight md:text-5xl"
+    >
+      {event.data.title}
+    </h1>
+    <aritcle
+      class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300"
+      set:html={event.data.html}
+    />
+  </div>
+</Layout>

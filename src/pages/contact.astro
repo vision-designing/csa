@@ -1,4 +1,5 @@
 ---
+import ContactForm from "~/components/ContactForm.astro";
 import Layout from "~/layouts/Layout.astro";
 ---
 
@@ -14,105 +15,29 @@ import Layout from "~/layouts/Layout.astro";
     >
       Let's connect
     </h1>
-    <contact-form>
-      <form class="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-4">
-        <div>
-          <label
-            class="text-primary-200 block text-sm/6 font-medium"
-            for="name"
-          >
-            Name <span class="text-red-500">*</span>
-          </label>
-          <input
-            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
-            name="name"
-            id="name"
-            required
-          />
-        </div>
-        <div>
-          <label
-            class="text-primary-200 block text-sm/6 font-medium"
-            for="company"
-          >
-            Company <span class="text-red-500">*</span>
-          </label>
-          <input
-            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
-            name="company"
-            id="company"
-            required
-          />
-        </div>
-        <div>
-          <label
-            class="text-primary-200 block text-sm/6 font-medium"
-            for="email"
-          >
-            Email <span class="text-red-500">*</span>
-          </label>
-          <input
-            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
-            name="email"
-            id="email"
-            type="email"
-            required
-          />
-        </div>
-        <div>
-          <label
-            class="text-primary-200 block text-sm/6 font-medium"
-            for="phone"
-          >
-            Phone
-          </label>
-          <input
-            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
-            name="phone"
-            id="phone"
-          />
-        </div>
-        <div>
-          <label
-            class="text-primary-200 block text-sm/6 font-medium"
-            for="message"
-          >
-            Message
-          </label>
-          <textarea
-            class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
-            name="message"
-            id="message"
-            rows="3"></textarea>
-        </div>
-        <button
-          class="text-primary-100 mt-3 block w-full rounded-md bg-blue-600 px-3 py-1.5 text-center text-sm/6 font-medium hover:bg-blue-700"
-          type="submit"
+    <ContactForm />
+    <div
+      class="bg-primary-800 border-primary-700 mt-20 flex flex-col rounded-lg border p-8 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <div>
+        <h2
+          class="text-primary-100 text-2xl font-bold tracking-tight text-balance"
         >
-          Submit
-        </button>
-      </form>
-    </contact-form>
+          Interested in our services?
+        </h2>
+        <p
+          class="text-primary-400 mt-2 max-w-prose leading-relaxed text-pretty sm:text-lg"
+        >
+          Book a 30 minute consultation with one of our experts to discuss your
+          needs.
+        </p>
+      </div>
+      <a
+        class="text-primary-100 mt-4 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:mt-0"
+        href="https://outlook.office365.com/book/GetYourQuestionsAnswered@criticalsa.com/"
+      >
+        Book a consultation
+      </a>
+    </div>
   </div>
 </Layout>
-<script>
-  import { actions } from "astro:actions";
-  import { navigate } from "astro:transitions/client";
-
-  class ContactForm extends HTMLElement {
-    form = this.querySelector<HTMLFormElement>("form");
-    constructor() {
-      super();
-      this.form?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        if (!this.form?.checkValidity()) {
-          return;
-        }
-        const formData = new FormData(this.form);
-        const { error } = await actions.contact(formData);
-        if (!error) navigate("/success");
-      });
-    }
-  }
-  customElements.define("contact-form", ContactForm);
-</script>

@@ -5,6 +5,8 @@ import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
 
 export interface Props {
+  includeHeader?: boolean;
+  includeFooter?: boolean;
   title?: string;
   description?: string;
   ogImage?: {
@@ -20,6 +22,8 @@ const {
     url: "/og.webp",
     alt: "A robot with some gears",
   },
+  includeFooter = true,
+  includeHeader = true,
 } = Astro.props;
 ---
 
@@ -56,10 +60,10 @@ const {
     <meta name="robots" content="follow, index" />
   </head>
   <body class="bg-primary-900 font-sans antialiased">
-    <Header />
+    {includeHeader && <Header />}
     <main>
       <slot />
     </main>
-    <Footer />
+    {includeFooter && <Footer />}
   </body>
 </html>

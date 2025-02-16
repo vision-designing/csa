@@ -1,6 +1,6 @@
 # build output
 dist/
-.amplify-hosting/
+.vercel/
 
 # generated types
 .astro/

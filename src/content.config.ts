@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { tickettailorLoader } from "~/loaders/tickettailor";
 
 const articles = defineCollection({
   loader: glob({
@@ -32,4 +33,10 @@ const jobs = defineCollection({
   }),
 });
 
-export const collections = { articles, jobs };
+const events = defineCollection({
+  loader: tickettailorLoader({
+    token: import.meta.env.TICKETTAILOR_API_KEY,
+  }),
+});
+
+export const collections = { articles, jobs, events };

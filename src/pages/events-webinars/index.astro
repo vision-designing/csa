@@ -1,27 +1,23 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-const articles = await getCollection("articles");
-import ArticleCard from "~/components/ArticleCard.astro";
+import EventCard from "~/components/EventCard.astro";
+
+const events = await getCollection("events");
 ---
 
-<Layout title="Articles — Critical Systems Analysis">
+<Layout title="Events and Webinars — Critical Systems Analysis">
   <div class="mx-auto max-w-7xl px-6 pb-16 sm:px-8">
     <h1
       class="text-primary-100 mt-16 text-center text-4xl font-bold tracking-tight sm:mt-32 md:text-5xl"
     >
-      Articles
+      Events and Webinars
     </h1>
     <ul class="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {
-        articles.map(({ data, id }) => (
+        events.map(({ data, id }) => (
           <li class="relative">
-            <ArticleCard
-              title={data.title}
-              image={data.image}
-              id={id}
-              description={data.description}
-            />
+            <EventCard title={data.title} id={id} date={data.date} isFree={data.isFree} />
           </li>
         ))
       }
