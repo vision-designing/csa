@@ -10,7 +10,7 @@ const { date, title, id, isFree } = Astro.props;
 ---
 
 <article class="group bg-primary-800 border-primary-700 rounded-lg border p-6">
-  <div class="flex justify-between">
+  <div class="flex items-baseline justify-between">
     <time class="text-primary-400 block tracking-wide uppercase"
       >{date.toLocaleDateString("en", { dateStyle: "medium" })}</time
     >

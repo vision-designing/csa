@@ -1,7 +1,7 @@
 ---
-title: Sample Article 1
-description: This is a sample article.
-date: 2025-02-14
+title: Sample Article
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet efficitur volutpat dui volutpat tellus molestie.
+date: 2025-02-16
 image:
   src: train.webp
   alt: A train

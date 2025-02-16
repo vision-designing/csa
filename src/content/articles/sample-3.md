@@ -1,6 +1,6 @@
 ---
-title: Sample Article 3
-description: This is a sample article.
+title: Sample Article
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet efficitur volutpat dui volutpat tellus molestie.
 date: 2025-02-14
 image:
   src: welding-robot-arm.webp

@@ -1,7 +1,7 @@
 ---
-title: Sample Article 2
-description: This is a sample article.
-date: 2025-02-14
+title: Sample Article
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet efficitur volutpat dui volutpat tellus molestie.
+date: 2025-02-15
 image:
   src: robot-carrier.webp
   alt: A robot carrier

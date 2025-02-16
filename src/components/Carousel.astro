@@ -21,6 +21,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
             >
               <Image
                 src={img.default}
+                loading="eager"
                 format="webp"
                 class="block h-full w-full object-cover"
                 alt="..."
