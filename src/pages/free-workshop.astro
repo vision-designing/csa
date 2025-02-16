@@ -3,99 +3,114 @@ import { Image } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
 import logo from "~/assets/csa-logo.webp";
 import trainImage from "~/assets/train.webp";
+import humanoidImage from "~/assets/exp-humanoid.webp";
+
+const objectives = [
+  "How to satisfy the architecture requirements",
+  "How to conduct the required safety analyses",
+  "To author safety requirements",
+  "To develop safety concepts",
+  "To develop the safety case",
+  "The functional safety lifecycle",
+  "The development of a safe product",
+  "To manage the product liability risks",
+  "The roles and responsibilities defined in IEC 61508",
+];
 ---
 
 <Layout
   title="Free Workshop  — Critical Systems Analysis"
   includeHeader={false}
 >
-  <div
-    class="bg-primary-800 text-primary-300 px-6 py-3 text-center sm:px-12 lg:px-8"
+  <p
+    class="bg-primary-800 text-primary-300 px-6 py-4 sm:px-12 sm:text-center lg:px-8"
   >
-    Some banner content
-  </div>
+    Register for access to premium templates, checklists, and case studies for
+    inmediate application
+  </p>
   <Image
-    class="mx-auto my-8 block h-12 w-auto"
+    class="mx-auto my-8 block h-16 w-auto"
     src={logo}
     loading="eager"
-    width={140}
     alt="Critical Systems Analysis company logo"
   />
   <section
-    class="bg-primary-800 border-primary-700 mx-auto mb-12 grid max-w-7xl grid-cols-1 gap-12 border p-8 sm:p-12 lg:grid-cols-2 xl:rounded-lg"
+    class="bg-primary-800 mx-auto mb-12 grid max-w-7xl grid-cols-1 gap-12 p-8 sm:p-12 lg:grid-cols-3 xl:rounded-lg"
   >
-    <div class="text-primary-400">
-      <p class="uppercase">Credibility</p>
-      <h1 class="text-primary-300 mt-2 text-3xl font-bold">Some headline</h1>
-      <p class="mt-4">
-        Join us for a free workshop on critical systems analysis. This workshop
-        will cover the basics of critical systems analysis and how it can be
-        used to improve your organization's systems and processes.
+    <div class="text-primary-400 lg:col-span-2">
+      <h1 class="text-primary-300 text-3xl font-semibold">
+        IEC 61508 IFSP Personal Certification
+      </h1>
+      <p class="mt-4 leading-relaxed">
+        Critical Systems Analysis (CSA) is an approved provider of SGS-TÜV
+        Saar’s Personal qualification for Automation Processes. Upon completion
+        of this course, attendees may take the optional examination to obtain
+        the Industrial Functional Safety Professional (IFSP) certification
+        backed by SGS-TÜV Saar.
       </p>
-      <p class="mt-4">Topics covered will include:</p>
-      <ul class="mt-4 flex flex-col gap-4 leading-relaxed">
-        <li class="flex gap-3">
-          <span
-            class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="h-full w-full fill-current"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </span>
-          <span> Introduction to critical systems analysis </span>
-        </li>
-        <li class="flex gap-3">
-          <span
-            class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="h-full w-full fill-current"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </span>
-          <span> Benefits of critical systems analysis </span>
-        </li>
-        <li class="flex gap-3">
-          <span
-            class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              class="h-full w-full fill-current"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </span>
-          <span>
-            How to apply critical systems analysis to your organization
-          </span>
-        </li>
+      <ul class="mt-4 grid grid-cols-1 gap-4 leading-relaxed lg:grid-cols-2">
+        {
+          objectives.map((objective) => (
+            <li class="flex gap-3">
+              <span class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="h-full w-full fill-current"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span>{objective}</span>
+            </li>
+          ))
+        }
       </ul>
       <a
         href="#"
         class="text-primary-100 mt-6 block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
-        >Register now to reserve your spot!</a
-      >
+        >Price including exam: $997
+      </a>
+      <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-6">
+        <Image
+          src={humanoidImage}
+          alt="Workshop"
+          class="aspect-square shrink-0 rounded-lg sm:size-28"
+        />
+        <div>
+          <p
+            class="text-primary-300 flex items-center gap-2 text-lg font-semibold"
+          >
+            John Doe<a
+              href="https://www.linkedin.com/company/critical-systems-analysis"
+              class="text-primary-500 hover:text-primary-400 inline-block"
+            >
+              <svg
+                class="size-5 fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 256 256"
+                ><path
+                  d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453"
+                ></path></svg
+              ><span class="sr-only">Linkedin</span></a
+            >
+          </p>
+          <ul class="mt-1">
+            <li>Senior Functional Safety Engineer</li>
+            <li>FS Engineer (TUV Rheinland) #29769/24</li>
+            <li>
+              HW / SW Design Industrial Functional Safety Expert (SGS-TUV) IFSE
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
     <Image
-      class="aspect-square w-full rounded-lg object-cover xl:aspect-[4/3]"
+      class="hidden aspect-square w-full rounded-lg object-cover lg:block lg:h-full"
       src={trainImage}
       alt="Workshop"
     />

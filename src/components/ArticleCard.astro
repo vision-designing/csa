@@ -23,14 +23,16 @@ const { title, image, id, description, date } = Astro.props;
     formats={["webp", "avif"]}
   />
   <time
-    class="text-primary-400 mt-4 text-sm block uppercase tracking-wide"
+    class="text-primary-400 mt-4 block text-sm tracking-wide uppercase"
     datetime={date.toISOString()}
   >
-    {date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })}
+    {
+      date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    }
   </time>
   <h2
     class="text-primary-100 block text-lg font-semibold group-hover:text-blue-500"
