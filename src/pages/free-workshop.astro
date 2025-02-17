@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
 import logo from "~/assets/csa-logo.webp";
 import trainImage from "~/assets/train.webp";
-import humanoidImage from "~/assets/exp-humanoid.webp";
+import instructorImage from "~/assets/instructor.webp";
 
 const objectives = [
   "How to satisfy the architecture requirements",
@@ -15,6 +15,13 @@ const objectives = [
   "The development of a safe product",
   "To manage the product liability risks",
   "The roles and responsibilities defined in IEC 61508",
+];
+
+const modules = [
+  "Management Functional Safety (FSM)",
+  "Risk assessment, concept phase, system design",
+  "Security-oriented hardware development and analytics",
+  "Security-oriented software development",
 ];
 ---
 
@@ -35,7 +42,7 @@ const objectives = [
     alt="Critical Systems Analysis company logo"
   />
   <section
-    class="bg-primary-800 mx-auto mb-12 grid max-w-7xl grid-cols-1 gap-12 p-8 sm:p-12 lg:grid-cols-3 xl:rounded-lg"
+    class="bg-primary-800 mx-auto grid max-w-7xl grid-cols-1 gap-12 p-8 sm:p-12 lg:grid-cols-3 xl:rounded-lg"
   >
     <div class="text-primary-400 lg:col-span-2">
       <h1 class="text-primary-300 text-3xl font-semibold">
@@ -73,20 +80,20 @@ const objectives = [
       <a
         href="#"
         class="text-primary-100 mt-6 block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
-        >Price including exam: $997
+        >Price including exam: $1995
       </a>
       <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-6">
         <Image
-          src={humanoidImage}
-          alt="Workshop"
+          src={instructorImage}
+          alt="Instructor wearing a suit"
           class="aspect-square shrink-0 rounded-lg sm:size-28"
         />
         <div>
           <p
             class="text-primary-300 flex items-center gap-2 text-lg font-semibold"
           >
-            John Doe<a
-              href="https://www.linkedin.com/company/critical-systems-analysis"
+            Richard Stephens<a
+              href="https://www.linkedin.com/in/richardstephenscsa/"
               class="text-primary-500 hover:text-primary-400 inline-block"
             >
               <svg
@@ -114,5 +121,181 @@ const objectives = [
       src={trainImage}
       alt="Workshop"
     />
+  </section>
+  <section
+    class="mx-auto mt-20 grid max-w-7xl grid-cols-1 lg:grid-cols-3 lg:gap-12"
+  >
+    <div class="bg-primary-800 p-8 md:p-12 lg:col-span-2 lg:rounded-xl">
+      <h2 class="text-primary-300 text-xl font-semibold md:text-2xl">
+        Overview
+      </h2>
+      <p class="text-primary-400 mt-2 md:text-lg">
+        Become an Industrial Functional Safety Professional (IFSP) with
+        certification from SGS-TÜV Saar. Our specialized qualification program
+        is aimed at automation professionals who want to demonstrate their
+        expertise and skills in the field of functional safety.
+      </p>
+    </div>
+    <Image
+      class="aspect-video w-full object-cover lg:h-full lg:rounded-lg"
+      src={trainImage}
+      alt="Workshop"
+    />
+  </section>
+  <section
+    class="mx-auto mt-12 grid max-w-7xl grid-cols-1 lg:grid-cols-3 lg:gap-12"
+  >
+    <div
+      class="bg-primary-800 p-8 md:p-12 lg:order-2 lg:col-span-2 lg:rounded-xl"
+    >
+      <h2
+        class="text-primary-300 text-xl leading-relaxed font-semibold md:text-2xl"
+      >
+        Why this certification?
+      </h2>
+      <p class="text-primary-400 mt-2 md:text-lg">
+        Safe processes are of crucial importance in the automated industry. As
+        an Industrial Functional Safety Professional or Expert, you can
+        demonstrate your expertise according to internationally recognized
+        standards such as IEC 61508 and other relevant regulations. This
+        demonstrates your commitment to ensuring safety in automated processes
+        and systems.
+      </p>
+    </div>
+    <Image
+      class="aspect-video w-full object-cover lg:h-full lg:rounded-lg"
+      src={trainImage}
+      alt="Workshop"
+    />
+  </section>
+  <section class="mx-auto mt-20 max-w-7xl">
+    <h2
+      class="text-primary-300 px-8 text-xl leading-relaxed font-semibold md:px-12 md:text-3xl xl:px-0"
+    >
+      What can you expect?
+    </h2>
+    <ul
+      class="bg-primary-800 mt-4 grid grid-cols-1 gap-12 p-8 md:p-12 lg:grid-cols-2 lg:rounded-lg"
+    >
+      <li class="flex gap-3 lg:flex-col lg:items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          class="size-10 shrink-0 fill-none stroke-current text-blue-600 lg:size-14"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+          ></path>
+        </svg>
+        <p class="text-primary-400 leading-relaxed md:text-lg">
+          Our comprehensive program tests your knowledge of safety concepts,
+          risk assessment, safety lifecycle and more, specifically adapted to
+          the requirements of the automation industry.
+        </p>
+      </li>
+      <li class="flex gap-3 lg:flex-col lg:items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          class="size-10 shrink-0 fill-none stroke-current text-blue-600 lg:size-14"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+          ></path>
+        </svg>
+        <p class="text-primary-400 leading-relaxed md:text-lg">
+          We offer you not only certification, but also an in-depth
+          understanding of the specific requirements of functional safety in
+          this area.
+        </p>
+      </li>
+    </ul>
+  </section>
+  <section class="mx-auto mt-12 hidden max-w-7xl">
+    <h2
+      class="text-primary-300 px-8 text-xl leading-relaxed font-semibold md:px-12 md:text-3xl xl:px-0"
+    >
+      Let our clients do the talking
+    </h2>
+    <div></div>
+  </section>
+  <section class="mx-auto mt-20 max-w-7xl">
+    <p
+      class="px-8 font-bold tracking-wide text-blue-500 uppercase md:px-12 xl:px-0"
+    >
+      IFSP Requirements and Validity
+    </p>
+    <h2
+      class="text-primary-300 mt-0.5 px-8 text-xl leading-relaxed font-semibold md:px-12 md:text-3xl xl:px-0"
+    >
+      Details
+    </h2>
+    <ul
+      class="mt-6 grid grid-cols-1 gap-6 px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-0"
+    >
+      {
+        modules.map((module, i) => (
+          <li class="text-primary-400 bg-primary-800 border-primary-700 rounded-lg border p-6">
+            <h3 class="text-primary-300 text-lg font-semibold md:text-2xl">
+              Module {i + 1}
+            </h3>
+            <p class="mt-2 md:text-lg">{module}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <ul
+      class="mt-6 grid grid-cols-1 gap-6 px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-0"
+    >
+      <li
+        class="text-primary-400 rounded-lg border border-blue-800 bg-blue-950 p-6"
+      >
+        <h3 class="text-primary-300 text-lg font-semibold md:text-2xl">
+          Award for IFSP status
+        </h3>
+        <p class="mt-2 md:text-lg">IFSP</p>
+      </li>
+      <li
+        class="text-primary-400 rounded-lg border border-blue-800 bg-blue-950 p-6"
+      >
+        <h3 class="text-primary-300 text-lg font-semibold md:text-2xl">
+          Application for ISFP Status
+        </h3>
+        <p class="mt-2 md:text-lg">2 hours written exam</p>
+      </li>
+      <li
+        class="text-primary-400 rounded-lg border border-blue-800 bg-blue-950 p-6"
+      >
+        <h3 class="text-primary-300 text-lg font-semibold md:text-2xl">
+          5-annual activity report + Online short exam
+        </h3>
+      </li>
+    </ul>
+    <ul
+      class="text-primary-400 mt-12 mb-12 grid grid-cols-1 gap-2 px-6 md:text-lg lg:px-0"
+    >
+      <li>
+        The IFSP Course includes four 4-hour lectures and the optional exam to
+        obtain the status of IFSP.
+      </li>
+      <li>
+        You will receive the expert status "IFSP" (Industrial Functional Safety
+        Professional) if you have successfully passed the examination after
+        completing the training module. The prerequisite for admission to the
+        examination is participation in the preparatory training modules or,
+        alternatively, proof of equivalent training.
+      </li>
+      <li>
+        The IFSP certification is valid for 5 years. By attending an update
+        workshop, you can extend the qualification by 5 years if you pass the
+        multiple-choice test following the workshop.
+      </li>
+    </ul>
   </section>
 </Layout>
