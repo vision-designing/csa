@@ -2,19 +2,21 @@
 import { Image } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
 import logo from "~/assets/csa-logo.webp";
-import trainImage from "~/assets/train.webp";
+import autoRobotImage from "~/assets/auto-robot.webp";
+import robotChessImage from "~/assets/robot-chess.webp";
+import robotDogImage from "~/assets/robot-dog.webp";
 import instructorImage from "~/assets/instructor.webp";
 
 const objectives = [
-  "How to satisfy the architecture requirements",
-  "How to conduct the required safety analyses",
-  "To author safety requirements",
-  "To develop safety concepts",
-  "To develop the safety case",
-  "The functional safety lifecycle",
-  "The development of a safe product",
-  "To manage the product liability risks",
-  "The roles and responsibilities defined in IEC 61508",
+  "Architectural Compliance",
+  "Safety Analysis Methods",
+  "Safety Requirements Specification (SRS)",
+  "Safety Concept Development",
+  "Safety Case Justification",
+  "Functional Safety Lifecycle Management",
+  "Safe Product Development",
+  "Product Liability Risk Mitigation",
+  "Defined Roles & Responsibilities",
   "Free 4-hour Certification Exam",
 ];
 
@@ -127,8 +129,8 @@ const modules = [
       </div>
       <Image
         class="hidden aspect-square w-full rounded-lg object-cover lg:block lg:h-full"
-        src={trainImage}
-        alt="Workshop"
+        src={robotChessImage}
+        alt="Robot playing chess"
       />
     </section>
     <section class="mt-20 grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
@@ -147,8 +149,8 @@ const modules = [
       </div>
       <Image
         class="aspect-video w-full rounded-b-lg object-cover lg:h-full lg:rounded-lg"
-        src={trainImage}
-        alt="Workshop"
+        src={robotDogImage}
+        alt="Boston Dynamics robot dog"
       />
     </section>
     <section class="mt-12 grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
@@ -171,8 +173,8 @@ const modules = [
       </div>
       <Image
         class="aspect-video w-full rounded-b-lg object-cover lg:h-full lg:rounded-lg"
-        src={trainImage}
-        alt="Workshop"
+        src={autoRobotImage}
+        alt="Assembly line robot"
       />
     </section>
     <section class="mt-20">
