@@ -1,6 +1,7 @@
 ---
 import ContactForm from "~/components/ContactForm.astro";
 import Layout from "~/layouts/Layout.astro";
+import { bookingLink } from "~/content/constants";
 ---
 
 <Layout title="Contact us — Critical Systems Analysis">
@@ -34,7 +35,7 @@ import Layout from "~/layouts/Layout.astro";
       </div>
       <a
         class="text-primary-100 mt-4 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:mt-0"
-        href="https://outlook.office365.com/book/GetYourQuestionsAnswered@criticalsa.com/"
+        href={bookingLink}
       >
         Book a consultation
       </a>

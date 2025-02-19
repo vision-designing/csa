@@ -5,6 +5,7 @@ import Layout from "~/layouts/Layout.astro";
 import safetyImage from "~/assets/safety-access.webp";
 import trainImage from "~/assets/train.webp";
 import weldingRobotImage from "~/assets/welding-robot-arm.webp";
+import { bookingLink } from "~/content/constants";
 ---
 
 <Layout>
@@ -24,7 +25,7 @@ import weldingRobotImage from "~/assets/welding-robot-arm.webp";
       >
       <a
         class="hover:bg-primary-500 ring-primary-500 text-primary-200 cursor-pointer rounded-full px-6 py-3 text-center font-semibold ring transition"
-        href="#features">Learn more</a
+        href={bookingLink}>Book a call</a
       >
     </div>
     <Carousel />
