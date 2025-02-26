@@ -20,7 +20,7 @@ const eventSeriesSchema = z.object({
       price: z.number(),
       status: z.enum([
         "on_sale",
-        " sold_out",
+        "sold_out",
         "unavailable",
         "hidden",
         "admin_only",
@@ -32,14 +32,13 @@ const eventSeriesSchema = z.object({
     iso: z.coerce.date(),
   }),
   online_event: z.coerce.boolean(),
-  status: z.literal("published"),
+  status: z.enum(["draft", "published"]),
   timezone: z.string(),
   url: z.string().url(),
 });
 
 const eventSchema = z.object({
   title: z.string(),
-  html: z.string(),
   date: z.date(),
   url: z.string().url(),
   isFree: z.boolean(),
@@ -71,7 +70,12 @@ async function fetchPaginatedEvents(
   const basePath = `/v1${nextCursor || "/event_series"}`;
   const urlEndpoint = new URL(basePath, baseUrl);
   urlEndpoint.searchParams.set("status", "published");
-  urlEndpoint.searchParams.set("limit", "1");
+
+  // For development, include draft events
+  if (import.meta.env.DEV)
+    urlEndpoint.searchParams.set("status", ["published", "draft"].join(","));
+
+  urlEndpoint.searchParams.set("limit", "100");
   const res = await fetch(urlEndpoint, {
     headers: {
       Accept: "application/json",
@@ -143,7 +147,6 @@ export function tickettailorLoader(userConfig: UserConfig): Loader {
           id: event.id,
           data: {
             title: event.name,
-            html: event.description,
             date: event.next_occurrence_date.iso,
             url: event.url,
             isFree: event.default_ticket_types.some(
@@ -151,7 +154,11 @@ export function tickettailorLoader(userConfig: UserConfig): Loader {
             ),
           },
         });
-        store.set({ id: event.id, data: parsedEvent });
+        store.set({
+          id: event.id,
+          data: parsedEvent,
+          rendered: { html: event.description },
+        });
       }
     },
   };

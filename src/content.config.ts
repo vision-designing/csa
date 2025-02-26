@@ -2,8 +2,13 @@ import { defineCollection, z } from "astro:content";
 import { tickettailorLoader } from "~/loaders/tickettailor";
 import {
   contentfulArticleLoader,
+  contentfulDownloadLoader,
   contentfulJobLoader,
 } from "./loaders/contentful";
+
+const downloads = defineCollection({
+  loader: contentfulDownloadLoader(),
+});
 
 const jobs = defineCollection({
   loader: contentfulJobLoader(),
@@ -13,12 +18,6 @@ const jobs = defineCollection({
     level: z.string(),
     type: z.string(),
     department: z.string(),
-  }),
-});
-
-const events = defineCollection({
-  loader: tickettailorLoader({
-    token: import.meta.env.TICKETTAILOR_API_KEY,
   }),
 });
 
@@ -39,4 +38,10 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { jobs, events, articles };
+const events = defineCollection({
+  loader: tickettailorLoader({
+    token: import.meta.env.TICKETTAILOR_API_KEY,
+  }),
+});
+
+export const collections = { jobs, events, articles, downloads };

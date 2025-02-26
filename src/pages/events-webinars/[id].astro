@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 
 export async function getStaticPaths() {
@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { event } = Astro.props;
+const { Content } = await render(event);
 ---
 
 <Layout title={`${event.data.title} — Critical Systems Analysis`}>
@@ -43,10 +44,11 @@ const { event } = Astro.props;
         >Register now</a
       >
     </div>
-    <aritcle
-      class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300"
-      set:html={event.data.html}
-    />
+    <article
+      class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300 prose-tr:border-primary-600 max-w-none"
+    >
+      <Content />
+    </article>
     <div
       class="bg-primary-800 border-primary-700 mt-8 flex flex-col items-center justify-center gap-4 rounded-lg border p-6 sm:p-8"
     >
