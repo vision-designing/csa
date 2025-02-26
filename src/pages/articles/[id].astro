@@ -37,6 +37,9 @@ const { Content } = await render(article);
     >
       {article.data.title}
     </h1>
+    <p class="text-primary-400 mt-8 text-center leading-relaxed text-pretty">
+      By {article.data.author.name}
+    </p>
     <Image
       src={article.data.heroImage.src}
       class="mt-12 mb-8 aspect-square w-full rounded-md object-cover sm:aspect-video"
@@ -44,7 +47,7 @@ const { Content } = await render(article);
       inferSize={true}
     />
     <aritcle
-      class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300"
+      class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300 prose-img:w-full prose-img:rounded-lg"
     >
       <Content />
     </aritcle>

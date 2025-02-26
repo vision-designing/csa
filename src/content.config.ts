@@ -33,6 +33,9 @@ const articles = defineCollection({
       alt: z.string(),
       src: z.string(),
     }),
+    author: z.object({
+      name: z.string(),
+    }),
   }),
 });
 
