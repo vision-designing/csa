@@ -1,29 +1,12 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
 import { tickettailorLoader } from "~/loaders/tickettailor";
-
-const articles = defineCollection({
-  loader: glob({
-    pattern: "**/*.md",
-    base: "./src/content/articles",
-  }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      date: z.coerce.date(),
-      description: z.string(),
-      image: z.object({
-        src: z.preprocess((path) => `~/assets/${path}`, image()),
-        alt: z.string(),
-      }),
-    }),
-});
+import {
+  contentfulArticleLoader,
+  contentfulJobLoader,
+} from "./loaders/contentful";
 
 const jobs = defineCollection({
-  loader: glob({
-    pattern: "**/*.md",
-    base: "./src/content/jobs",
-  }),
+  loader: contentfulJobLoader(),
   schema: z.object({
     title: z.string(),
     location: z.string(),
@@ -39,4 +22,18 @@ const events = defineCollection({
   }),
 });
 
-export const collections = { articles, jobs, events };
+const articles = defineCollection({
+  loader: contentfulArticleLoader(),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    slug: z.string(),
+    heroImage: z.object({
+      alt: z.string(),
+      src: z.string(),
+    }),
+  }),
+});
+
+export const collections = { jobs, events, articles };
