@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import { bookingLink } from "~/content/constants";
 import servicesHeroImage from "~/assets/services-hero.webp";
 
@@ -84,11 +84,12 @@ const services = [
       robotics, industrial machinery and autonomous vehicles. Learn what CSA can
       do for you.
     </p>
-    <Picture
+    <Image
       src={servicesHeroImage}
-      class="mx-auto mt-8 aspect-square w-full max-w-lg rounded-lg object-cover sm:aspect-video sm:max-w-3xl"
+      class="mx-auto mt-8 w-full max-w-lg rounded-lg object-cover sm:max-w-3xl"
       alt="Workers controlling machinery"
-      formats={["webp", "avif"]}
+      layout="full-width"
+      loading="eager"
     />
     <div
       class="mt-28 grid grid-cols-1 gap-8 sm:gap-12 md:grid-cols-2 lg:grid-cols-3"

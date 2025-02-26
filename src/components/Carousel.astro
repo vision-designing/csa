@@ -7,7 +7,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 ---
 
 <astro-carousel>
-  <div class="relative mx-auto max-w-5xl">
+  <div class="relative mx-auto h-auto max-w-5xl">
     <div
       class="relative aspect-square overflow-hidden rounded-lg sm:aspect-video"
     >
@@ -22,7 +22,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
               <Image
                 src={img.default}
                 loading="eager"
-                format="webp"
+                layout="none"
                 class="block h-full w-full object-cover"
                 alt="..."
               />

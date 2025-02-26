@@ -1,31 +1,31 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  const positions = await getCollection("articles");
-  return positions.map((position) => ({
-    params: { id: position.id },
-    props: { position },
+  const articles = await getCollection("articles");
+  return articles.map((article) => ({
+    params: { id: article.id },
+    props: { article },
   }));
 }
 
-const { position } = Astro.props;
-const { Content } = await render(position);
+const { article } = Astro.props;
+const { Content } = await render(article);
 ---
 
 <Layout
-  title={`${position.data.title} — Critical Systems Analysis`}
-  description={position.data.description}
+  title={`${article.data.title} — Critical Systems Analysis`}
+  description={article.data.description}
 >
   <div class="mx-auto max-w-5xl px-6 pb-12 lg:px-8">
     <time
       class="mt-16 block text-center text-lg font-semibold tracking-wide text-blue-500 uppercase sm:mt-32"
-      datetime={position.data.date.toISOString()}
+      datetime={article.data.date.toISOString()}
     >
       {
-        position.data.date.toLocaleDateString("en-US", {
+        article.data.date.toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
@@ -35,13 +35,13 @@ const { Content } = await render(position);
     <h1
       class="text-primary-100 mt-4 text-center text-4xl font-bold tracking-tight md:text-5xl"
     >
-      {position.data.title}
+      {article.data.title}
     </h1>
-    <Picture
-      src={position.data.image.src}
+    <Image
+      src={article.data.heroImage.src}
       class="mt-12 mb-8 aspect-square w-full rounded-md object-cover sm:aspect-video"
-      alt={position.data.image.alt}
-      formats={["webp", "avif"]}
+      alt={article.data.heroImage.alt}
+      inferSize={true}
     />
     <aritcle
       class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300"

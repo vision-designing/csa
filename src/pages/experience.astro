@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import trainImage from "~/assets/exp-hero.webp";
 import robotCarriers from "~/assets/robot-carrier.webp";
 import agricultureImage from "~/assets/exp-agriculture.webp";
@@ -116,22 +116,25 @@ const cards = [
       class="text-primary-100 mx-auto mt-4 block max-w-fit cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
       >Contact us</a
     >
-    <Picture
+    <Image
       src={trainImage}
-      class="mx-auto mt-8 aspect-square w-full max-w-lg rounded-lg"
+      class="mx-auto mt-8 w-full max-w-lg rounded-lg"
       alt="Train on a track"
-      formats={["webp", "avif"]}
+      layout="full-width"
+      loading="eager"
     />
-    <div class="mt-28 grid w-full gap-8 sm:grid-cols-2 lg:mt-40 lg:grid-cols-3">
+    <div class="mt-28 grid w-full gap-8 sm:grid-cols-2 lg:mt-40 xl:grid-cols-3">
       {
         cards.map((card) => (
           <article class="border-primary-700 bg-primary-800 flex flex-col gap-2 rounded-lg border p-6">
-            <Picture
-              src={card.image.src}
-              class="aspect-square rounded-md object-cover"
-              alt={card.image.alt}
-              formats={["webp", "avif"]}
-            />
+            <div class="overflow-hidden rounded-lg sm:aspect-square">
+              <Image
+                src={card.image.src}
+                alt={card.image.alt}
+                class="sm:h-full!"
+                layout="full-width"
+              />
+            </div>
             <h2 class="text-primary-100 mt-2 text-lg font-semibold">
               {card.title}
             </h2>

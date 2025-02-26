@@ -3,6 +3,7 @@ import "~/styles/global.css";
 import "@fontsource-variable/inter";
 import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
+import { defaultMeta } from "~/content/constants";
 
 export interface Props {
   includeHeader?: boolean;
@@ -16,11 +17,11 @@ export interface Props {
 }
 
 const {
-  title = "Critical Systems Analysis",
-  description = "Safety consultants and educators provide an expert perspective on systems assurance, safety engineering, and RAM engineering that save you time and money in developing the safest systems",
+  title = defaultMeta.title,
+  description = defaultMeta.description,
   ogImage = {
-    url: "/og.webp",
-    alt: "A robot with some gears",
+    url: defaultMeta.og.url,
+    alt: defaultMeta.og.alt,
   },
   includeFooter = true,
   includeHeader = true,
@@ -38,9 +39,6 @@ const {
       name="google-site-verification"
       content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"
     />
-    <!-- <script
-      src="https://www.google.com/recaptcha/api.js?render=6Lfv2yYqAAAAAP_oWk5P90ce9t9wUTcjiVF-tDLr"
-      is:inline></script> -->
     <link rel="canonical" href={Astro.url.href} />
     <meta name="title" content={title} />
     <meta name="description" content={description} />

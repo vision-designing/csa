@@ -8,16 +8,10 @@ import robotDogImage from "~/assets/robot-dog.webp";
 import instructorImage from "~/assets/instructor.webp";
 
 const objectives = [
-  "Architectural Compliance",
-  "Safety Analysis Methods",
-  "Safety Requirements Specification (SRS)",
-  "Safety Concept Development",
-  "Safety Case Justification",
-  "Functional Safety Lifecycle Management",
-  "Safe Product Development",
-  "Product Liability Risk Mitigation",
-  "Defined Roles & Responsibilities",
-  "Free 4-hour Certification Exam",
+  "Obtain Understanding of IEC 61508",
+  "Demonstrate Competency Required by IEC 61508",
+  "Learn The Elements of the Safety Lifecycle",
+  "Gain Ability to Apply IEC 61508 In A Real-world Example",
 ];
 
 const modules = [
@@ -29,7 +23,7 @@ const modules = [
 ---
 
 <Layout
-  title="Free Workshop  — Critical Systems Analysis"
+  title="IEC 61508 IFSP Personal Certification  — Critical Systems Analysis"
   includeHeader={false}
 >
   <p
@@ -44,6 +38,8 @@ const modules = [
       class="mx-auto my-8 block h-16 w-auto"
       src={logo}
       loading="eager"
+      layout="fixed"
+      height={64}
       alt="Critical Systems Analysis company logo"
     />
   </a>
@@ -51,18 +47,19 @@ const modules = [
     <section
       class="bg-primary-800 grid grid-cols-1 gap-12 rounded-lg p-8 sm:p-12 lg:grid-cols-3"
     >
-      <div class="text-primary-400 lg:col-span-2">
+      <div class="text-primary-400 md:text-lg lg:col-span-2">
         <h1 class="text-primary-300 text-3xl font-semibold">
           IEC 61508 IFSP Personal Certification
         </h1>
         <p class="mt-4 leading-relaxed">
-          Critical Systems Analysis (CSA) is an approved provider of SGS-TÜV
-          Saar’s Personal qualification for Automation Processes. Upon
-          completion of this course, attendees may take the optional examination
-          to obtain the Industrial Functional Safety Professional (IFSP)
-          certification backed by SGS-TÜV Saar.
+          Become an Industrial Functional Safety Professional (IFSP) with
+          certification from SGS-TÜV Saar. Critical Systems Analysis (CSA) is
+          offering this specialized qualification program created for industrial
+          automation professionals seeking to demonstrate their expertise and
+          skills in the field of functional safety.
         </p>
-        <ul class="mt-4 grid grid-cols-1 gap-4 leading-relaxed lg:grid-cols-2">
+        <p class="mt-4 leading-relaxed">Throughout the course, you will:</p>
+        <ul class="mt-4 grid grid-cols-1 gap-4 leading-relaxed">
           {
             objectives.map((objective) => (
               <li class="flex gap-3">
@@ -92,7 +89,7 @@ const modules = [
             >$2200</span
           >
         </a>
-        <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-6">
+        <!-- <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-6">
           <Image
             src={instructorImage}
             alt="Instructor wearing a suit"
@@ -125,7 +122,7 @@ const modules = [
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
       <Image
         class="hidden aspect-square w-full rounded-lg object-cover lg:block lg:h-full"
@@ -141,10 +138,10 @@ const modules = [
           Overview
         </h2>
         <p class="text-primary-400 mt-2 md:text-lg">
-          Become an Industrial Functional Safety Professional (IFSP) with
-          certification from SGS-TÜV Saar. Our specialized qualification program
-          is aimed at automation professionals who want to demonstrate their
-          expertise and skills in the field of functional safety.
+          CSA is an approved provider of SGS-TÜV Saar’s personal qualification
+          for industrial automation. Upon completion of this course, attendees
+          may take the optional examination to obtain the Industrial Functional
+          Safety Professional (IFSP) certification backed by SGS-TÜV Saar.
         </p>
       </div>
       <Image
@@ -163,12 +160,16 @@ const modules = [
           Why this certification?
         </h2>
         <p class="text-primary-400 mt-2 md:text-lg">
-          Safe processes are of crucial importance in the automated industry. As
-          an Industrial Functional Safety Professional or Expert, you can
-          demonstrate your expertise according to internationally recognized
-          standards such as IEC 61508 and other relevant regulations. This
-          demonstrates your commitment to ensuring safety in automated processes
-          and systems.
+          This certification course stands apart through CSA’s unmatched
+          expertise as a premium functional safety consulting provider, coupled
+          with the added credibility of our SGS-TÜV partnership. While other
+          courses may offer basic certification, our program delivers a
+          comprehensive understanding of the standard that transforms complex
+          theory into practical, real-world applications. Our deep industry
+          experience ensures that participants don't just learn the
+          requirements—they master how to implement them effectively in their
+          daily work. This powerful combination of makes our course the
+          definitive choice for professionals serious about functional safety.
         </p>
       </div>
       <Image
@@ -201,8 +202,8 @@ const modules = [
           </svg>
           <p class="text-primary-400 leading-relaxed md:text-lg">
             Our comprehensive program tests your knowledge of safety concepts,
-            risk assessment, safety lifecycle and more, specifically adapted to
-            the requirements of the automation industry.
+            risk assessment, safety lifecycle, and more, specifically adapted to
+            the requirements of industrial automation.
           </p>
         </li>
         <li class="flex gap-4 lg:flex-col lg:items-center">
@@ -219,7 +220,7 @@ const modules = [
             ></path>
           </svg>
           <p class="text-primary-400 leading-relaxed md:text-lg">
-            We offer you not only certification, but also an in-depth
+            In addition to the IFSP certification, you will also get an in-depth
             understanding of the specific requirements of functional safety in
             this area.
           </p>

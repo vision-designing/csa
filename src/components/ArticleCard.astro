@@ -1,13 +1,13 @@
 ---
-import type { ImageMetadata } from "astro";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
+
 interface Props {
   title: string;
   date: Date;
   id: string;
   description: string;
   image: {
-    src: ImageMetadata;
+    src: string;
     alt: string;
   };
 }
@@ -16,12 +16,15 @@ const { title, image, id, description, date } = Astro.props;
 ---
 
 <article class="group bg-primary-800 border-primary-700 rounded-lg border p-6">
-  <Picture
-    src={image.src}
-    class="block aspect-square w-full rounded-md object-cover group-hover:opacity-80"
-    alt={image.alt}
-    formats={["webp", "avif"]}
-  />
+  <div class="overflow-hidden rounded-lg sm:aspect-square">
+    <Image
+      src={image.src}
+      alt={image.alt}
+      inferSize={true}
+      class="sm:h-full!"
+      layout="full-width"
+    />
+  </div>
   <time
     class="text-primary-400 mt-4 block text-sm tracking-wide uppercase"
     datetime={date.toISOString()}
@@ -35,7 +38,7 @@ const { title, image, id, description, date } = Astro.props;
     }
   </time>
   <h2
-    class="text-primary-100 block text-lg font-semibold group-hover:text-blue-500"
+    class="text-primary-100 mt-1 block text-lg font-semibold group-hover:text-blue-500"
   >
     {title}
   </h2>
