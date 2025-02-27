@@ -26,6 +26,8 @@ const {
   includeFooter = true,
   includeHeader = true,
 } = Astro.props;
+
+const ogImageURL = new URL(ogImage.url, Astro.site).href;
 ---
 
 <!doctype html>
@@ -46,10 +48,16 @@ const {
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage.url} />
+    <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:alt" content={ogImage.alt} />
     <meta property="og:locale" content="en_US" />
-    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="og:site_name"
+      content={defaultMeta.title}
+      <meta
+      property="twitter:card"
+      content="summary_large_image"
+    />
     <meta property="twitter:url" content={Astro.url.href} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />

@@ -31,8 +31,11 @@ const objectivesBullets = [
 ];
 
 const lastRemarks = [
-  "Comprehensive understanding of IEC 61508", "Demonstration of competency", "Certification provided by SGS-TÜV Saar","Access to industry-leading experts"
-]
+  "Comprehensive understanding of IEC 61508",
+  "Demonstration of competency",
+  "Certification provided by SGS-TÜV Saar",
+  "Access to industry-leading experts",
+];
 
 const days = [
   {
@@ -362,10 +365,10 @@ const registerLink = "#";
         {
           days.map((day, i) => (
             <li class="text-primary-400 bg-primary-800 border-primary-700 rounded-lg border p-6">
-              <p class="font-semibold text-blue-500 uppercase">
-                Day {i + 1}
-              </p>
-              <h3 class="text-xl text-primary-300 font-semibold">{day.title}</h3>
+              <p class="font-semibold text-blue-500 uppercase">Day {i + 1}</p>
+              <h3 class="text-primary-300 text-xl font-semibold">
+                {day.title}
+              </h3>
               <ul class="text-primary-400 mt-6 grid grid-cols-1 gap-4 leading-relaxed md:text-lg">
                 {day.bullets.map((bullet) => (
                   <li class="flex gap-3">
@@ -399,29 +402,39 @@ const registerLink = "#";
           IFSP Requirements and Validity
         </h2>
         <p class="text-primary-400 mt-2 leading-relaxed md:text-lg">
-          You will receive the professional status of "IFSP" (Industrial Functional Safety Professional) if you successfully pass the 2-hour examination after completing the training course. The IFSP certification is valid for 5 years. By attending an update workshop, you can extend the qualification by 5 years by passing the multiple-choice test following the workshop.
+          You will receive the professional status of "IFSP" (Industrial
+          Functional Safety Professional) if you successfully pass the 2-hour
+          examination after completing the training course. The IFSP
+          certification is valid for 5 years. By attending an update workshop,
+          you can extend the qualification by 5 years by passing the
+          multiple-choice test following the workshop.
         </p>
       </div>
     </section>
     <Image
-        class="w-full h-auto mt-12 rounded-lg"
-        src={examImage}
-        alt="Boston Dynamics robot dog"
+      class="mt-12 h-auto w-full rounded-lg"
+      src={examImage}
+      alt="Boston Dynamics robot dog"
+    />
+    <p class="text-primary-400 mt-12 text-center">
+      IFSP Personal Certification provided by
+    </p>
+    <a href="/">
+      <span class="sr-only">Go to homepage</span>
+      <Image
+        class="mx-auto my-8 block h-20 w-auto"
+        src={logo}
+        loading="eager"
+        layout="fixed"
+        height={80}
+        alt="Critical Systems Analysis company logo"
       />
-      <p class="text-center mt-12 text-primary-400">IFSP Personal Certification provided by</p>
-      <a href="/">
-        <span class="sr-only">Go to homepage</span>
-        <Image
-          class="mx-auto my-8 block h-20 w-auto"
-          src={logo}
-          loading="eager"
-          layout="fixed"
-          height={80}
-          alt="Critical Systems Analysis company logo"
-        />
-      </a>
-      <ul class="text-primary-400 mt-6 gap-4 leading-relaxed md:text-lg flex flex-col items-center justify-center">
-        {lastRemarks.map((remark) => (
+    </a>
+    <ul
+      class="text-primary-400 mt-6 flex flex-col items-center justify-center gap-4 leading-relaxed md:text-lg"
+    >
+      {
+        lastRemarks.map((remark) => (
           <li class="flex gap-3">
             <span class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1">
               <svg
@@ -438,12 +451,13 @@ const registerLink = "#";
             </span>
             <span>{remark}</span>
           </li>
-        ))}
-      </ul>
-      <a
-        href={registerLink}
-        class="text-primary-100 mx-auto mt-6 block max-w-fit cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
-        >Register for $1,995
-      </a>
+        ))
+      }
+    </ul>
+    <a
+      href={registerLink}
+      class="text-primary-100 mx-auto mt-6 block max-w-fit cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+      >Register for $1,995
+    </a>
   </div>
 </Layout>
