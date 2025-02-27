@@ -51,17 +51,12 @@ const ogImageURL = new URL(ogImage.url, Astro.site).href;
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:alt" content={ogImage.alt} />
     <meta property="og:locale" content="en_US" />
-    <meta
-      property="og:site_name"
-      content={defaultMeta.title}
-      <meta
-      property="twitter:card"
-      content="summary_large_image"
-    />
+    <meta property="og:site_name" content={defaultMeta.title} />
     <meta property="twitter:url" content={Astro.url.href} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage.url} />
+    <meta property="twitter:image" content={ogImageURL} />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="follow, index" />
   </head>
