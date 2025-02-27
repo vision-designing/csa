@@ -6,6 +6,7 @@ import autoRobotImage from "~/assets/auto-robot.webp";
 import robotArmImage from "~/assets/robot-arm.webp";
 import robotDogImage from "~/assets/robot-dog.webp";
 import instructorImage from "~/assets/instructor.webp";
+import examImage from "~/assets/exam.webp";
 
 const objectives = [
   "Obtain Understanding of IEC 61508",
@@ -28,6 +29,10 @@ const objectivesBullets = [
   "Safety Concept Development",
   "Safety Case Development",
 ];
+
+const lastRemarks = [
+  "Comprehensive understanding of IEC 61508", "Demonstration of competency", "Certification provided by SGS-TÜV Saar","Access to industry-leading experts"
+]
 
 const days = [
   {
@@ -70,6 +75,8 @@ const days = [
     ],
   },
 ];
+
+const registerLink = "#";
 ---
 
 <Layout
@@ -110,7 +117,7 @@ const days = [
         Register today to take the exam at no additional cost!
       </p>
       <a
-        href="#"
+        href={registerLink}
         class="text-primary-100 mx-auto mt-6 block max-w-fit cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
         >Register for $1,995
       </a>
@@ -154,7 +161,7 @@ const days = [
           }
         </ul>
         <a
-          href="#"
+          href={registerLink}
           class="text-primary-100 mt-6 block cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
           >Price including exam: $1995 <span
             class="align-super text-sm text-blue-950 line-through sm:text-base"
@@ -384,7 +391,7 @@ const days = [
         }
       </ul>
     </section>
-    <section class="mt-12 grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
+    <section class="mt-12 grid grid-cols-1">
       <div
         class="bg-primary-800 rounded-t-lg p-8 md:p-12 lg:col-span-2 lg:rounded-lg"
       >
@@ -395,11 +402,48 @@ const days = [
           You will receive the professional status of "IFSP" (Industrial Functional Safety Professional) if you successfully pass the 2-hour examination after completing the training course. The IFSP certification is valid for 5 years. By attending an update workshop, you can extend the qualification by 5 years by passing the multiple-choice test following the workshop.
         </p>
       </div>
-      <Image
-        class="aspect-video w-full rounded-b-lg object-cover lg:h-full lg:rounded-lg"
-        src={robotDogImage}
+    </section>
+    <Image
+        class="w-full h-auto mt-12 rounded-lg"
+        src={examImage}
         alt="Boston Dynamics robot dog"
       />
-    </section>
+      <p class="text-center mt-12 text-primary-400">IFSP Personal Certification provided by</p>
+      <a href="/">
+        <span class="sr-only">Go to homepage</span>
+        <Image
+          class="mx-auto my-8 block h-20 w-auto"
+          src={logo}
+          loading="eager"
+          layout="fixed"
+          height={80}
+          alt="Critical Systems Analysis company logo"
+        />
+      </a>
+      <ul class="text-primary-400 mt-6 gap-4 leading-relaxed md:text-lg flex flex-col items-center justify-center">
+        {lastRemarks.map((remark) => (
+          <li class="flex gap-3">
+            <span class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="h-full w-full fill-current"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+            <span>{remark}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={registerLink}
+        class="text-primary-100 mx-auto mt-6 block max-w-fit cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+        >Register for $1,995
+      </a>
   </div>
 </Layout>
