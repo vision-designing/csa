@@ -1,0 +1,449 @@
+---
+import { Image } from "astro:assets";
+import Layout from "~/layouts/Layout.astro";
+import logo from "~/assets/csa-logo.webp";
+import autoRobotImage from "~/assets/auto-robot.webp";
+import robotArmImage from "~/assets/robot-arm.webp";
+import robotDogImage from "~/assets/robot-dog.webp";
+import instructorImage from "~/assets/instructor.webp";
+import examImage from "~/assets/exam.webp";
+
+const objectives = [
+  "Obtain Understanding of IEC 61508",
+  "Demonstrate Competency Required by IEC 61508",
+  "Learn The Elements of the Safety Lifecycle",
+  "Gain Ability to Apply IEC 61508 In A Real-world Example",
+];
+
+const objectivesBullets = [
+  "Functional Safety Management",
+  "Functional Safety Lifecycle",
+  "Safe Product Development",
+  "SIL Target of Risks Identification",
+  "Design And Analysis Techniques to Satisfy SIL",
+  "Product Liability Risk Management",
+  "Defined Roles and Responsibilities",
+  "Architecture Requirements",
+  "Safety Analysis Methods",
+  "Safety Requirements Creation",
+  "Safety Concept Development",
+  "Safety Case Development",
+];
+
+const lastRemarks = [
+  "Comprehensive understanding of IEC 61508", "Demonstration of competency", "Certification provided by SGS-TÜV Saar","Access to industry-leading experts"
+]
+
+const days = [
+  {
+    title: "Functional Safety Managment (FSM)",
+    bullets: [
+      "Introduction to Functional Safety",
+      "Introduction to IEC 61508",
+      "Safety Managment",
+      "Safety Lifecycle",
+      "Supporting Processes",
+    ],
+  },
+  {
+    title: "Risk Assessment, Concept Phase, System Design",
+    bullets: [
+      "Risk Analysis",
+      "System Development Requirements",
+      "Technical Safety Concept",
+      "Testing and Validation Measures",
+      "System Integrity",
+      "System Design",
+    ],
+  },
+  {
+    title: "Security-Oriented Hardware Development and Analysis",
+    bullets: [
+      "Hardware Development",
+      "Safety Analysis Methods",
+      "Hardware development techniques",
+      "Common Cause Failure (CCF)",
+    ],
+  },
+  {
+    title: "Security-Oriented Software Development and Analysis",
+    bullets: [
+      "Functional Safety in Software",
+      "Software Development Processes",
+      "Quality Standards",
+      "Software Documentation",
+    ],
+  },
+];
+
+const registerLink = "#";
+---
+
+<Layout
+  title="IEC 61508 IFSP Personal Certification  — Critical Systems Analysis"
+  includeHeader={false}
+>
+  <p
+    class="bg-primary-800 text-primary-300 px-6 py-4 sm:px-12 sm:text-center lg:px-8"
+  >
+    Register for access to premium templates, checklists, and case studies for
+    inmediate application
+  </p>
+  <a href="/">
+    <span class="sr-only">Go to homepage</span>
+    <Image
+      class="mx-auto my-8 block h-16 w-auto"
+      src={logo}
+      loading="eager"
+      layout="fixed"
+      height={64}
+      alt="Critical Systems Analysis company logo"
+    />
+  </a>
+  <div class="mx-auto max-w-7xl px-6 pb-12 lg:px-8 2xl:px-0">
+    <article class="rounded-lg p-8 sm:p-12">
+      <p class="text-primary-300 text-center text-4xl font-semibold">
+        Stuck Reading and Rereading IEC 61508?
+      </p>
+      <p class="text-primary-300 mt-2 text-center text-2xl font-semibold">
+        Get an in-depth understanding here
+      </p>
+      <p class="text-primary-400 mt-4 text-center text-lg text-balance">
+        The IFSP Personal Certification delivers a comprehensive understanding
+        of when and how to apply IEC 61508 to ensure safe design practices are
+        followed.
+      </p>
+      <p class="text-primary-400 mt-4 text-center text-lg">
+        Register today to take the exam at no additional cost!
+      </p>
+      <a
+        href={registerLink}
+        class="text-primary-100 mx-auto mt-6 block max-w-fit cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+        >Register for $1,995
+      </a>
+    </article>
+
+    <section
+      class="bg-primary-800 mt-12 grid grid-cols-1 gap-12 rounded-lg p-8 sm:p-12 lg:grid-cols-3"
+    >
+      <div class="text-primary-400 md:text-lg lg:col-span-2">
+        <h1 class="text-primary-300 text-3xl font-semibold">
+          IEC 61508 IFSP Personal Certification
+        </h1>
+        <p class="mt-4 leading-relaxed">
+          Become an Industrial Functional Safety Professional (IFSP) with
+          certification from SGS-TÜV Saar. Critical Systems Analysis (CSA) is
+          offering this specialized qualification program created for industrial
+          automation professionals seeking to demonstrate their expertise and
+          skills in the field of functional safety.
+        </p>
+        <p class="mt-4 leading-relaxed">Throughout the course, you will:</p>
+        <ul class="mt-4 grid grid-cols-1 gap-4 leading-relaxed">
+          {
+            objectives.map((objective) => (
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>{objective}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          href={registerLink}
+          class="text-primary-100 mt-6 block cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+          >Price including exam: $1995 <span
+            class="align-super text-sm text-blue-950 line-through sm:text-base"
+            >$2200</span
+          >
+        </a>
+      </div>
+      <Image
+        class="hidden aspect-square w-full rounded-lg object-cover lg:block lg:h-full"
+        src={robotArmImage}
+        alt="Robot arm"
+      />
+    </section>
+    <section class="mt-12 grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
+      <div
+        class="bg-primary-800 rounded-t-lg p-8 md:p-12 lg:order-2 lg:col-span-2 lg:rounded-lg"
+      >
+        <h2 class="text-primary-300 text-xl font-semibold md:text-2xl">
+          Trainer
+        </h2>
+        <p class="text-primary-400 mt-2 leading-relaxed md:text-lg">
+          The IFSP Course is led by Mr. Stephens, a seasoned Function Safety
+          Engineer with more than 15 years of experience in the railroad and
+          industrial robotics industries. Mr. Stephens is well poised to share
+          his knowledge and engage in discussions on any topic related to IEC
+          61508.
+        </p>
+        <ul class="list-inside list-disc">
+          <li class="text-primary-400 mt-2 md:text-lg">
+            Senior Functional Safety Engineer
+          </li>
+          <li class="text-primary-400 mt-2 md:text-lg">
+            FS Engineer (TUV Rheinland) #29769/24
+          </li>
+          <li class="text-primary-400 mt-2 md:text-lg">
+            HW / SW Design Industrial Functional Safety Expert (SGS-TUV) IFSE
+          </li>
+        </ul>
+      </div>
+      <Image
+        class="aspect-video w-full rounded-b-lg object-cover lg:h-full lg:rounded-lg"
+        src={instructorImage}
+        alt="Instructor wearing a suit"
+      />
+    </section>
+    <section class="mt-12 grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
+      <div
+        class="bg-primary-800 rounded-t-lg p-8 md:p-12 lg:col-span-2 lg:rounded-lg"
+      >
+        <h2 class="text-primary-300 text-xl font-semibold md:text-2xl">
+          Overview
+        </h2>
+        <p class="text-primary-400 mt-2 leading-relaxed md:text-lg">
+          CSA is an approved provider of SGS-TÜV Saar’s personal qualification
+          for industrial automation. Upon completion of this course, attendees
+          may take the optional examination to obtain the Industrial Functional
+          Safety Professional (IFSP) certification backed by SGS-TÜV Saar.
+        </p>
+      </div>
+      <Image
+        class="aspect-video w-full rounded-b-lg object-cover lg:h-full lg:rounded-lg"
+        src={robotDogImage}
+        alt="Boston Dynamics robot dog"
+      />
+    </section>
+    <section class="mt-12 grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
+      <div
+        class="bg-primary-800 rounded-t-lg p-8 md:p-12 lg:order-2 lg:col-span-2 lg:rounded-lg"
+      >
+        <h2
+          class="text-primary-300 text-xl leading-relaxed font-semibold md:text-2xl"
+        >
+          Why this certification?
+        </h2>
+        <p class="text-primary-400 mt-2 leading-relaxed md:text-lg">
+          This certification course stands apart through CSA’s unmatched
+          expertise as a premium functional safety consulting provider, coupled
+          with the added credibility of our SGS-TÜV partnership. While other
+          courses may offer basic certification, our program delivers a
+          comprehensive understanding of the standard that transforms complex
+          theory into practical, real-world applications. Our deep industry
+          experience ensures that participants don't just learn the
+          requirements—they master how to implement them effectively in their
+          daily work. This powerful combination of makes our course the
+          definitive choice for professionals serious about functional safety.
+        </p>
+      </div>
+      <Image
+        class="aspect-video w-full rounded-b-lg object-cover lg:h-full lg:rounded-lg"
+        src={autoRobotImage}
+        alt="Assembly line robot"
+      />
+    </section>
+    <section class="mt-20">
+      <h2
+        class="text-primary-300 text-xl leading-relaxed font-semibold md:text-3xl xl:px-0"
+      >
+        What can you expect?
+      </h2>
+      <ul
+        class="bg-primary-800 mt-4 grid grid-cols-1 gap-12 rounded-lg p-8 md:p-12 lg:grid-cols-2"
+      >
+        <li class="flex gap-4 lg:flex-col lg:items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            class="size-10 shrink-0 fill-none stroke-current text-blue-600 lg:size-14"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            ></path>
+          </svg>
+          <p class="text-primary-400 leading-relaxed md:text-lg">
+            Our comprehensive program tests your knowledge of safety concepts,
+            risk assessment, safety lifecycle, and more, specifically adapted to
+            the requirements of industrial automation.
+          </p>
+        </li>
+        <li class="flex gap-4 lg:flex-col lg:items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            class="size-10 shrink-0 fill-none stroke-current text-blue-600 lg:size-14"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            ></path>
+          </svg>
+          <p class="text-primary-400 leading-relaxed md:text-lg">
+            In addition to the IFSP certification, you will also get an in-depth
+            understanding of the specific requirements of functional safety in
+            this area.
+          </p>
+        </li>
+      </ul>
+    </section>
+    <section class="mt-12 hidden">
+      <h2
+        class="text-primary-300 px-8 text-xl leading-relaxed font-semibold md:px-12 md:text-3xl xl:px-0"
+      >
+        Let our clients do the talking
+      </h2>
+    </section>
+    <section class="bg-primary-800 mt-12 rounded-lg p-8 sm:p-12">
+      <h2 class="text-primary-300 text-3xl font-semibold">Objectives</h2>
+      <ul
+        class="text-primary-400 mt-6 grid grid-cols-1 gap-4 leading-relaxed md:grid-cols-2 md:text-lg"
+      >
+        {
+          objectivesBullets.map((objective) => (
+            <li class="flex gap-3">
+              <span class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="h-full w-full fill-current"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span>{objective}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section class="bg-primary-800 mt-12 rounded-lg p-8 sm:p-12">
+      <h2
+        class="text-primary-300 text-3xl leading-relaxed font-semibold md:text-2xl"
+      >
+        Who is this course for?
+      </h2>
+      <p class="text-primary-400 mt-4 leading-relaxed md:text-lg">
+        This course is tailored for engineers and managers involved with
+        electrical/electronic/programmable, safety-related systems, who desire
+        to effectively implement concepts from IEC 61508. It includes lectures,
+        exercises, practical examples, discussions, and opportunities to ask
+        questions and share experiences with CSA's functional safety expert.
+      </p>
+    </section>
+    <section class="mt-12">
+      <h2
+        class="text-primary-300 mt-0.5 text-xl leading-relaxed font-semibold md:text-3xl"
+      >
+        Details
+      </h2>
+      <ul class="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2">
+        {
+          days.map((day, i) => (
+            <li class="text-primary-400 bg-primary-800 border-primary-700 rounded-lg border p-6">
+              <p class="font-semibold text-blue-500 uppercase">
+                Day {i + 1}
+              </p>
+              <h3 class="text-xl text-primary-300 font-semibold">{day.title}</h3>
+              <ul class="text-primary-400 mt-6 grid grid-cols-1 gap-4 leading-relaxed md:text-lg">
+                {day.bullets.map((bullet) => (
+                  <li class="flex gap-3">
+                    <span class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        class="h-full w-full fill-current"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section class="mt-12 grid grid-cols-1">
+      <div
+        class="bg-primary-800 rounded-t-lg p-8 md:p-12 lg:col-span-2 lg:rounded-lg"
+      >
+        <h2 class="text-primary-300 text-xl font-semibold md:text-2xl">
+          IFSP Requirements and Validity
+        </h2>
+        <p class="text-primary-400 mt-2 leading-relaxed md:text-lg">
+          You will receive the professional status of "IFSP" (Industrial Functional Safety Professional) if you successfully pass the 2-hour examination after completing the training course. The IFSP certification is valid for 5 years. By attending an update workshop, you can extend the qualification by 5 years by passing the multiple-choice test following the workshop.
+        </p>
+      </div>
+    </section>
+    <Image
+        class="w-full h-auto mt-12 rounded-lg"
+        src={examImage}
+        alt="Boston Dynamics robot dog"
+      />
+      <p class="text-center mt-12 text-primary-400">IFSP Personal Certification provided by</p>
+      <a href="/">
+        <span class="sr-only">Go to homepage</span>
+        <Image
+          class="mx-auto my-8 block h-20 w-auto"
+          src={logo}
+          loading="eager"
+          layout="fixed"
+          height={80}
+          alt="Critical Systems Analysis company logo"
+        />
+      </a>
+      <ul class="text-primary-400 mt-6 gap-4 leading-relaxed md:text-lg flex flex-col items-center justify-center">
+        {lastRemarks.map((remark) => (
+          <li class="flex gap-3">
+            <span class="text-primary-100 size-6 shrink-0 rounded-full bg-blue-600 p-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="h-full w-full fill-current"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+            <span>{remark}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href={registerLink}
+        class="text-primary-100 mx-auto mt-6 block max-w-fit cursor-pointer rounded-full bg-blue-600 p-2 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+        >Register for $1,995
+      </a>
+  </div>
+</Layout>

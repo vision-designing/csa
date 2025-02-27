@@ -1,0 +1,119 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const positions = await getCollection("jobs");
+---
+
+<Layout title="Careers — Critical Systems Analysis">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <p
+      class="mt-16 text-center font-bold tracking-wide text-blue-500 uppercase sm:mt-32"
+    >
+      Careers
+    </p>
+    <h2
+      class="text-primary-100 mt-1 text-center text-4xl font-bold tracking-tight md:text-5xl"
+    >
+      Join our team
+    </h2>
+    <p class="text-primary-400 mt-6 text-center leading-relaxed sm:text-lg">
+      Interested in joining the CSA team? Explore open positions below!
+    </p>
+    <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
+      {
+        positions.map((position) => (
+          <div class="border-primary-700 bg-primary-800 flex flex-col gap-2 rounded-lg border p-8">
+            <h2 class="text-primary-100 text-xl font-semibold">
+              {position.data.title}
+            </h2>
+            <ul class="text-primary-400 mt-6 flex flex-col gap-4 leading-relaxed">
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>{`Department: ${position.data.department}`}</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>{`Location: ${position.data.location}`}</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>{position.data.type}</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-primary-100 size-6 rounded-full bg-blue-600 p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    class="h-full w-full fill-current"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span>Benefits</span>
+              </li>
+            </ul>
+            <a
+              href={`/careers/${position.id}/`}
+              class="text-primary-100 mt-6 block w-full cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+            >
+              Learn More
+            </a>
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-4 flex flex-col items-center gap-5 py-32 sm:mt-8">
+      <p class="text-primary-400 sm:text-lg">
+        Don't see what you're looking for? Feel free to contact us with your
+        qualifications and resume!
+      </p>
+      <a
+        href="/careers/application/"
+        class="text-primary-100 block w-fit cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+      >
+        Apply now
+      </a>
+    </div>
+  </div>
+</Layout>

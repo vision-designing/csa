@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@theme {
+  --font-sans:
+    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-primary-50: oklch(98.4% 0.003 254.24);
+  --color-primary-100: oklch(96.063% 0.00853 254.28);
+  --color-primary-200: oklch(91.426% 0.01605 261.89);
+  --color-primary-300: oklch(84.689% 0.02658 259.28);
+  --color-primary-400: oklch(67.451% 0.04611 263.17);
+  --color-primary-500: oklch(51.714% 0.05364 263.8);
+  --color-primary-600: oklch(40.177% 0.05216 263.66);
+  --color-primary-700: oklch(32.04% 0.05469 263.67);
+  --color-primary-800: oklch(22.003% 0.05322 266.41);
+  --color-primary-900: oklch(14.166% 0.05574 272.14);
+  --color-primary-950: oklch(12.9% 0.042 271.08);
+}

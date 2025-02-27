@@ -1,308 +1,256 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Layout from '~/layouts/PageLayout.astro';
-import Safe from '~/components/widgets/indSafety.astro';
-import Standards from '~/components/widgets/standards.astro';
-
-const metadata = {
-  title: 'Industries',
-};
+import Layout from "~/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import skylineImage from "~/assets/skyline.webp";
 ---
 
-<Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    actions={
-      [
-        {
-        text: 'Rail Safety',
-        href: '#rail',
-      },
-      {
-        text: 'Robotics Safety',
-        href: '#robotics',
-      },
-    ]
-    }
-    tagline=""
-    image={{
-      src: '~/assets/images/skyline3.jpeg',
-      alt: 'City Skyline',
-      class: '!object-cover rounded-lg ![aspect-ratio:auto]'
-    }}
-  >
-    <Fragment slot="title">
-      Industries <br />
-      <!-- <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span> -->
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      CSA has contributed to projects in many industries including rail, robotics, industrial machinery and autonomous vehicles. Learn more about the projects we have worked on in the <a href="/experience/", class="highlighted-link">experience page</a>.
-    </Fragment>
-  </Hero>
-
-  <style>
-    .highlighted-link {
-      color: orange;
-      /* text-decoration: bold; */
-    }
-
-    .highlighted-link:hover {
-      color: darkblue;
-    }
-  </style>
-
-  <!-- Stats Widget ****************** -->
-
-  <!-- <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  /> -->
-
-  <!-- Features3 Widget ************** -->
-
-  <Safe
-
-    columns={2}
-    isBeforeContent={false}
-    items={[
-      {
-        title: 'Rail Safety',
-        description:
-          'The rail industry is highly regulated and requires rigorous analysis to comply with safety requirements. CSA has long been involved in the development and integration of processor-based fail-safe train control systems.',
-        icon: 'tabler:train',
-        // image: {
-        //   src: 'https://criticalsa-website.s3.amazonaws.com/_astro/EXP_AMR.khVmCtzA.jpeg',
-        //   alt: 'Steps image',
-        // }
-      },
-      {
-        title: 'Robotics Safety',
-        description:
-          'The application of safety in robotic systems is complex and rapidly evolving. There are numerous standards for each technology class and new standards are being released every year, it can be difficult to stay up to date with the state-of-the-art.',
-        icon: 'tabler:robot-face',
-      },
-      
-    ]}
-  />
-
-  <!-- <Features3
-    title=""
-    subtitle=""
-    columns={2}
-    isBeforeContent={false}
-    items={[
-      {
-        title: 'Rail Safety',
-        description:
-          'The rail industry is highly regulated and requires rigorous analysis to comply with safety requirements. CSA has long been involved in the development and integration of processor-based fail-safe train control systems.',
-        icon: 'tabler:template',
-        // image: {
-        //   src: 'https://criticalsa-website.s3.amazonaws.com/_astro/EXP_AMR.khVmCtzA.jpeg',
-        //   alt: 'Steps image',
-        // }
-      },
-      {
-        title: 'Robotics Safety',
-        description:
-          'The application of safety in robotic systems is complex and rapidly evolving. There are numerous standards for each technology class and new standards are being released every year, it can be difficult to stay up to date with the state-of-the-art.',
-        icon: 'tabler:template',
-      },
-      
-    ]}
-  /> -->
-
-  <!-- Features3 Widget ************** -->
-
-  <!-- <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
-  /> -->
-
-  <!-- Steps2 Widget ****************** -->
-
-  
-
-  <!-- Features2 Widget ************** -->
-
-  
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    id="robotics"
-    title="Robotics Services"
-    tagline="What we do"
-    columns={3}
-    items={[
-      {
-        title: 'Safety Trainings',
-        description:
-          '<ul class="list-disc ml-4 text-gray-400"><li>ISO 13849 | IEC 61508 | IEC 62061 | ISO 26262 </li> <li> Risk Assessment | FMEA | FMEDA | FTA </li><li> Tailored trainings available</li></ul>',
-        icon: 'tabler:books',
-      },
-      {
-        title: 'Functinal Safety Management',
-        description:
-          '<ul class="list-disc ml-4 text-gray-400"><li>One-time or on demand project planning guidance </li><li> Dedicated safety manager to lead project safety efforts </li><li> Certification guidance and support</li></ul>',
-        icon: 'tabler:shield-check',
-      },
-      {
-        title: 'Work Products Creation',
-        description:
-          '<ul class="list-disc ml-4 text-gray-400"><li>Temporary safety engineering to support project peak demand </li><li> Safety analysis to support safety case </li><li> Risk Assessment | FMEA | FMEDA | FTA </li><li> Leverage CSA’s experience to create higher quality work products faster</li></ul>',
-        icon: 'tabler:settings-code',
-      },
-    ]}
-  />
-
-  <Standards
-    title=""
-    tagline="Robotics Standards"
-    columns={4}
-    image={{ src: '~/assets/images/welding robotic arm.jpg', alt: 'Critical Systems Analysis Image' }}
-    items={[
-      {
-        title: 'ISO 13849',
-        description: 'Safety of Machinery - SRP/CS',
-      },
-      {
-        title: 'ISO 12100',
-        description: 'Guide for Risk Assessments',
-      },
-      {
-        title: 'IEC 61508',
-        description: 'Functional Safety of Safety Related Control Systems',
-      },
-      {
-        title: 'ANSI/ASME B20.1',
-        description: 'Statdard for Conveyors',
-      },
-      {
-        title: 'ISO 3691-4',
-        description: 'Driverless industrial trucks and their systems',
-      },
-      {
-        title: 'IEC 62061',
-        description: 'Safety of machinery: Functional safety of E/E/PE control systems',
-      },
-      {
-        title: 'ISO 14119',
-        description: 'Safety of machinery — Interlocking devices associated with guards',
-      },
-      {
-        title: 'IEC 61496',
-        description: 'Safety of machinery - Electro-sensitive protective equipment',
-      },
-    ]}
-  />
-
-  <Features2
-    id="rail"
-    title="Rail Services"
-    tagline="What we do"
-    columns={3}
-    items={[
-      {
-        title: 'Functional Safety Consulting',
-        description:
-          '<ul style="list-style: disc;margin-inline-start: 16px;"><li>Assist in the development and execution of safety programs</li>\n<li>Assure adherence to relevant safety standards</li></ul>',
-        icon: 'tabler:lock-code',
-      },
-      {
-        title: 'RAM Consulting',
-        description:
-          '<ul style="list-style: disc;margin-inline-start: 16px;"><li>Perform reliability, availability, and maintainability analyses</li>\n<li>Support new product/system development or larger systems engineering project</li></ul>',
-        icon: 'tabler:hexagon-3d',
-      },
-      {
-        title: 'RAMS Training',
-        description:
-          '<ul style="list-style: disc;margin-inline-start: 16px;"><li>Virtual and in-person training</li>\n<li>Applicable safety and reliability standards and specific analyses methodologies</li></ul>',
-        icon: 'tabler:devices-check',
-      },
-    ]}
-  />
-
-  <!-- <Standards
-    title=""
-    tagline="Rail Standards"
-    columns={3}
-    image={{ src: '~/assets/images/high speed train 2.jpg', alt: 'Critical Systems Analysis Image' }}
-    items={[
-      {
-        title: 'ISO 14119',
-        description: 'Safety of machinery — Interlocking devices associated with guards',
-      },
-      {
-        title: 'IEC 61496',
-        description: 'Safety of Machinery - Electrosensitive protective equipment',
-      },
-      {
-        title: 'ISO/IEC/IEEE 15288',
-        description: 'System life cycle processes',
-      },
-      {
-        title: 'EN 50126-1/50126-2',
-        description: 'Reliability, availability, maintainability, and safety (RAMS) for rail',
-      },
-      {
-        title: 'MIL-STD-785B',
-        description: 'System safety analyses for DoD systems',
-      },
-      {
-        title: 'AREMA',
-        description: 'American Railway Engineering and Maintenance-of-Way Association',
-      },
-      
-    ]}
-  /> -->
+<Layout title="Industries — Critical Systems Analysis">
+  <div class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
+    <h1
+      class="text-primary-100 mt-16 text-center text-4xl font-bold tracking-tight sm:mt-32 md:text-5xl"
+    >
+      Industries
+    </h1>
+    <p
+      class="text-primary-400 mx-auto mt-6 max-w-prose leading-relaxed sm:text-lg"
+    >
+      CSA has contributed to projects in many industries including rail,
+      robotics, industrial machinery and autonomous vehicles. Learn more about
+      the projects we have worked on in the <a
+        href="/experience/"
+        class="text-blue-400 underline underline-offset-2 hover:text-blue-500"
+        >experience page</a
+      >.
+    </p>
+    <div class="my-8 flex flex-col justify-center gap-4 sm:flex-row">
+      <a
+        class="hover:bg-primary-500 ring-primary-500 text-primary-200 block cursor-pointer rounded-full px-6 py-3 text-center font-semibold ring transition"
+        href="#rail">Rail Safety</a
+      >
+      <a
+        class="hover:bg-primary-500 ring-primary-500 text-primary-200 block cursor-pointer rounded-full px-6 py-3 text-center font-semibold ring transition"
+        href="#robotics">Robotics Safety</a
+      >
+    </div>
+    <Image
+      src={skylineImage}
+      class="mx-auto mt-8 max-w-lg rounded-lg object-cover sm:max-w-3xl lg:mt-16"
+      alt="Skyline of a city"
+      layout="full-width"
+      loading="eager"
+    />
+    <div class="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mt-28">
+      <div class="flex items-start gap-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-8 shrink-0 fill-none stroke-current text-blue-500"
+          viewBox="0 0 24 24"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        >
+          <path d="M21 13c0-3.87-3.37-7-10-7H3m0 9h16a2 2 0 0 0 2-2"
+          ></path><path d="M3 6v5h17.5M3 11v4m5-4V6m5 5V6.5M3 19h18"
+          ></path></svg
+        >
+        <article>
+          <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+            Rail Safety
+          </h2>
+          <p class="text-primary-400 mt-2 leading-relaxed">
+            The rail industry is highly regulated and requires rigorous analysis
+            to comply with safety requirements. CSA has long been involved in
+            the development and integration of processor-based fail-safe train
+            control systems.
+          </p>
+        </article>
+      </div>
+      <div class="flex items-start gap-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="size-8 shrink-0 fill-current text-blue-500"
+          ><path
+            d="M9 12q.825 0 1.413-.587T11 10t-.587-1.412T9 8t-1.412.588T7 10t.588 1.413T9 12m6 0q.825 0 1.413-.587T17 10t-.587-1.412T15 8t-1.412.588T13 10t.588 1.413T15 12m-6 9v-4h2v4zm4 0v-4h2v4zm-8 0q-.825 0-1.412-.587T3 19V9q0-2.5 1.75-4.25T9 3h6q2.5 0 4.25 1.75T21 9v10q0 .825-.587 1.413T19 21h-2v-4q0-.825-.587-1.412T15 15H9q-.825 0-1.412.588T7 17v4z"
+          ></path></svg
+        >
+        <article>
+          <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+            Robotics Safety
+          </h2>
+          <p class="text-primary-400 mt-2 leading-relaxed">
+            The application of safety in robotic systems is complex and rapidly
+            evolving. There are numerous standards for each technology class and
+            new standards are being released every year, it can be difficult to
+            stay up to date with the state-of-the-art.
+          </p>
+        </article>
+      </div>
+    </div>
+    <p
+      class="pt-24 font-bold tracking-wide text-blue-500 uppercase sm:pt-36"
+      id="robotics"
+    >
+      What we do
+    </p>
+    <h2
+      class="text-primary-100 mt-1 text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+    >
+      Robotics Services
+    </h2>
+    <div class="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <article class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+          Safety Trainings
+        </h2>
+        <ul class="text-primary-400 mt-3 flex flex-col gap-1 leading-relaxed">
+          <li>ISO 13849 | IEC 61508 | IEC 62061 | ISO 26262</li>
+          <li>Risk Assessment | FMEA | FMEDA | FTA</li>
+          <li>Tailored trainings available</li>
+        </ul>
+      </article>
+      <article class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+          Functional Safety Management
+        </h2>
+        <ul class="text-primary-400 mt-3 flex flex-col gap-1 leading-relaxed">
+          <li>One-time or on demand project planning guidance</li>
+          <li>Dedicated safety manager to lead project safety efforts</li>
+          <li>Certification guidance and support</li>
+        </ul>
+      </article>
+      <article class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+          Work Products Creation
+        </h2>
+        <ul class="text-primary-400 mt-3 flex flex-col gap-1 leading-relaxed">
+          <li>Temporary safety engineering to support project peak demand</li>
+          <li>Risk Assessment | FMEA | FMEDA | FTA</li>
+          <li>Tailored trainings available</li>
+        </ul>
+      </article>
+    </div>
+    <p class="mt-24 font-bold tracking-wide text-blue-500 uppercase sm:mt-36">
+      What we do
+    </p>
+    <h2
+      class="text-primary-100 mt-1 text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+    >
+      Robotics Standards
+    </h2>
+    <ul class="mt-6 grid gap-8 sm:grid-cols-2">
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          ISO 13849
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Safety of Machinery - SRP/CS
+        </p>
+      </li>
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          ISO 12100
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Guide for Risk Assessments
+        </p>
+      </li>
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          ANSI/ASME B20.1
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Statdard for Conveyors
+        </p>
+      </li>
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          ISO 3691-4
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Driverless industrial trucks and their systems
+        </p>
+      </li>
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          IEC 62061
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Safety of machinery: Functional safety of E/E/PE control systems
+        </p>
+      </li>
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          ISO 14119
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Safety of machinery — Interlocking devices associated with guards
+        </p>
+      </li>
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          IEC 61496
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Safety of machinery - Electro-sensitive protective equipment
+        </p>
+      </li>
+      <li class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h3 class="text-primary-100 text-lg font-semibold tracking-tight">
+          IEC 61508
+        </h3>
+        <p class="text-primary-400 mt-1 leading-relaxed">
+          Functional Safety of Safety Related Control Systems
+        </p>
+      </li>
+    </ul>
+    <p
+      class="pt-24 font-bold tracking-wide text-blue-500 uppercase sm:pt-36"
+      id="rail"
+    >
+      What we do
+    </p>
+    <h2
+      class="text-primary-100 mt-1 text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+    >
+      Rail Services
+    </h2>
+    <div class="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <article class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+          Functional Safety Consulting
+        </h2>
+        <ul class="text-primary-400 mt-3 flex flex-col gap-1 leading-relaxed">
+          <li>Assist in the development and execution of safety programs</li>
+          <li>Assure adherence to relevant safety standards</li>
+        </ul>
+      </article>
+      <article class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+          RAM Consulting
+        </h2>
+        <ul class="text-primary-400 mt-3 flex flex-col gap-1 leading-relaxed">
+          <li>
+            Perform reliability, availability, and maintainability analyses
+          </li>
+          <li>
+            Support new product/system development or larger systems engineering
+            project
+          </li>
+        </ul>
+      </article>
+      <article class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+        <h2 class="text-primary-100 text-lg font-semibold tracking-tight">
+          RAMS Training
+        </h2>
+        <ul class="text-primary-400 mt-3 flex flex-col gap-1 leading-relaxed">
+          <li>Virtual and in-person training</li>
+          <li>
+            Applicable safety and reliability standards and specific analyses
+            methodologies
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
 </Layout>

@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  date: Date;
+  id: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+const { title, image, id, description, date } = Astro.props;
+---
+
+<article class="group bg-primary-800 border-primary-700 rounded-lg border p-6">
+  <div class="overflow-hidden rounded-lg sm:aspect-square">
+    <Image
+      src={image.src}
+      alt={image.alt}
+      inferSize={true}
+      class="sm:h-full!"
+      layout="full-width"
+    />
+  </div>
+  <time
+    class="text-primary-400 mt-4 block text-sm tracking-wide uppercase"
+    datetime={date.toISOString()}
+  >
+    {
+      date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    }
+  </time>
+  <h2
+    class="text-primary-100 mt-1 block text-lg font-semibold group-hover:text-blue-500"
+  >
+    {title}
+  </h2>
+  <p class="text-primary-400 mt-2 block">{description}</p>
+  <a
+    class="text-primary-100 mt-4 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-2 text-center font-semibold before:absolute before:inset-0 hover:bg-blue-700"
+    href={`/articles/${id}/`}
+    class="before:absolute before:inset-0">Read more</a
+  >
+</article>

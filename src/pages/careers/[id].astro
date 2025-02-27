@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "~/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const positions = await getCollection("jobs");
+  return positions.map((position) => ({
+    params: { id: position.id },
+    props: { position },
+  }));
+}
+
+const { position } = Astro.props;
+const { Content } = await render(position);
+---
+
+<Layout title={`${position.data.title} — Critical Systems Analysis`}>
+  <div class="mx-auto max-w-5xl px-6 pb-12 lg:px-8">
+    <h1
+      class="text-primary-100 mt-16 text-center text-4xl font-bold tracking-tight sm:mt-32 md:text-5xl"
+    >
+      {position.data.title}
+    </h1>
+    <ul
+      class="text-primary-400 my-6 flex flex-row flex-wrap justify-center gap-1 sm:text-lg"
+    >
+      <li class="after:mx-2 after:content-['•']">{position.data.department}</li>
+      <li class="after:mx-2 after:content-['•']">{position.data.location}</li>
+      <li class="after:mx-2 after:content-['•']">{position.data.type}</li>
+      <li>{position.data.level}</li>
+    </ul>
+    <article
+      class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300 prose-tr:border-primary-600 prose-img:w-full max-w-none"
+    >
+      <Content />
+    </article>
+    <div
+      class="bg-primary-800 border-primary-700 mt-8 flex flex-col items-center justify-center gap-4 rounded-lg border p-6 sm:p-8"
+    >
+      <p
+        class="text-primary-100 text-center text-xl font-semibold tracking-tight sm:text-2xl"
+      >
+        Want to join the CSA team?
+      </p>
+      <a
+        class="text-primary-100 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:mt-0"
+        href="/careers/application/">Apply now</a
+      >
+    </div>
+  </div>
+</Layout>

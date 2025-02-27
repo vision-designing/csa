@@ -1,364 +1,450 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import { getPermalink } from '~/utils/permalinks';
-
-const metadata = {
-  title: 'CSA',
-  ignoreTitleTemplate: true,
-};
+import { Image } from "astro:assets";
+import Carousel from "~/components/Carousel.astro";
+import Layout from "~/layouts/Layout.astro";
+import safetyImage from "~/assets/safety-access.webp";
+import trainImage from "~/assets/train.webp";
+import weldingRobotImage from "~/assets/welding-robot-arm.webp";
+import { bookingLink } from "~/content/constants";
 ---
 
-<Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Contact us',
-        href: getPermalink('/contact/'),
-        target: '_blank',
-        icon: '',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={[{ src: '~/assets/images/welding robotic arm 2.jpg', alt: 'Critical Systems Analysis Image' }]}
-  >
-    <Fragment slot="title"> Critical Systems Analysis </Fragment>
-
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold"></span>Leading Safety in Automation with Integrity and Respect</span
+<Layout>
+  <div class="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
+    <h1
+      class="text-primary-100 mt-16 text-center text-5xl font-bold tracking-tighter text-balance sm:mt-32 sm:text-6xl"
+    >
+      Critical Systems Analysis
+    </h1>
+    <p class="text-primary-400 mt-6 text-center sm:text-lg">
+      Leading Safety in Automation with Integrity and Respect
+    </p>
+    <div class="mt-6 mb-12 flex flex-col justify-center gap-4 sm:flex-row">
+      <a
+        class="text-primary-200 cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+        href="/contact/">Contact us</a
       >
-    </Fragment>
-  </Hero>
+      <a
+        class="hover:bg-primary-500 ring-primary-500 text-primary-200 cursor-pointer rounded-full px-6 py-3 text-center font-semibold ring transition"
+        href={bookingLink}>Book a call</a
+      >
+    </div>
+    <Carousel />
+    <div class="py-28 md:py-40" id="features">
+      <h2
+        class="text-primary-100 text-center text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+      >
+        Safety Consulting Done Right
+      </h2>
+      <p
+        class="text-primary-400 mx-auto mt-4 max-w-prose leading-relaxed sm:text-lg"
+      >
+        Safety consultants and educators provide an expert perspective on
+        systems assurance, safety engineering, and RAM engineering that save you
+        time and money in developing the safest systems practical.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <div class="flex flex-col justify-center">
+        <h2
+          class="text-primary-100 text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+        >
+          Making safety more accessible
+        </h2>
+        <div class="text-primary-300 mt-6 flex lg:mt-10">
+          <div class="mr-4 flex flex-col items-center">
+            <div>
+              <div class="flex items-center justify-center">
+                <svg
+                  class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                  viewBox="0 0 24 24"
+                  data-icon="tabler:arrow-down"
+                  height="1em"
+                  width="1em"
+                  ><path
+                    d="M12 5v14m6-6l-6 6m-6-6l6 6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    fill="none"
+                    stroke="currentColor"></path></svg
+                >
+              </div>
+            </div>
+            <div class="h-full w-0.5 bg-blue-700"></div>
+          </div>
+          <div class="pt-2 pb-8">
+            <p class="sm:text-lg">Reduce Cost</p>
+          </div>
+        </div>
+        <div class="text-primary-300 flex">
+          <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+            <div>
+              <div class="flex items-center justify-center">
+                <svg
+                  class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                  viewBox="0 0 24 24"
+                  height="1em"
+                  width="1em"
+                >
+                  <path
+                    d="M12 5v14m6-8l-6-6m-6 6l6-6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    fill="none"
+                    stroke="currentColor"></path></svg
+                >
+              </div>
+            </div>
+            <div class="h-full w-0.5 bg-blue-700"></div>
+          </div><div class="pt-2 pb-8">
+            <p class="sm:text-lg">Accelerate Safety Development</p>
+          </div>
+        </div><div class="text-primary-300 flex">
+          <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+            <div>
+              <div class="flex items-center justify-center">
+                <svg
+                  class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                  viewBox="0 0 24 24"
+                  height="1em"
+                  width="1em"
+                  ><path
+                    d="M12 5v14m6-8l-6-6m-6 6l6-6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    fill="none"
+                    stroke="currentColor"></path></svg
+                >
+              </div>
+            </div>
+          </div><div class="pt-1">
+            <p class="sm:text-lg">Educate and Simplify</p>
+          </div>
+        </div>
+      </div>
+      <Image
+        src={safetyImage}
+        alt="Man carrying a hard hat"
+        class="w-full rounded-lg"
+        layout="full-width"
+      />
+    </div>
+    <div class="py-28 md:py-40">
+      <h2
+        class="text-primary-100 text-center text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+      >
+        Save Time. Save Money.
+      </h2>
+      <p
+        class="text-primary-400 mx-auto mt-4 max-w-prose leading-relaxed text-pretty sm:text-lg"
+      >
+        CSA has the <span class="text-primary-200 font-semibold"
+          >experience</span
+        > and <span class="text-primary-200 font-semibold">expertise</span> to discover
+        design concerns sooner leading to a smaller cost to correct, saving you time
+        and money.
+      </p>
+    </div>
 
-  <Features
-    id="features"
-    title="Safety Consulting Done Right"
-    subtitle="Safety consultants and educators provide an expert perspective on systems assurance, safety engineering, and RAM engineering that save you time and money in developing the safest systems practical."
-    items={[
-      // {
-      //   title: 'Safety and Security',
-      //   description: '',
-      //   icon: 'tabler:brand-tailwind',
-      // },
-      // {
-      //   title: 'RAM',
-      //   description: '',
-      //   icon: 'tabler:components',
-      // },
-      // {
-      //   title: 'Threat and Vulnerability',
-      //   description: '',
-      //   icon: 'tabler:list-check',
-      // },
-      // {
-      //   title: 'Systems Engineering',
-      //   description: '',
-      //   icon: 'tabler:rocket',
-      // },
-      // {
-      //   title: 'Systems Assurance',
-      //   description: '',
-      //   icon: 'tabler:arrows-right-left',
-      // },
-      // {
-      //   title: 'Monitoring',
-      //   description: '',
-      //   icon: 'tabler:bulb',
-      // },
-    ]}
-  />
-
-  <Steps 
-    title='Making safety more accessible'
-    isReversed={false}
-    items={
-      [
-        {
-          title: 'Reduce Cost',
-          icon:'tabler:arrow-down',
-        },
-        {
-          title: 'Accelerate Safety Development',
-          icon:'tabler:arrow-up',
-        },
-        {
-          title: 'Educate and Simplify',
-          icon:'tabler:arrow-up',
-        },
-      ]
-    }
-    image={{
-      src: '~/assets/images/helmet.jpeg',
-      alt: 'Safety Image',
-    }}
-  />
-  
-  <CallToAction
-  actions={[
-  ]}
-  >
-  <Fragment slot="title">
-    <span class="sm:whitespace-nowrap">Save Time. Save Money.</span>
-  </Fragment>
-
-  <Fragment slot="subtitle"> CSA has the <span class="font-bold">experience</span> and <span class="font-bold">expertise</span> to discover design concerns sooner leading to a smaller cost to correct, saving you time and money. </Fragment>
-</CallToAction>
-
-
-  <!-- Content Widget **************** -->
-
-  <!-- <Content
-    isReversed
-    title="Making safety more accessable"
-    items={[
-      {
-        title: 'Reduce Cost',
-        description: '',
-      },
-      {
-        title: 'Accelerate Safety Development',
-        description: '',
-      },
-      {
-        title: 'Educate and Simplify',
-        description: "",
-      },
-    ]}
-    image={{
-      src: '~/assets/images/Safety_Access.jpeg',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content> -->
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Rail"
-    tagline="Industry Expertise"
-    isReversed={true}
-    items={[
-      {
-        title: 'Commuter | Freight | Transit | Autonomy ',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Independent and Impartial',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Systems and Safety Engineering',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Safety Analysis | Safety Assessment | System Reliability Analysis | Safety Lifecycle Management',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: '~/assets/images/train1.jpg',
-      alt: 'Steps image',
-    }}
-  />
-
-  <Steps
-    title="Robotics"
-    tagline="Industry Expertise"
-    isReversed={false}
-    items={[
-      
-      {
-        title: 'Technical experts in functional safety and product safety - Industrial robotics | AMR | work cell | heavy machinery',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Vast experience in many globally accepted safety analysis techniques',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Leverage extensive experiences in systems engineering and safety engineering',
-        icon: 'tabler:check',
-      },
-      {
-        title: 'Achieve compliance faster with CSA - ISO 13849 | IEC 61508 | IEC 62061 | ISO 26262',
-        icon: 'tabler:check' 
-      },
-    ]}
-    image={{
-      src: '~/assets/images/welding robotic arm 4.jpg',
-      alt: 'Steps image',
-    }}
-  />
-
-  
-  <Steps2
-    title="Services"
-    subtitle="Whether you are searching for guidance and advice, support in document creation and safety analyses, or corporate training, CSA is here to serve."
-    callToAction={{
-      text: 'Services Page',
-      href: '/services/',
-    }}
-    items={[
-      {
-        title: 'Strategic Certification Consulting',
-        description:
-          'Provide advice and direction on historically successful project planning strategies',
-      },
-      {
-        title: 'Safety Program Support',
-        description:
-          'Demonstrate and perform complex safety analysis and generate safety deliverables',
-      },
-      {
-        title: 'Training',
-        description:
-          'Educate teams and individuals on the skills required for every aspect of the safety lifecycle',
-      },
-    ]}
-  />
-
-
-  <!-- Steps2 Widget ****************** -->
-
-  <!-- <Steps2
-    title="Save Time. Save Money."
-    subtitle="CSA has the expertise to discover issues sooner leading to a smaller cost to correct, saving you time and money."
-    isReversed={true}
-    
-    items={[
-      {
-        title: 'Describe how catching errors sooner saves money and time',
-        description: 'Additional details',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Expertise',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Industry Experience',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  /> -->
-
-
-  <!-- <Steps
-    title="How CSA will take your operations to the next level"
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Contact us</span>',
-        description: 'Reach out to our friendly service reps',
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Explore our services</em>',
-        description:
-          'Our reps will work to find the best options available to your organization to bring your operations to the next level.',
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Receive your customized plan</span>',
-        description: 'Not really sure what you do but idk maybe Ben DMs you with a spreadsheet or something.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Profit',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  /> -->
-
-  <!-- FAQs Widget ******************* -->
-
-  <!-- <FAQs
-    title="Frequently Asked Questions"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why CSA?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How quick does it take to implement our solutions?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: 'How much can we expect to save?',
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'Why do I have so many nightmares?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  /> -->
-
-  <!-- Stats Widget ****************** -->
-
-  <!-- <Stats
-    stats={[
-      { title: 'Customers', amount: '55' },
-      { title: 'Cost saved each project', amount: '$24.8K' },
-      { title: 'Engineers', amount: '10' },
-      { title: "Hayden's", amount: '1' },
-    ]}
-  /> -->
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Contact us',
-        href: getPermalink('/contact/'),
-        target: '_blank',
-        icon: '',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      <span class="sm:whitespace-nowrap">Contact us today</span>
-    </Fragment>
-
-    <Fragment slot="subtitle"> Find out what CSA can do for you </Fragment>
-  </CallToAction>
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+      <div class="flex flex-col justify-center lg:order-2">
+        <p class="font-bold tracking-wide text-blue-500 uppercase">
+          Industry Expertise
+        </p>
+        <h2
+          class="text-primary-100 mt-2 text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+        >
+          Rail
+        </h2>
+        <ol class="text-primary-300 mt-6 lg:mt-10">
+          <div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"
+                    ><symbol id="ai:tabler:check"
+                      ><path
+                        d="m5 12l5 5L20 7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        fill="none"
+                        stroke="currentColor"></path></symbol
+                    ><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div><div class="h-full w-0.5 bg-blue-600"></div>
+            </div><div class="pt-1 pb-8">
+              <p class="sm:text-lg">Commuter | Freight | Transit | Autonomy</p>
+            </div>
+          </div><div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div><div class="h-full w-0.5 bg-blue-600"></div>
+            </div><div class="pt-1 pb-8">
+              <p class="sm:text-lg">Independent and Impartial</p>
+            </div>
+          </div><div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div><div class="h-full w-0.5 bg-blue-600"></div>
+            </div><div class="pt-1 pb-8">
+              <p class="sm:text-lg">Systems and Safety Engineering</p>
+            </div>
+          </div><div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div>
+            </div><div class="pt-1">
+              <p class="sm:text-lg">
+                Safety Analysis | Safety Assessment | System Reliability
+                Analysis | Safety Lifecycle Management
+              </p>
+            </div>
+          </div>
+        </ol>
+      </div>
+      <Image
+        src={trainImage}
+        alt="illustration of a train"
+        layout="full-width"
+        class="w-full rounded-lg"
+      />
+    </div>
+    <div class="mt-28 grid grid-cols-1 gap-12 lg:mt-40 lg:grid-cols-2">
+      <div class="flex flex-col justify-center">
+        <p class="font-bold tracking-wide text-blue-500 uppercase">
+          Industry Expertise
+        </p>
+        <h2
+          class="text-primary-100 mt-2 text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+        >
+          Robotics
+        </h2>
+        <div class="text-primary-300 mt-6 lg:mt-10">
+          <div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"
+                    ><symbol id="ai:tabler:check"
+                      ><path
+                        d="m5 12l5 5L20 7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        fill="none"
+                        stroke="currentColor"></path></symbol
+                    ><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div><div class="h-full w-0.5 bg-blue-600"></div>
+            </div><div class="pt-1 pb-8">
+              <p class="leading-relaxed sm:text-lg">
+                Technical experts in functional safety and product safety -
+                Industrial robotics | AMR | work cell | heavy machinery
+              </p>
+            </div>
+          </div><div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div><div class="h-full w-0.5 bg-blue-600"></div>
+            </div><div class="pt-1 pb-8">
+              <p class="leading-relaxed sm:text-lg">
+                Vast experience in many globally accepted safety analysis
+                techniques
+              </p>
+            </div>
+          </div><div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div><div class="h-full w-0.5 bg-blue-600"></div>
+            </div><div class="pt-1 pb-8">
+              <p class="leading-relaxed sm:text-lg">
+                Leverage extensive experiences in systems engineering and safety
+                engineering
+              </p>
+            </div>
+          </div><div class="flex">
+            <div class="mr-4 flex flex-col items-center rtl:mr-0 rtl:ml-4">
+              <div>
+                <div class="flex items-center justify-center">
+                  <svg
+                    class="h-10 w-10 rounded-full border-2 border-blue-600 p-2"
+                    viewBox="0 0 24 24"
+                    data-icon="tabler:check"
+                    height="1em"
+                    width="1em"><use xlink:href="#ai:tabler:check"></use></svg
+                  >
+                </div>
+              </div>
+            </div><div class="pt-1">
+              <p class="leading-relaxed sm:text-lg">
+                Achieve compliance faster with CSA - ISO 13849 | IEC 61508 | IEC
+                62061 | ISO 26262
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Image
+        src={weldingRobotImage}
+        alt="Welding robot arm"
+        class="w-full rounded-lg"
+        layout="full-width"
+      />
+    </div>
+    <div class="gap-12 lg:mt-40 lg:grid lg:grid-cols-2">
+      <div class="py-28 lg:p-0">
+        <h2
+          class="text-primary-100 text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
+        >
+          Services
+        </h2>
+        <p
+          class="text-primary-400 mt-4 max-w-prose leading-relaxed text-pretty sm:text-lg"
+        >
+          Whether you are searching for guidance and advice, support in document
+          creation and safety analyses, or corporate training, CSA is here to
+          serve.
+        </p>
+        <a
+          href="/services/"
+          class="text-primary-100 mt-6 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+          >Services</a
+        >
+      </div>
+      <ol class="counter flex flex-col gap-8 sm:text-lg">
+        <li>
+          <h3 class="text-primary-100 mb-3 font-semibold">
+            Strategic Certification Consulting
+          </h3>
+          <p class="text-primary-400 leading-relaxed">
+            Provide advice and direction on historically successful project
+            planning strategies
+          </p>
+        </li>
+        <li>
+          <h3 class="text-primary-100 mb-3 font-semibold">
+            Safety Program Support
+          </h3><p class="text-primary-400 leading-relaxed">
+            Demonstrate and perform complex safety analysis and generate safety
+            deliverables
+          </p>
+        </li>
+        <li>
+          <h3 class="text-primary-100 mb-3 font-semibold">Training</h3><p
+            class="text-primary-400 leading-relaxed"
+          >
+            Educate teams and individuals on the skills required for every
+            aspect of the safety lifecycle
+          </p>
+        </li>
+      </ol>
+    </div>
+    <div
+      class="bg-primary-800 border-primary-700 mt-28 flex flex-col rounded-lg border p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-40"
+    >
+      <div>
+        <h2
+          class="text-primary-100 text-2xl font-bold tracking-tighter text-balance"
+        >
+          Contact us today
+        </h2>
+        <p
+          class="text-primary-400 mt-2 max-w-prose leading-relaxed text-pretty sm:text-lg"
+        >
+          Find out what CSA can do for you
+        </p>
+      </div>
+      <a
+        class="text-primary-100 mt-4 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:mt-0"
+        href="/contact/">Contact us</a
+      >
+    </div>
+  </div>
 </Layout>
+<style>
+  .counter {
+    counter-reset: features-counter;
+  }
+
+  .counter li {
+    counter-increment: features-counter;
+    padding-left: calc(var(--spacing) * 20);
+    position: relative;
+  }
+
+  .counter li::before {
+    position: absolute;
+    left: 0;
+    content: counter(features-counter);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--spacing) * 12);
+    height: calc(var(--spacing) * 12);
+    background: var(--color-primary-100);
+    color: var(--color-blue-600);
+    font-weight: 600;
+    border-radius: calc(infinity * 1px);
+    border: 2px solid var(--color-blue-600);
+  }
+</style>

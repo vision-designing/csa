@@ -1,0 +1,85 @@
+<contact-form>
+  <form class="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-4">
+    <div>
+      <label class="text-primary-200 block text-sm/6 font-medium" for="name">
+        Name <span class="text-red-500">*</span>
+      </label>
+      <input
+        class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+        name="name"
+        id="name"
+        required
+      />
+    </div>
+    <div>
+      <label class="text-primary-200 block text-sm/6 font-medium" for="company">
+        Company <span class="text-red-500">*</span>
+      </label>
+      <input
+        class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+        name="company"
+        id="company"
+        required
+      />
+    </div>
+    <div>
+      <label class="text-primary-200 block text-sm/6 font-medium" for="email">
+        Email <span class="text-red-500">*</span>
+      </label>
+      <input
+        class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+        name="email"
+        id="email"
+        type="email"
+        required
+      />
+    </div>
+    <div>
+      <label class="text-primary-200 block text-sm/6 font-medium" for="phone">
+        Phone
+      </label>
+      <input
+        class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+        name="phone"
+        id="phone"
+      />
+    </div>
+    <div>
+      <label class="text-primary-200 block text-sm/6 font-medium" for="message">
+        Message
+      </label>
+      <textarea
+        class="text-primary-300 bg-primary-800 outline-primary-700 mt-0.5 block w-full rounded-md px-3 py-1.5 outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+        name="message"
+        id="message"
+        rows="3"></textarea>
+    </div>
+    <button
+      class="text-primary-100 mt-3 block w-full cursor-pointer rounded-md bg-blue-600 px-3 py-1.5 text-center text-sm/6 font-medium hover:bg-blue-700"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</contact-form>
+<script>
+  import { actions } from "astro:actions";
+  import { navigate } from "astro:transitions/client";
+
+  class ContactForm extends HTMLElement {
+    form = this.querySelector<HTMLFormElement>("form");
+    constructor() {
+      super();
+      this.form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!this.form?.checkValidity()) {
+          return;
+        }
+        const formData = new FormData(this.form);
+        const { error } = await actions.contact(formData);
+        if (!error) navigate("/success");
+      });
+    }
+  }
+  customElements.define("contact-form", ContactForm);
+</script>

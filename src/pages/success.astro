@@ -2,16 +2,15 @@
 import Layout from "~/layouts/Layout.astro";
 ---
 
-<Layout title="Not found">
+<Layout title="Thank you — Critical Systems Analysis">
   <section class="flex flex-col items-center justify-center px-6 py-28 lg:px-8">
-    <p class="text-base font-semibold text-blue-600">404</p>
     <h1
       class="text-primary-100 mt-4 text-5xl font-semibold tracking-tight text-balance sm:text-7xl"
     >
-      Page not found
+      Thank you!
     </h1>
     <p class="text-primary-400 mt-6 max-w-prose sm:text-lg">
-      Sorry, the page you are looking for could not be found.
+      We will get back to you as soon as possible.
     </p>
     <a
       href="/"
@@ -20,3 +19,8 @@ import Layout from "~/layouts/Layout.astro";
     >
   </section>
 </Layout>
+<script>
+  import JSConfetti from "js-confetti";
+  const jsConfetti = new JSConfetti();
+  jsConfetti.addConfetti();
+</script>
