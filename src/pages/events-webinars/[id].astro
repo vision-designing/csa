@@ -14,55 +14,68 @@ const { event } = Astro.props;
 const { Content } = await render(event);
 ---
 
-<Layout title={`${event.data.title} — Critical Systems Analysis`}>
+<Layout title={`${event.data.name} — Critical Systems Analysis`}>
   <div class="mx-auto max-w-5xl px-6 pb-12 lg:px-8">
     <div
-      class="my-16 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between md:my-24"
+      class="mt-16 mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between md:mt-24 md:mb-12"
     >
       <div class="flex-1">
         <time
           class="block text-lg font-semibold tracking-wide text-blue-500 uppercase"
-          datetime={event.data.date.toISOString()}
+          datetime={event.data.startDate.toISOString()}
         >
           {
-            event.data.date.toLocaleDateString("en-US", {
+            event.data.startDate.toLocaleDateString("en-US", {
               year: "numeric",
-              month: "long",
+              month: "short",
               day: "numeric",
             })
+          }
+          {
+            event.data.endDate &&
+              ` — ${event.data.endDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}`
           }
         </time>
         <h1
           class="text-primary-100 mt-2 text-4xl font-bold tracking-tight md:text-5xl"
         >
-          {event.data.title}
+          {event.data.name}
         </h1>
       </div>
-      <a
-        href={event.data.url}
-        class="text-primary-200 hidden cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:block"
-        >Register now</a
-      >
+      {
+        event.data.ticketTailorUrl && (
+          <a
+            class="text-primary-100 mt-4 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:mt-0"
+            href={event.data.ticketTailorUrl}
+          >
+            Get Tickets
+          </a>
+        )
+      }
     </div>
     <article
       class="prose lg:prose-lg text-primary-400 prose-headings:text-primary-100 prose-a:text-blue-500 prose-strong:text-primary-300 prose-tr:border-primary-600 prose-img:w-full max-w-none"
     >
       <Content />
     </article>
-    <div
-      class="bg-primary-800 border-primary-700 mt-8 flex flex-col items-center justify-center gap-4 rounded-lg border p-6 sm:p-8"
-    >
-      <p
-        class="text-primary-100 text-center text-xl font-semibold tracking-tight sm:text-2xl"
-      >
-        Ready to learn more?
-      </p>
-      <a
-        class="text-primary-100 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:mt-0"
-        href={event.data.url}
-      >
-        Register Now
-      </a>
-    </div>
+    {
+      event.data.ticketTailorUrl && (
+        <div class="bg-primary-800 border-primary-700 mt-8 flex flex-col items-center justify-center gap-4 rounded-lg border p-6 sm:p-8">
+          <p class="text-primary-100 text-center text-xl font-semibold tracking-tight sm:text-2xl">
+            Ready to learn more?
+          </p>
+          <a
+            class="text-primary-100 inline-block cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:mt-0"
+            href={event.data.ticketTailorUrl}
+          >
+            Register Now
+          </a>
+        </div>
+      )
+    }
   </div>
 </Layout>

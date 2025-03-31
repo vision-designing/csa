@@ -15,7 +15,9 @@ interface Props {
 const { title, image, id, description, date } = Astro.props;
 ---
 
-<article class="group bg-primary-800 border-primary-700 rounded-lg border p-6">
+<article
+  class="group bg-primary-800 border-primary-700 h-full rounded-lg border p-6"
+>
   <div class="overflow-hidden rounded-lg sm:aspect-square">
     <Image
       src={image.src}
