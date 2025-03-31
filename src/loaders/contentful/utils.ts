@@ -1,7 +1,7 @@
 import { createClient } from "contentful";
 import { z } from "astro/zod";
 
-const client = createClient({
+export const client = createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.DEV
     ? import.meta.env.CONTENTFUL_PREVIEW_TOKEN
