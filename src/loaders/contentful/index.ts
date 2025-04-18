@@ -15,7 +15,7 @@ import { fetchAllContent } from "~/loaders/contentful/utils";
 export function contentfulArticleLoader(): Loader {
   return {
     name: "contentful-article-loader",
-    async load({ logger, store, parseData }) {
+    async load({ logger, store, parseData, generateDigest }) {
       logger.info("Loading article data from Contentful...");
       const articles = await fetchAllContent(
         "article",
@@ -29,6 +29,7 @@ export function contentfulArticleLoader(): Loader {
         store.set({
           id: article.slug,
           data: parsedData,
+          digest: generateDigest(parsedData),
           rendered: {
             html: documentToHtmlString(article.content),
           },
@@ -42,7 +43,7 @@ export function contentfulArticleLoader(): Loader {
 export function contentfulJobLoader(): Loader {
   return {
     name: "contentful-job-loader",
-    async load({ logger, store, parseData }) {
+    async load({ logger, store, parseData, generateDigest }) {
       logger.info("Loading job data from Contentful...");
       const jobs = await fetchAllContent("job", JobApiResponseSchema);
       for (const job of jobs) {
@@ -53,6 +54,7 @@ export function contentfulJobLoader(): Loader {
         store.set({
           id: job.slug,
           data: parsedData,
+          digest: generateDigest(parsedData),
           rendered: {
             html: documentToHtmlString(job.content),
           },
@@ -66,7 +68,7 @@ export function contentfulJobLoader(): Loader {
 export function contentfulDownloadLoader(): Loader {
   return {
     name: "contentful-download-loader",
-    async load({ logger, store, parseData }) {
+    async load({ logger, store, parseData, generateDigest }) {
       logger.info("Loading download data from Contentful...");
       const downloads = await fetchAllContent(
         "download",
@@ -80,6 +82,7 @@ export function contentfulDownloadLoader(): Loader {
         store.set({
           id: download.slug,
           data: parsedData,
+          digest: generateDigest(parsedData),
           rendered: {
             html: documentToHtmlString(download.content),
           },
@@ -93,7 +96,7 @@ export function contentfulDownloadLoader(): Loader {
 export function contentfulEventLoader(): Loader {
   return {
     name: "contentful-event-loader",
-    async load({ logger, store, parseData }) {
+    async load({ logger, store, parseData, generateDigest }) {
       logger.info("Loading event data from Contentful...");
 
       const events = await fetchAllContent("event", EventApiResponseSchema);
@@ -105,6 +108,7 @@ export function contentfulEventLoader(): Loader {
         store.set({
           id: event.slug,
           data: parsedData,
+          digest: generateDigest(parsedData),
           rendered: {
             html: documentToHtmlString(event.content),
           },
