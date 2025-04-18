@@ -98,7 +98,8 @@ export function contentfulEventLoader(): Loader {
     name: "contentful-event-loader",
     async load({ logger, store, parseData, generateDigest }) {
       logger.info("Loading event data from Contentful...");
-
+      // clear store
+      store.clear();
       const events = await fetchAllContent("event", EventApiResponseSchema);
       for (const event of events) {
         const parsedData = await parseData({
