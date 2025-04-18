@@ -42,11 +42,16 @@ const { Content } = await render(download);
           {download.data.title}
         </h1>
       </div>
-      <a
-        href={download.data.pdf}
-        class="text-primary-200 hidden cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:block"
-        >View PDF</a
-      >
+      {
+        download.data.pdf && (
+          <a
+            href={download.data.pdf}
+            class="text-primary-200 hidden cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:block"
+          >
+            View PDF
+          </a>
+        )
+      }
     </div>
     <Image
       src={download.data.heroImage.src}

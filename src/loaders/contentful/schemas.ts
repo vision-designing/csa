@@ -19,7 +19,7 @@ export const DownloadLoaderSchema = z.object({
   description: z.string(),
   slug: z.string(),
   date: z.coerce.date(),
-  pdf: z.string().url(),
+  pdf: z.string().url().optional(),
   heroImage: z.object({
     alt: z.string(),
     src: z.string(),
@@ -152,15 +152,17 @@ export const DownloadApiResponseSchema = z.object({
             data: z.object({}).passthrough(),
             content: z.array(z.any()),
           }),
-          pdf: z.object({
-            fields: z.object({
-              title: z.string().optional(),
-              description: z.string().optional(),
-              file: z.object({
-                url: z.preprocess((val) => `https:${val}`, z.string().url()),
+          pdf: z
+            .object({
+              fields: z.object({
+                title: z.string().optional(),
+                description: z.string().optional(),
+                file: z.object({
+                  url: z.preprocess((val) => `https:${val}`, z.string().url()),
+                }),
               }),
-            }),
-          }),
+            })
+            .optional(),
         }),
       })
       .transform((data) => {
@@ -180,7 +182,7 @@ export const DownloadApiResponseSchema = z.object({
             name: data.fields.author.fields.name,
           },
           content: data.fields.content,
-          pdf: data.fields.pdf.fields.file.url,
+          pdf: data.fields.pdf?.fields.file.url,
         };
       }),
   ),
