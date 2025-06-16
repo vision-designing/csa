@@ -5,8 +5,11 @@ import {
   contentfulJobLoader,
   contentfulEventLoader,
 } from "./loaders/contentful";
+import { DownloadLoaderSchema } from "./loaders/contentful/schemas";
 
 const downloads = defineCollection({
+  type: "content",
+  schema: DownloadLoaderSchema,
   loader: contentfulDownloadLoader(),
 });
 

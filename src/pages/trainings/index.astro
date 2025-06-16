@@ -2,10 +2,34 @@
 import Layout from "~/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface DownloadData {
+  title: string;
+  description: string;
+  date?: Date;
+  heroImage: {
+    src: string;
+    alt: string;
+  };
+}
+
+type DownloadEntry = CollectionEntry<"downloads"> & {
+  data: DownloadData;
+};
 
 const downloads = (await getCollection("downloads")).sort(
-  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
-);
+  (a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0),
+) as DownloadEntry[];
+
+// Get unique years from training dates
+const years = Array.from(
+  new Set(
+    downloads
+      .map(d => d.data.date?.getFullYear())
+      .filter((year): year is number => typeof year === 'number')
+  )
+).sort((a, b) => b - a);
 ---
 
 <Layout title="Trainings — Critical Systems Analysis">
@@ -15,10 +39,24 @@ const downloads = (await getCollection("downloads")).sort(
     >
       Trainings
     </h1>
-    <ul class="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    
+    <!-- Year Filter Dropdown -->
+    <div class="mt-12 flex justify-center">
+      <select
+        id="yearFilter"
+        class="bg-primary-800 border-primary-700 text-primary-100 rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="all">All Years</option>
+        {years.map(year => (
+          <option value={year}>{year}</option>
+        ))}
+      </select>
+    </div>
+
+    <ul class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {
         downloads.map(({ data, id }) => (
-          <li class="relative">
+          <li class="relative training-card" data-year={data.date?.getFullYear()}>
             <article class="group bg-primary-800 border-primary-700 rounded-lg border p-6">
               <div class="overflow-hidden rounded-lg sm:aspect-square">
                 <Image
@@ -29,16 +67,18 @@ const downloads = (await getCollection("downloads")).sort(
                   layout="full-width"
                 />
               </div>
-              <time
-                class="text-primary-400 mt-4 block text-sm tracking-wide uppercase"
-                datetime={data.date.toISOString()}
-              >
-                {data.date.toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
+              {data.date && (
+                <time
+                  class="text-primary-400 mt-4 block text-sm tracking-wide uppercase"
+                  datetime={data.date.toISOString()}
+                >
+                  {data.date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              )}
               <h2 class="text-primary-100 mt-1 block text-lg font-semibold group-hover:text-blue-500">
                 {data.title}
               </h2>
@@ -57,3 +97,24 @@ const downloads = (await getCollection("downloads")).sort(
     </ul>
   </div>
 </Layout>
+
+<script>
+  // Get the year filter dropdown
+  const yearFilter = document.getElementById('yearFilter') as HTMLSelectElement;
+  const trainingCards = document.querySelectorAll('.training-card');
+
+  // Add event listener for filter changes
+  yearFilter.addEventListener('change', () => {
+    const selectedYear = yearFilter.value;
+
+    trainingCards.forEach(card => {
+      const cardYear = card.getAttribute('data-year');
+      
+      if (selectedYear === 'all' || cardYear === selectedYear) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+</script>

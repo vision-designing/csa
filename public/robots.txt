@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.criticalsystemsanalysis.com/sitemap-index.xml
+Sitemap: https://www.criticalsystemsanalysis.com/sitemap.xml

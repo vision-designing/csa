@@ -3,7 +3,8 @@ import "~/styles/global.css";
 import "@fontsource-variable/inter";
 import Header from "~/components/Header.astro";
 import Footer from "~/components/Footer.astro";
-import { defaultMeta } from "~/content/constants";
+import { defaultMeta } from "~/content/config";
+import { formatMetaTitle, formatMetaDescription } from "~/utils/seo";
 
 export interface Props {
   includeHeader?: boolean;
@@ -27,6 +28,8 @@ const {
   includeHeader = true,
 } = Astro.props;
 
+const formattedTitle = formatMetaTitle(title);
+const formattedDescription = formatMetaDescription(description);
 const ogImageURL = new URL(ogImage.url, Astro.site).href;
 ---
 
@@ -35,26 +38,34 @@ const ogImageURL = new URL(ogImage.url, Astro.site).href;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <title>{formattedTitle}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta
       name="google-site-verification"
       content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"
     />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XC3Q77JSK"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2XC3Q77JSK');
+    </script>
     <link rel="canonical" href={Astro.url.href} />
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
+    <meta name="title" content={formattedTitle} />
+    <meta name="description" content={formattedDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={formattedTitle} />
+    <meta property="og:description" content={formattedDescription} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:alt" content={ogImage.alt} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content={defaultMeta.title} />
     <meta property="twitter:url" content={Astro.url.href} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+    <meta property="twitter:title" content={formattedTitle} />
+    <meta property="twitter:description" content={formattedDescription} />
     <meta property="twitter:image" content={ogImageURL} />
     <meta property="twitter:card" content="summary_large_image" />
     <meta name="generator" content={Astro.generator} />

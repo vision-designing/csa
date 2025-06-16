@@ -2,10 +2,11 @@
 import { Image } from "astro:assets";
 import Carousel from "~/components/Carousel.astro";
 import Layout from "~/layouts/Layout.astro";
+import Testimonials from "~/components/Testimonials.astro";
 import safetyImage from "~/assets/safety-access.webp";
 import trainImage from "~/assets/train.webp";
 import weldingRobotImage from "~/assets/welding-robot-arm.webp";
-import { bookingLink } from "~/content/constants";
+import { bookingLink } from "~/content/config";
 ---
 
 <Layout>
@@ -13,10 +14,10 @@ import { bookingLink } from "~/content/constants";
     <h1
       class="text-primary-100 mt-16 text-center text-5xl font-bold tracking-tighter text-balance sm:mt-32 sm:text-6xl"
     >
-      Critical Systems Analysis
+      Functional Safety Consulting & Systems Engineering Experts
     </h1>
     <p class="text-primary-400 mt-6 text-center sm:text-lg">
-      Leading Safety in Automation with Integrity and Respect
+      Your Trusted Systems Safety Partner for Safety Critical Systems and Functional Safety Compliance
     </p>
     <div class="mt-6 mb-12 flex flex-col justify-center gap-4 sm:flex-row">
       <a
@@ -33,14 +34,15 @@ import { bookingLink } from "~/content/constants";
       <h2
         class="text-primary-100 text-center text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
       >
-        Safety Consulting Done Right
+        Expert Functional Safety & Systems Engineering Solutions
       </h2>
       <p
         class="text-primary-400 mx-auto mt-4 max-w-prose leading-relaxed sm:text-lg"
       >
-        Safety consultants and educators provide an expert perspective on
-        systems assurance, safety engineering, and RAM engineering that save you
-        time and money in developing the safest systems practical.
+        Our expert functional safety engineers provide comprehensive safety compliance solutions, 
+        including FMEA and FTA support, for safety critical systems. We specialize in functional 
+        safety for autonomous vehicles and deliver trusted systems safety engineering that ensures 
+        the highest safety standards while optimizing your development process.
       </p>
     </div>
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -135,16 +137,14 @@ import { bookingLink } from "~/content/constants";
       <h2
         class="text-primary-100 text-center text-3xl font-bold tracking-tighter text-balance sm:text-4xl"
       >
-        Save Time. Save Money.
+        Expert Functional Safety & Systems Engineering Solutions
       </h2>
       <p
         class="text-primary-400 mx-auto mt-4 max-w-prose leading-relaxed text-pretty sm:text-lg"
       >
-        CSA has the <span class="text-primary-200 font-semibold"
-          >experience</span
-        > and <span class="text-primary-200 font-semibold">expertise</span> to discover
-        design concerns sooner leading to a smaller cost to correct, saving you time
-        and money.
+        As your trusted systems safety partner, CSA combines deep expertise in functional safety 
+        compliance and systems engineering consulting to identify design concerns early, reducing 
+        correction costs and ensuring your safety critical systems meet the highest standards.
       </p>
     </div>
 
@@ -399,6 +399,7 @@ import { bookingLink } from "~/content/constants";
         </li>
       </ol>
     </div>
+    <Testimonials />
     <div
       class="bg-primary-800 border-primary-700 mt-28 flex flex-col rounded-lg border p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-40"
     >

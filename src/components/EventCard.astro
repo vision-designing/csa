@@ -1,6 +1,19 @@
 ---
-import type { CollectionEntry } from "astro:content";
-type Props = CollectionEntry<"events">["data"];
+/**
+ * If you have a collection named "events" in src/content/config.ts, ensure it is exported.
+ * Otherwise, define the props shape directly here:
+ */
+ type Props = {
+  name: string;
+  startDate: Date;
+  paidEvent: boolean;
+  slug: string;
+  description: string;
+  endDate?: Date;
+  status: string;
+  industryEvent?: boolean;
+  exhibitor?: boolean;
+};
 
 const {
   name,
@@ -11,6 +24,7 @@ const {
   endDate,
   status,
   industryEvent,
+  exhibitor,
 } = Astro.props;
 ---
 
@@ -34,13 +48,22 @@ const {
       }</span
     >
   </div>
-  {
-    industryEvent && (
-      <span class="mt-2 inline-block rounded-md border border-sky-700 bg-sky-800 px-3 py-0.5 text-sm text-blue-100 uppercase">
-        Industry Event
-      </span>
-    )
-  }
+  <div class="mt-2 flex flex-wrap gap-2">
+    {
+      industryEvent && (
+        <span class="inline-block rounded-md border border-sky-700 bg-sky-800 px-3 py-0.5 text-sm text-blue-100 uppercase">
+          Industry Event
+        </span>
+      )
+    }
+    {
+      exhibitor && (
+        <span class="inline-block rounded-md border border-sky-700 bg-sky-800 px-3 py-0.5 text-sm text-blue-100 uppercase">
+          Exhibitor
+        </span>
+      )
+    }
+  </div>
   <h2
     class="text-primary-100 mt-2 block text-lg font-semibold group-hover:text-blue-500"
   >
