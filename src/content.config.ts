@@ -8,7 +8,7 @@ import {
 import { DownloadLoaderSchema } from "./loaders/contentful/schemas";
 
 const downloads = defineCollection({
-  type: "content",
+  // Remove the 'type' property completely
   schema: DownloadLoaderSchema,
   loader: contentfulDownloadLoader(),
 });

@@ -3,7 +3,6 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": [
     "dist",
-    "src/pages/*",
   ],
   "compilerOptions": {
     "verbatimModuleSyntax": true,
