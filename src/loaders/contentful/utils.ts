@@ -40,7 +40,6 @@ async function fetchPaginatedContent<T extends z.ZodType>(
     // Uncomment to log raw entries for debugging
     // console.log("Raw entries:", JSON.stringify(entries.items, null, 2));
   }
-  console.log("import.meta.env.DEV ", import.meta.env.DEV);
 
   // Validate the full API response (including pagination and items)
   const parsedResponse = schema.safeParse(entries);

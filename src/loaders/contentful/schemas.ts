@@ -1,10 +1,11 @@
+// src/loaders/contentful/schemas.ts
+
 import { z } from "astro/zod";
-// Removed invalid Props type alias due to incorrect collection name.
 
 export const ArticleLoaderSchema = z.object({
   title: z.string(),
   description: z.string(),
-  date: z.coerce.date(),
+  date: z.coerce.date().nullable(),
   slug: z.string(),
   heroImage: z.object({
     alt: z.string(),
@@ -13,14 +14,13 @@ export const ArticleLoaderSchema = z.object({
   author: z.object({
     name: z.string(),
   }),
-  pdf: z.string().url().optional(),
 });
 
 export const DownloadLoaderSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
-  date: z.coerce.date().optional(),
+  date: z.coerce.date(),
   pdf: z.string().url().optional(),
   heroImage: z.object({
     alt: z.string(),
@@ -45,7 +45,6 @@ export const EventLoaderSchema = z.object({
   endDate: z.coerce.date().optional(),
   paidEvent: z.boolean(),
   industryEvent: z.boolean(),
-  exhibitor: z.boolean(),
   ticketTailorUrl: z.string().url().optional(),
   status: z.enum(["Available", "Sold out"]),
 });
@@ -81,17 +80,6 @@ export const ArticleApiResponseSchema = z.object({
               name: z.string(),
             }),
           }),
-          pdf: z
-            .object({
-              fields: z.object({
-                title: z.string().optional(),
-                description: z.string().optional(),
-                file: z.object({
-                  url: z.preprocess((val) => `https:${val}`, z.string().url()),
-                }),
-              }),
-            })
-            .optional(),
         }),
       })
       .transform((data) => {
@@ -111,7 +99,6 @@ export const ArticleApiResponseSchema = z.object({
             name: data.fields.author.fields.name,
           },
           content: data.fields.content,
-          pdf: data.fields.pdf?.fields.file.url,
         };
       }),
   ),
@@ -147,7 +134,7 @@ export const DownloadApiResponseSchema = z.object({
           title: z.string(),
           description: z.string(),
           slug: z.string(),
-          date: z.coerce.date().optional(),
+          date: z.coerce.date(),
           heroImage: z.object({
             fields: z.object({
               title: z.string().optional(),
