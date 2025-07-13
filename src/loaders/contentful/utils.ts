@@ -1,3 +1,4 @@
+// src/loaders/contentful/utils.ts
 import { createClient } from "contentful";
 import { z } from "astro/zod";
 
@@ -9,97 +10,77 @@ export const client = createClient({
   host: import.meta.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
 });
 
-// Define a base schema for Contentful response structure
-const contentfulResponseSchema = z.object({
-  total: z.number(),
-  skip: z.number(),
-  limit: z.number(),
-  items: z.array(z.any()),
-});
-
+/**
+ * Fetch a single page of content from Contentful and validate it.
+ * Throws detailed errors on fetch or validation failure.
+ */
 async function fetchPaginatedContent<T extends z.ZodType>(
   contentType: string,
-  entrySchema: T,
-  skip: number = 0,
-  limit: number = 1000,
-): Promise<{
-  total: number;
-  skip: number;
-  limit: number;
-  items: z.output<T>[];
-}> {
-  let response;
+  schema: T,
+  skip: number,
+  limit: number,
+): Promise<z.output<T>> {
+  let entries;
   try {
-    response = await client.getEntries({
+    entries = await client.getEntries({
       content_type: contentType,
       limit,
       skip,
     });
   } catch (error) {
-    console.error(`Failed to fetch ${contentType} from Contentful:`, error);
-    throw error;
-  }
-
-  // First validate the basic Contentful response structure
-  const validatedResponse = contentfulResponseSchema.safeParse(response);
-  if (!validatedResponse.success) {
     throw new Error(
-      `Invalid Contentful response structure for ${contentType}: ${validatedResponse.error.message}`
+      `Failed to fetch ${contentType} from Contentful: ${
+        error instanceof Error ? error.message : error
+      }`
     );
   }
 
-  // Then validate each entry individually
-  const validatedItems = [];
-  const validationErrors = [];
-
-  for (const item of validatedResponse.data.items) {
-    const parsedEntry = entrySchema.safeParse(item.fields);
-    if (parsedEntry.success) {
-      validatedItems.push(parsedEntry.data);
-    } else {
-      validationErrors.push({
-        entryId: item.sys?.id,
-        errors: parsedEntry.error.issues,
-      });
-      console.warn(
-        `Validation failed for ${contentType} entry ${item.sys?.id}:`,
-        parsedEntry.error.issues
-      );
-    }
+  if (contentType === "job") {
+    console.log(`Fetched ${entries.items.length} entries for ${contentType}`);
+    // Uncomment to log raw entries for debugging
+    // console.log("Raw entries:", JSON.stringify(entries.items, null, 2));
   }
 
-  if (validationErrors.length > 0) {
-    console.warn(
-      `${validationErrors.length} ${contentType} entries failed validation`
+  // Validate the full API response (including pagination and items)
+  const parsedResponse = schema.safeParse(entries);
+
+  if (!parsedResponse.success) {
+    console.error(
+      `Validation errors for ${contentType} at skip=${skip}, limit=${limit}:`,
+      parsedResponse.error.issues
+    );
+    throw new Error(
+      `Failed to parse ${contentType} response from Contentful.\n` +
+        parsedResponse.error.issues
+          .map((issue) => `- ${issue.path.join(".")} : ${issue.message}`)
+          .join("\n")
     );
   }
 
-  return {
-    ...validatedResponse.data,
-    items: validatedItems,
-  };
+  return parsedResponse.data;
 }
 
+/**
+ * Fetch all entries for a content type, handling pagination.
+ * Uses the API response schema to validate the full response and relies on
+ * its transform to produce validated entries.
+ */
 export async function fetchAllContent<T extends z.ZodType>(
   contentType: string,
-  entrySchema: T,
-): Promise<z.output<T>[]> {
-  let limit = 1000;
+  schema: T
+): Promise<z.output<T>["items"]> {
+  const limit = 1000;
   let skip = 0;
   let total = 0;
-  let allItems: z.output<T>[] = [];
+  const entries: z.output<T>["items"] = [];
 
   do {
-    const { items, total: responseTotal } = await fetchPaginatedContent(
-      contentType,
-      entrySchema,
-      skip,
-      limit
-    );
-    total = responseTotal;
+    const data = await fetchPaginatedContent(contentType, schema, skip, limit);
+    total = data.total;
     skip += limit;
-    allItems.push(...items);
-  } while (skip < total && allItems.length < total);
 
-  return allItems;
+    entries.push(...data.items);
+  } while (skip < total);
+
+  return entries;
 }
