@@ -1,3 +1,5 @@
+// src/loaders/contentful/index.ts
+
 import { type Loader } from "astro/loaders";
 import { documentToHtmlString } from "~/utils/contentful-rich-renderer";
 import {
@@ -22,6 +24,10 @@ export function contentfulArticleLoader(): Loader {
         ArticleApiResponseSchema,
       );
       for (const article of articles) {
+        if (!article.slug) {
+          logger.warn(`Skipping article with missing slug: ${JSON.stringify(article)}`);
+          continue; // Skip entries without slug
+        }
         const parsedData = await parseData({
           id: article.slug,
           data: article,
@@ -47,6 +53,10 @@ export function contentfulJobLoader(): Loader {
       logger.info("Loading job data from Contentful...");
       const jobs = await fetchAllContent("job", JobApiResponseSchema);
       for (const job of jobs) {
+        if (!job.slug) {
+          logger.warn(`Skipping job with missing slug: ${JSON.stringify(job)}`);
+          continue; // Skip entries without slug
+        }
         const parsedData = await parseData({
           id: job.slug,
           data: job,
@@ -75,6 +85,10 @@ export function contentfulDownloadLoader(): Loader {
         DownloadApiResponseSchema,
       );
       for (const download of downloads) {
+        if (!download.slug) {
+          logger.warn(`Skipping download with missing slug: ${JSON.stringify(download)}`);
+          continue; // Skip entries without slug
+        }
         const parsedData = await parseData({
           id: download.slug,
           data: download,
@@ -102,6 +116,10 @@ export function contentfulEventLoader(): Loader {
       store.clear();
       const events = await fetchAllContent("event", EventApiResponseSchema);
       for (const event of events) {
+        if (!event.slug) {
+          logger.warn(`Skipping event with missing slug: ${JSON.stringify(event)}`);
+          continue; // Skip entries without slug
+        }
         const parsedData = await parseData({
           id: event.slug,
           data: event,
