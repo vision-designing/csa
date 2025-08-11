@@ -55,6 +55,19 @@ const ogImageURL = new URL(ogImage.url, Astro.site).href;
       gtag("js", new Date());
       gtag("config", "G-2XC3Q77JSK");
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17076209911"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-17076209911");
+    </script>
     <link rel="canonical" href={Astro.url.href} />
     <meta name="title" content={formattedTitle} />
     <meta name="description" content={formattedDescription} />
