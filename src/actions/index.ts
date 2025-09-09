@@ -9,13 +9,25 @@ export const server = {
       firstName: z.string(),
       lastName: z.string(),
       email: z.string().email(),
-      phone: z.string().min(10).max(10),
+      phone: z.string().min(10),
       country: z.string(),
-      howDidYouHear: z.string(),
+      howDidYouHear: z.string().optional(),
       position: z.string(),
-      linkedin: z.string().url().optional(),
+      linkedin: z.string().optional().refine((val) => {
+        if (!val || val.trim() === '') return true;
+        try {
+          new URL(val);
+          return true;
+        } catch {
+          return false;
+        }
+      }, { message: "Please enter a valid LinkedIn URL or leave this field empty" }),
       resume: z.instanceof(File),
-      experience: z.number().int().positive().optional(),
+      experience: z.union([z.string(), z.number()]).optional().transform((val) => {
+        if (!val || val === '') return undefined;
+        const num = typeof val === 'string' ? parseInt(val) : val;
+        return isNaN(num) ? undefined : num;
+      }),
       comments: z.string().optional(),
     }),
     handler: async (input) => {
