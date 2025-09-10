@@ -22,7 +22,7 @@ export const DownloadLoaderSchema = z.object({
   slug: z.string(),
   date: z.coerce.date(),
   pdf: z.string().url().optional(),
-  status: z.string().optional(),
+  status: z.enum(["Published", "Archived"]).optional(),
   heroImage: z.object({
     alt: z.string(),
     src: z.string(),
@@ -136,7 +136,7 @@ export const DownloadApiResponseSchema = z.object({
           description: z.string(),
           slug: z.string(),
           date: z.coerce.date(),
-          status: z.string().optional(),
+          status: z.enum(["Published", "Archived"]).optional(),
           heroImage: z.object({
             fields: z.object({
               title: z.string().optional(),

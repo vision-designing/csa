@@ -8,7 +8,7 @@ interface DownloadData {
   title: string;
   description: string;
   date?: Date;
-  status?: string;
+  status?: "Published" | "Archived";
   heroImage: {
     src: string;
     alt: string;
@@ -20,7 +20,7 @@ type DownloadEntry = CollectionEntry<"downloads"> & {
 };
 
 const downloads = (await getCollection("downloads"))
-  .filter(download => download.data.status !== "archived")
+  .filter(download => download.data.status !== "Archived")
   .sort(
     (a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0),
   ) as DownloadEntry[];
