@@ -22,6 +22,7 @@ export const DownloadLoaderSchema = z.object({
   slug: z.string(),
   date: z.coerce.date(),
   pdf: z.string().url().optional(),
+  status: z.string().optional(),
   heroImage: z.object({
     alt: z.string(),
     src: z.string(),
@@ -135,6 +136,7 @@ export const DownloadApiResponseSchema = z.object({
           description: z.string(),
           slug: z.string(),
           date: z.coerce.date(),
+          status: z.string().optional(),
           heroImage: z.object({
             fields: z.object({
               title: z.string().optional(),
@@ -173,6 +175,7 @@ export const DownloadApiResponseSchema = z.object({
           description: data.fields.description,
           slug: data.fields.slug,
           date: data.fields.date,
+          status: data.fields.status,
           heroImage: {
             alt:
               data.fields.heroImage.fields.title ||

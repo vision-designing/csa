@@ -8,6 +8,7 @@ interface DownloadData {
   title: string;
   description: string;
   date?: Date;
+  status?: string;
   heroImage: {
     src: string;
     alt: string;
@@ -18,9 +19,11 @@ type DownloadEntry = CollectionEntry<"downloads"> & {
   data: DownloadData;
 };
 
-const downloads = (await getCollection("downloads")).sort(
-  (a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0),
-) as DownloadEntry[];
+const downloads = (await getCollection("downloads"))
+  .filter(download => download.data.status !== "archived")
+  .sort(
+    (a, b) => (a.data.date?.valueOf() ?? 0) - (b.data.date?.valueOf() ?? 0),
+  ) as DownloadEntry[];
 
 // Get unique years from training dates
 const years = Array.from(
