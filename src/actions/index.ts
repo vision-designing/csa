@@ -118,7 +118,9 @@ export const server = {
           html: `
             <h2>Thank you for your interest!</h2>
             <p>As requested, here is your copy of <strong>${title}</strong>.</p>
+            <br>
             <p><a href="${pdfUrl}" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Download PDF</a></p>
+            <br>
             <p>Best regards,<br>Critical Systems Analysis Team</p>
             <hr>
             <p style="font-size: 12px; color: #666;">You received this email because you requested a PDF download from our website. If you have any questions, please contact us at marketing@criticalsa.com</p>
