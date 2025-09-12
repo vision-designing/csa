@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
+import DownloadWithEmail from "~/components/DownloadWithEmail.astro";
 import type { CollectionEntry } from "astro:content";
 import type { z } from "astro/zod";
 import { DownloadLoaderSchema } from "~/loaders/contentful/schemas";
@@ -53,12 +54,13 @@ const { Content } = await render(download);
       </div>
       {
         download.data.pdf && (
-          <a
-            href={download.data.pdf}
-            class="text-primary-200 hidden cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700 sm:block"
-          >
-            View PDF
-          </a>
+          <div class="hidden sm:block">
+            <DownloadWithEmail 
+              pdfUrl={download.data.pdf} 
+              title={download.data.title}
+              buttonClass="text-primary-200 cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
+            />
+          </div>
         )
       }
     </div>
