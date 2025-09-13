@@ -34,12 +34,12 @@ async function fetchPaginatedContent<T extends z.ZodType>(
       }`
     );
   }
-
-  if (contentType === "job") {
-    console.log(`Fetched ${entries.items.length} entries for ${contentType}`);
-    // Uncomment to log raw entries for debugging
-    // console.log("Raw entries:", JSON.stringify(entries.items, null, 2));
-  }
+  //for testing
+  // if (contentType === "job" || contentType === "download") {
+  //   console.log(`Fetched ${entries.items.length} entries for ${contentType}`);
+  //   // Uncomment to log raw entries for debugging
+  //   console.log("Raw entries:", JSON.stringify(entries.items, null, 2));
+  // }
 
   // Validate the full API response (including pagination and items)
   const parsedResponse = schema.safeParse(entries);

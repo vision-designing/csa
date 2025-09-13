@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
+import DownloadWithEmail from "~/components/DownloadWithEmail.astro";
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles");
@@ -20,23 +21,25 @@ const { Content } = await render(article);
   description={article.data.description}
 >
   <div class="mx-auto max-w-5xl px-6 pb-12 lg:px-8">
-    <time
-      class="mt-16 block text-center text-lg font-semibold tracking-wide text-blue-500 uppercase sm:mt-32"
-      datetime={article.data.date.toISOString()}
-    >
-      {
-        article.data.date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
-      }
-    </time>
+    {article.data.date && (
+      <time
+        class="mt-16 block text-center text-lg font-semibold tracking-wide text-blue-500 uppercase sm:mt-32"
+        datetime={article.data.date.toISOString()}
+      >
+        {
+          article.data.date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </time>
+    )}
     <h1
-      class="text-primary-100 mt-4 text-center text-4xl font-bold tracking-tight md:text-5xl"
-    >
-      {article.data.title}
-    </h1>
+       class={`text-primary-100 text-center text-4xl font-bold tracking-tight md:text-5xl ${article.data.date ? 'mt-4' : 'mt-16 sm:mt-32'}`}
+     >
+       {article.data.title}
+     </h1>
     <p class="text-primary-400 mt-8 text-center leading-relaxed text-pretty">
       By {article.data.author.name}
     </p>
@@ -54,17 +57,12 @@ const { Content } = await render(article);
     {
       article.data.pdf && (
         <div class="mt-8 flex justify-center">
-          <a
-            href={article.data.pdf}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-primary-100 font-semibold hover:bg-blue-700"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd" />
-            </svg>
-            Download PDF
-          </a>
+          <DownloadWithEmail 
+            pdfUrl={article.data.pdf} 
+            title={article.data.title}
+            buttonText="Download PDF"
+            buttonClass="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-primary-100 font-semibold hover:bg-blue-700"
+          />
         </div>
       )
     }
