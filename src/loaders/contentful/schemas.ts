@@ -7,6 +7,7 @@ export const ArticleLoaderSchema = z.object({
   description: z.string(),
   date: z.coerce.date().nullable(),
   slug: z.string(),
+  pdf: z.string().url().optional(),
   heroImage: z.object({
     alt: z.string(),
     src: z.string(),
@@ -20,7 +21,7 @@ export const DownloadLoaderSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
-  date: z.coerce.date(),
+  date: z.coerce.date().optional(),
   pdf: z.string().url().optional(),
   heroImage: z.object({
     alt: z.string(),
@@ -80,6 +81,17 @@ export const ArticleApiResponseSchema = z.object({
               name: z.string(),
             }),
           }),
+          pdf: z
+            .object({
+              fields: z.object({
+                title: z.string().optional(),
+                description: z.string().optional(),
+                file: z.object({
+                  url: z.preprocess((val) => `https:${val}`, z.string().url()),
+                }),
+              }),
+            })
+            .optional(),
         }),
       })
       .transform((data) => {
@@ -88,7 +100,7 @@ export const ArticleApiResponseSchema = z.object({
           description: data.fields.description,
           slug: data.fields.slug,
           date: data.fields.date,
-          heroImage: {
+          heroImage:{
             alt:
               data.fields.heroImage.fields.title ||
               data.fields.heroImage.fields.description ||
@@ -99,6 +111,7 @@ export const ArticleApiResponseSchema = z.object({
             name: data.fields.author.fields.name,
           },
           content: data.fields.content,
+          pdf: data.fields.pdf?.fields.file.url,
         };
       }),
   ),
@@ -131,10 +144,10 @@ export const DownloadApiResponseSchema = z.object({
     z
       .object({
         fields: z.object({
-          title: z.string(),
-          description: z.string(),
-          slug: z.string(),
-          date: z.coerce.date(),
+          title: z.string().optional(),
+          description: z.string().optional(),
+          slug: z.string().optional(),
+          date: z.coerce.date().optional(),
           heroImage: z.object({
             fields: z.object({
               title: z.string().optional(),
@@ -153,7 +166,7 @@ export const DownloadApiResponseSchema = z.object({
             nodeType: z.literal("document"),
             data: z.object({}).passthrough(),
             content: z.array(z.any()),
-          }),
+          }).optional(),
           pdf: z
             .object({
               fields: z.object({
