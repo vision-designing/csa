@@ -1,6 +1,10 @@
 ---
-
+const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
+
+{siteKey && (
+  <script src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} async defer></script>
+)}
 
 <application-form>
   <form class="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-4">
@@ -159,6 +163,15 @@
         rows="3"
         placeholder="Tell us about your relevant experience, skills, or why you're interested in this position..."></textarea>
     </div>
+    {siteKey && (
+      <div class="flex items-center justify-center text-xs text-gray-500 mt-2">
+        <span>This site is protected by reCAPTCHA and the Google </span>
+        <a href="https://policies.google.com/privacy" class="text-blue-400 hover:underline mx-1">Privacy Policy</a>
+        <span> and </span>
+        <a href="https://policies.google.com/terms" class="text-blue-400 hover:underline mx-1">Terms of Service</a>
+        <span> apply.</span>
+      </div>
+    )}
     <button
       class="text-primary-100 mt-3 block w-full cursor-pointer rounded-md bg-blue-600 px-3 py-1.5 text-center text-sm/6 font-medium hover:bg-blue-700"
       type="submit"
@@ -170,6 +183,10 @@
 <script>
   import { actions } from "astro:actions";
   import { navigate } from "astro:transitions/client";
+
+  // Load reCAPTCHA v3 script if site key is provided
+  const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+  console.log('reCAPTCHA Site Key:', RECAPTCHA_SITE_KEY ? 'Configured' : 'Not configured');
 
   class ApplicationForm extends HTMLElement {
     form = this.querySelector<HTMLFormElement>("form");
@@ -209,6 +226,59 @@
         const comments = formData.get('comments') as string;
         if (!comments || comments.trim() === '') {
           formData.delete('comments');
+        }
+        
+        // Get reCAPTCHA token
+        try {
+          const siteKey = RECAPTCHA_SITE_KEY;
+          console.log('reCAPTCHA Site Key:', siteKey ? 'Configured' : 'Not configured');
+        
+          if (siteKey && typeof window !== 'undefined') {
+          try {
+            console.log('reCAPTCHA: Starting token generation...');
+            console.log('reCAPTCHA: Attempting to get token...');
+            
+            // Wait for grecaptcha to be ready
+            await new Promise<void>((resolve) => {
+              if ((window as any).grecaptcha && (window as any).grecaptcha.ready) {
+                (window as any).grecaptcha.ready(() => resolve());
+              } else {
+                console.log('reCAPTCHA: Script not loaded, waiting...');
+                const checkInterval = setInterval(() => {
+                  if ((window as any).grecaptcha && (window as any).grecaptcha.ready) {
+                  clearInterval(checkInterval);
+                  (window as any).grecaptcha.ready(() => resolve());
+                }
+                }, 100);
+                
+                // Timeout after 10 seconds
+                setTimeout(() => {
+                  clearInterval(checkInterval);
+                  console.log('reCAPTCHA: Timeout waiting for script');
+                  resolve();
+                }, 10000);
+              }
+            });
+            
+            console.log('reCAPTCHA: grecaptcha ready, executing...');
+            
+            if ((window as any).grecaptcha && (window as any).grecaptcha.execute) {
+                const token = await (window as any).grecaptcha.execute(siteKey, { action: 'application' });
+              console.log('reCAPTCHA: Token obtained:', token ? 'Success' : 'Failed');
+              if (token) {
+                formData.append('recaptchaToken', token);
+              }
+            } else {
+              console.log('reCAPTCHA: grecaptcha.execute not available');
+            }
+          } catch (error) {
+            console.error('reCAPTCHA: Error getting token:', error);
+          }
+          } else {
+            console.log('reCAPTCHA: No site key found, skipping reCAPTCHA');
+          }
+        } catch (error) {
+          console.error('reCAPTCHA: Error in token generation:', error);
         }
         
         const { error } = await actions.application(formData);
