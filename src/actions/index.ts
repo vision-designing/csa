@@ -29,6 +29,7 @@ export const server = {
         return isNaN(num) ? undefined : num;
       }),
       comments: z.string().optional(),
+      recaptchaToken: z.string().optional(),
     }),
     handler: async (input) => {
       const {
@@ -43,7 +44,36 @@ export const server = {
         comments,
         position,
         resume,
+        recaptchaToken,
       } = input;
+      
+      // Verify reCAPTCHA v3 if configured
+      const secret = import.meta.env.RECAPTCHA_SECRET_KEY;
+      if (secret) {
+        try {
+          const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+              secret,
+              response: recaptchaToken ?? '',
+            })
+          });
+          const data = await res.json();
+          if (!data.success || (typeof data.score === 'number' && data.score < 0.5)) {
+            throw new ActionError({
+              code: 'FORBIDDEN',
+              message: 'reCAPTCHA verification failed. Please retry.',
+            });
+          }
+        } catch (err) {
+          throw new ActionError({
+            code: 'FORBIDDEN',
+            message: 'reCAPTCHA verification failed. Please retry.',
+          });
+        }
+      }
+      
       const resend = new Resend(import.meta.env.RESEND_API_KEY);
       try {
         await resend.emails.send({
@@ -74,8 +104,35 @@ export const server = {
       email: z.string().email(),
       phone: z.string().min(10).max(10).optional(),
       message: z.string().optional(),
+      recaptchaToken: z.string().optional(),
     }),
-    handler: async ({ name, company, email, phone, message }) => {
+    handler: async ({ name, company, email, phone, message, recaptchaToken }) => {
+      // Verify reCAPTCHA v3 if configured
+      const secret = import.meta.env.RECAPTCHA_SECRET_KEY;
+      if (secret) {
+        try {
+          const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+              secret,
+              response: recaptchaToken ?? '',
+            })
+          });
+          const data = await res.json();
+          if (!data.success || (typeof data.score === 'number' && data.score < 0.5)) {
+            throw new ActionError({
+              code: 'FORBIDDEN',
+              message: 'reCAPTCHA verification failed. Please retry.',
+            });
+          }
+        } catch (err) {
+          throw new ActionError({
+            code: 'BAD_REQUEST',
+            message: 'Unable to verify reCAPTCHA at this time.',
+          });
+        }
+      }
       const resend = new Resend(import.meta.env.RESEND_API_KEY);
       try {
         await resend.emails.send({
