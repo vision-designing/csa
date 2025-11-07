@@ -3,7 +3,7 @@ const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 {siteKey && (
-  <script src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`} async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 )}
 
 <application-form>
@@ -164,13 +164,18 @@ const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
         placeholder="Tell us about your relevant experience, skills, or why you're interested in this position..."></textarea>
     </div>
     {siteKey && (
-      <div class="flex items-center justify-center text-xs text-gray-500 mt-2">
-        <span>This site is protected by reCAPTCHA and the Google </span>
-        <a href="https://policies.google.com/privacy" class="text-blue-400 hover:underline mx-1">Privacy Policy</a>
-        <span> and </span>
-        <a href="https://policies.google.com/terms" class="text-blue-400 hover:underline mx-1">Terms of Service</a>
-        <span> apply.</span>
-      </div>
+      <>
+        <div class="mt-2">
+          <div class="g-recaptcha" data-sitekey={siteKey}></div>
+        </div>
+        <div class="flex items-center justify-center text-xs text-gray-500 mt-2">
+          <span>This site is protected by reCAPTCHA and the Google </span>
+          <a href="https://policies.google.com/privacy" class="text-blue-400 hover:underline mx-1">Privacy Policy</a>
+          <span> and </span>
+          <a href="https://policies.google.com/terms" class="text-blue-400 hover:underline mx-1">Terms of Service</a>
+          <span> apply.</span>
+        </div>
+      </>
     )}
     <button
       class="text-primary-100 mt-3 block w-full cursor-pointer rounded-md bg-blue-600 px-3 py-1.5 text-center text-sm/6 font-medium hover:bg-blue-700"
@@ -228,58 +233,15 @@ const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
           formData.delete('comments');
         }
         
-        // Get reCAPTCHA token
-        try {
-          const siteKey = RECAPTCHA_SITE_KEY;
-          console.log('reCAPTCHA Site Key:', siteKey ? 'Configured' : 'Not configured');
-        
-          if (siteKey && typeof window !== 'undefined') {
-          try {
-            console.log('reCAPTCHA: Starting token generation...');
-            console.log('reCAPTCHA: Attempting to get token...');
-            
-            // Wait for grecaptcha to be ready
-            await new Promise<void>((resolve) => {
-              if ((window as any).grecaptcha && (window as any).grecaptcha.ready) {
-                (window as any).grecaptcha.ready(() => resolve());
-              } else {
-                console.log('reCAPTCHA: Script not loaded, waiting...');
-                const checkInterval = setInterval(() => {
-                  if ((window as any).grecaptcha && (window as any).grecaptcha.ready) {
-                  clearInterval(checkInterval);
-                  (window as any).grecaptcha.ready(() => resolve());
-                }
-                }, 100);
-                
-                // Timeout after 10 seconds
-                setTimeout(() => {
-                  clearInterval(checkInterval);
-                  console.log('reCAPTCHA: Timeout waiting for script');
-                  resolve();
-                }, 10000);
-              }
-            });
-            
-            console.log('reCAPTCHA: grecaptcha ready, executing...');
-            
-            if ((window as any).grecaptcha && (window as any).grecaptcha.execute) {
-                const token = await (window as any).grecaptcha.execute(siteKey, { action: 'application' });
-              console.log('reCAPTCHA: Token obtained:', token ? 'Success' : 'Failed');
-              if (token) {
-                formData.append('recaptchaToken', token);
-              }
-            } else {
-              console.log('reCAPTCHA: grecaptcha.execute not available');
-            }
-          } catch (error) {
-            console.error('reCAPTCHA: Error getting token:', error);
-          }
-          } else {
-            console.log('reCAPTCHA: No site key found, skipping reCAPTCHA');
-          }
-        } catch (error) {
-          console.error('reCAPTCHA: Error in token generation:', error);
+        // Get reCAPTCHA v2 token from hidden input
+        const tokenInput = this.form.querySelector<HTMLInputElement>('[name="g-recaptcha-response"]');
+        const token = tokenInput?.value || '';
+        if (!token) {
+          alert('Please complete the reCAPTCHA');
+          return;
         }
+        console.log('reCAPTCHA: Token obtained:', token ? 'Success' : 'Failed');
+        formData.append('recaptchaToken', token);
         
         const { error } = await actions.application(formData);
         if (error) {

@@ -54,6 +54,10 @@
         id="message"
         rows="3"></textarea>
     </div>
+    <!-- reCAPTCHA v2 checkbox widget -->
+    <div class="mt-2">
+      <div class="g-recaptcha" data-sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}></div>
+    </div>
     <button
       class="text-primary-100 mt-3 block w-full cursor-pointer rounded-md bg-blue-600 px-3 py-1.5 text-center text-sm/6 font-medium hover:bg-blue-700"
       type="submit"
@@ -66,7 +70,7 @@
   import { actions } from "astro:actions";
   import { navigate } from "astro:transitions/client";
   
-  // Load reCAPTCHA v3 script if site key is provided
+  // Load reCAPTCHA v2 script if site key is provided
   const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
   console.log('reCAPTCHA Site Key:', RECAPTCHA_SITE_KEY ? 'Configured' : 'Not configured');
   
@@ -75,15 +79,15 @@
       console.log('reCAPTCHA: No site key found, skipping reCAPTCHA');
       return;
     }
-    const existing = document.getElementById('recaptcha-v3-script');
+    const existing = document.getElementById('recaptcha-v2-script');
     if (existing) {
       console.log('reCAPTCHA: Script already loaded');
       return;
     }
     console.log('reCAPTCHA: Loading script...');
     const s = document.createElement('script');
-    s.id = 'recaptcha-v3-script';
-    s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    s.id = 'recaptcha-v2-script';
+    s.src = 'https://www.google.com/recaptcha/api.js';
     s.async = true;
     s.defer = true;
     s.onload = () => console.log('reCAPTCHA: Script loaded successfully');
@@ -104,38 +108,16 @@
         }
         const formData = new FormData(this.form);
         
-        // Obtain reCAPTCHA token if configured
+        // Obtain reCAPTCHA v2 token from hidden input
         if (RECAPTCHA_SITE_KEY && typeof window !== 'undefined') {
-          console.log('reCAPTCHA: Attempting to get token...');
-          try {
-            // Wait for grecaptcha to be ready
-            await new Promise<void>((resolve) => {
-              const ready = () => {
-                console.log('reCAPTCHA: Ready callback triggered');
-                resolve();
-              };
-              if ((window as any).grecaptcha && (window as any).grecaptcha.ready) {
-                console.log('reCAPTCHA: Using grecaptcha.ready()');
-                (window as any).grecaptcha.ready(ready);
-              } else {
-                console.log('reCAPTCHA: grecaptcha not ready, using fallback delay');
-                // Fallback small delay if script not yet loaded
-                setTimeout(ready, 300);
-              }
-            });
-            if ((window as any).grecaptcha && (window as any).grecaptcha.execute) {
-              console.log('reCAPTCHA: Executing token request...');
-              const token = await (window as any).grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_form' });
-              console.log('reCAPTCHA: Token obtained:', token ? 'Success' : 'Failed');
-              formData.append('recaptchaToken', token);
-            } else {
-              console.error('reCAPTCHA: grecaptcha.execute not available');
-            }
-          } catch (err) {
-            console.warn('reCAPTCHA token fetch failed:', err);
+          const tokenInput = this.form.querySelector<HTMLInputElement>('[name="g-recaptcha-response"]');
+          const token = tokenInput?.value || '';
+          if (!token) {
+            alert('Please complete the reCAPTCHA');
+            return;
           }
-        } else {
-          console.log('reCAPTCHA: Skipped (no site key or not in browser)');
+          console.log('reCAPTCHA: Token obtained:', token ? 'Success' : 'Failed');
+          formData.append('recaptchaToken', token);
         }
         const { error } = await actions.contact(formData);
         if (!error) navigate("/success");
