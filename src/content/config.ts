@@ -22,7 +22,7 @@ export const bookingLink =
 export const defaultMeta = {
   title: "Critical Systems Analysis | Functional Safety Consulting Experts",
   description:
-    "Expert functional safety engineers providing comprehensive safety compliance solutions, FMEA and FTA support consulting for safety critical systems and autonomous vehicles.",
+    "Expert functional safety engineers providing comprehensive safety compliance solutions, FMEA and FTA support for safety critical systems and autonomous vehicles.",
   og: {
     url: "/og.webp",
     alt: "A robot with some gears",
