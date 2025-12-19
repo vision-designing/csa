@@ -44,30 +44,21 @@ const ogImageURL = new URL(ogImage.url, Astro.site).href;
       name="google-site-verification"
       content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"
     />
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XC3Q77JSK"
-    ></script>
+    <!-- Google Tag Manager -->
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-2XC3Q77JSK");
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5RKG7PPP");
     </script>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=AW-17076209911"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+    <!-- End Google Tag Manager -->
 
-      gtag("config", "AW-17076209911");
-    </script>
     <link rel="canonical" href={Astro.url.href} />
     <meta name="title" content={formattedTitle} />
     <meta name="description" content={formattedDescription} />
@@ -122,6 +113,15 @@ const ogImageURL = new URL(ogImage.url, Astro.site).href;
     </noscript>
   </head>
   <body class="bg-primary-900 font-sans antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5RKG7PPP"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {includeHeader && <Header />}
     <main>
       <slot />
