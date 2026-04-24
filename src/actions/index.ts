@@ -77,7 +77,7 @@ export const server = {
       const resend = new Resend(import.meta.env.RESEND_API_KEY);
       try {
         await resend.emails.send({
-          from: "no-reply@skyramedia.com",
+          from: "info@criticalsa.com",
           to: "marketing@criticalsa.com",
           subject: `Job application: ${firstName} ${lastName}`,
           text: `From: ${firstName} ${lastName} (${email})\nPhone: ${phone}\nLocation: ${country}\nWhere did you here about us?: ${howDidYouHear}\nPosition: ${position}\nLinkedin: ${linkedin}\nExperience: ${experience}\n\nMessage:\n${comments}`,
@@ -136,7 +136,7 @@ export const server = {
       const resend = new Resend(import.meta.env.RESEND_API_KEY);
       try {
         await resend.emails.send({
-          from: "no-reply@skyramedia.com",
+          from: "info@criticalsa.com",
           to: "marketing@criticalsa.com",
           subject: `${name} from ${company}`,
           text: `From: ${name} (${email})\nCompany: ${company}\nPhone: ${phone}\n\nMessage:\n${message}`,
@@ -161,7 +161,7 @@ export const server = {
       try {
         // Send notification to company email
         await resend.emails.send({
-          from: "no-reply@skyramedia.com",
+          from: "info@criticalsa.com",
           to: "marketing@criticalsa.com",
           subject: `PDF Download Request: ${title}`,
           text: `A user has requested to download the PDF: ${title}\n\nUser Email: ${email}\nPDF URL: ${pdfUrl}\nTimestamp: ${new Date().toISOString()}`,
@@ -169,7 +169,7 @@ export const server = {
 
         // Send PDF copy to user
         await resend.emails.send({
-          from: "no-reply@skyramedia.com",
+          from: "info@criticalsa.com",
           to: email,
           subject: `Your requested PDF: ${title}`,
           html: `
