@@ -23,7 +23,10 @@ export const server = {
           return false;
         }
       }, { message: "Please enter a valid LinkedIn URL or leave this field empty" }),
-      resume: z.instanceof(File),
+      resume: z.instanceof(File).refine(
+        (file) => file.type === 'application/pdf' || file.name.endsWith('.pdf'),
+        { message: "Resume must be a PDF file" }
+      ),
       experience: z.union([z.string(), z.number()]).optional().transform((val) => {
         if (!val || val === '') return undefined;
         const num = typeof val === 'string' ? parseInt(val) : val;
