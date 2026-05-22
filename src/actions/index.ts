@@ -16,7 +16,8 @@ export const server = {
       linkedin: z.string().optional().refine((val) => {
         if (!val || val.trim() === '') return true;
         try {
-          new URL(val);
+          const url = val.includes('://') ? val : `https://${val}`;
+          new URL(url);
           return true;
         } catch {
           return false;
@@ -83,7 +84,7 @@ export const server = {
           text: `From: ${firstName} ${lastName} (${email})\nPhone: ${phone}\nLocation: ${country}\nWhere did you here about us?: ${howDidYouHear}\nPosition: ${position}\nLinkedin: ${linkedin}\nExperience: ${experience}\n\nMessage:\n${comments}`,
           attachments: [
             {
-              filename: "resume.pdf",
+              filename: resume.name,
               content: Buffer.from(await resume.arrayBuffer()),
             },
           ],
