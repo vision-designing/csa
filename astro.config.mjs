@@ -6,6 +6,10 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   site: "https://www.criticalsystemsanalysis.com",
   adapter: vercel(),
+  redirects: {
+    "/booking":
+      "https://outlook.office.com/book/CSAISCBookings@criticalsa.com/?ismsaljsauthenabled",
+  },
   integrations: [sitemap()],
   image: {
     domains: ["images.ctfassets.net"],
