@@ -32,19 +32,19 @@ const { Content } = await render(download);
       class="my-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between md:mt-24 md:mb-12"
     >
       <div class="flex-1">
-        {download.data.date && (
-          <time
-            class="block text-lg font-semibold tracking-wide text-blue-500 uppercase"
-            datetime={download.data.date.toISOString()}
-          >
-            {
-              download.data.date.toLocaleDateString("en-US", {
+        {
+          download.data.date && (
+            <time
+              class="block text-lg font-semibold tracking-wide text-blue-500 uppercase"
+              datetime={download.data.date.toISOString()}
+            >
+              {download.data.date.toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
-              })
-            }
-          </time>
-        )}
+              })}
+            </time>
+          )
+        }
         <h1
           class="text-primary-100 mt-2 text-4xl font-bold tracking-tight md:text-5xl"
         >
@@ -54,8 +54,8 @@ const { Content } = await render(download);
       {
         download.data.pdf && (
           <div class="hidden sm:block">
-            <DownloadWithEmail 
-              pdfUrl={download.data.pdf} 
+            <DownloadWithEmail
+              pdfUrl={download.data.pdf}
               title={download.data.title}
               buttonClass="text-primary-200 cursor-pointer rounded-full bg-blue-600 px-6 py-3 text-center font-semibold hover:bg-blue-700"
             />
@@ -74,69 +74,44 @@ const { Content } = await render(download);
     >
       <Content />
     </article>
-    
+
     <!-- Training Details Section -->
-    <div class="mt-12 grid gap-8 md:grid-cols-2">
-      <div class="bg-primary-800 border-primary-700 rounded-lg border p-6">
-        <h2 class="text-primary-100 text-xl font-semibold">Training Overview</h2>
-        <ul class="text-primary-400 mt-4 space-y-3">
-          <li class="flex items-start gap-3">
-            <span class="text-primary-100 mt-1 size-5 shrink-0 rounded-full bg-blue-600 p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-full w-full fill-current">
-                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd"/>
-              </svg>
-            </span>
-            <span>Comprehensive curriculum covering key safety standards</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-primary-100 mt-1 size-5 shrink-0 rounded-full bg-blue-600 p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-full w-full fill-current">
-                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd"/>
-              </svg>
-            </span>
-            <span>Expert-led sessions with industry professionals</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-primary-100 mt-1 size-5 shrink-0 rounded-full bg-blue-600 p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-full w-full fill-current">
-                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd"/>
-              </svg>
-            </span>
-            <span>Practical exercises and real-world case studies</span>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="bg-primary-800 border-primary-700 rounded-lg border p-6">
-        <h2 class="text-primary-100 text-xl font-semibold">Who Should Attend</h2>
-        <ul class="text-primary-400 mt-4 space-y-3">
-          <li class="flex items-start gap-3">
-            <span class="text-primary-100 mt-1 size-5 shrink-0 rounded-full bg-blue-600 p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-full w-full fill-current">
-                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd"/>
-              </svg>
-            </span>
-            <span>Safety engineers and managers</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-primary-100 mt-1 size-5 shrink-0 rounded-full bg-blue-600 p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-full w-full fill-current">
-                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd"/>
-              </svg>
-            </span>
-            <span>Systems engineers and developers</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-primary-100 mt-1 size-5 shrink-0 rounded-full bg-blue-600 p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-full w-full fill-current">
-                <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd"/>
-              </svg>
-            </span>
-            <span>Quality assurance professionals</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    {
+      (download.data.trainingOverview || download.data.whoShouldAttend) && (
+        <div class="mt-12 grid gap-8 md:grid-cols-2">
+          {[download.data.trainingOverview, download.data.whoShouldAttend].map(
+            (card) =>
+              card && (
+                <div class="bg-primary-800 border-primary-700 rounded-lg border p-6">
+                  <h2 class="text-primary-100 text-xl font-semibold">
+                    {card.title}
+                  </h2>
+                  <ul class="text-primary-400 mt-4 space-y-3">
+                    {card.items.map((item) => (
+                      <li class="flex items-start gap-3">
+                        <span class="text-primary-100 mt-1 size-5 shrink-0 rounded-full bg-blue-600 p-1">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            class="h-full w-full fill-current"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ),
+          )}
+        </div>
+      )
+    }
 
     <!-- Contact Section -->
     <div
@@ -151,7 +126,8 @@ const { Content } = await render(download);
         <p
           class="text-primary-400 mt-2 max-w-prose leading-relaxed text-pretty sm:text-lg"
         >
-          Contact us to learn more about our training programs and how they can benefit your organization
+          Contact us to learn more about our training programs and how they can
+          benefit your organization
         </p>
       </div>
       <a

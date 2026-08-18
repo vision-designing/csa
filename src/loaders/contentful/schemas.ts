@@ -2,6 +2,17 @@
 
 import { z } from "astro/zod";
 
+const TrainingCardLoaderSchema = z.object({
+  title: z.string(),
+  items: z.array(z.string()),
+});
+
+const TrainingCardApiSchema = z
+  .object({
+    fields: TrainingCardLoaderSchema,
+  })
+  .transform((data) => data.fields);
+
 export const ArticleLoaderSchema = z.object({
   title: z.string(),
   description: z.string(),
@@ -27,6 +38,8 @@ export const DownloadLoaderSchema = z.object({
     alt: z.string(),
     src: z.string(),
   }),
+  trainingOverview: TrainingCardLoaderSchema.optional(),
+  whoShouldAttend: TrainingCardLoaderSchema.optional(),
 });
 
 export const JobLoaderSchema = z.object({
@@ -100,7 +113,7 @@ export const ArticleApiResponseSchema = z.object({
           description: data.fields.description,
           slug: data.fields.slug,
           date: data.fields.date,
-          heroImage:{
+          heroImage: {
             alt:
               data.fields.heroImage.fields.title ||
               data.fields.heroImage.fields.description ||
@@ -162,11 +175,13 @@ export const DownloadApiResponseSchema = z.object({
               name: z.string(),
             }),
           }),
-          content: z.object({
-            nodeType: z.literal("document"),
-            data: z.object({}).passthrough(),
-            content: z.array(z.any()),
-          }).optional(),
+          content: z
+            .object({
+              nodeType: z.literal("document"),
+              data: z.object({}).passthrough(),
+              content: z.array(z.any()),
+            })
+            .optional(),
           pdf: z
             .object({
               fields: z.object({
@@ -178,6 +193,8 @@ export const DownloadApiResponseSchema = z.object({
               }),
             })
             .optional(),
+          trainingOverview: TrainingCardApiSchema.optional(),
+          whoShouldAttend: TrainingCardApiSchema.optional(),
         }),
       })
       .transform((data) => {
@@ -198,6 +215,8 @@ export const DownloadApiResponseSchema = z.object({
           },
           content: data.fields.content,
           pdf: data.fields.pdf?.fields.file.url,
+          trainingOverview: data.fields.trainingOverview,
+          whoShouldAttend: data.fields.whoShouldAttend,
         };
       }),
   ),
