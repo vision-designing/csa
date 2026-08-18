@@ -73,6 +73,23 @@ const ogImageURL = new URL(ogImage.url, Astro.site).href;
       gtag("config", "AW-17076209911");
     </script>
     <!-- End Google tag (gtag.js) -->
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript" is:inline>
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "xxy6fqhw80");
+    </script>
+    <!-- End Microsoft Clarity -->
     <link rel="canonical" href={Astro.url.href} />
     <meta name="title" content={formattedTitle} />
     <meta name="description" content={formattedDescription} />
